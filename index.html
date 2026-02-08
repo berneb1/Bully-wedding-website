@@ -8,7 +8,7 @@
   <!-- PicoCSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 
-  <!-- Elegant serif font for headings -->
+  <!-- Elegant serif font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
@@ -36,8 +36,8 @@
     h2 {
       font-family: "Playfair Display", serif;
       font-size: 2.75rem;
-      margin-bottom: 0.5rem;
       color: var(--primary);
+      margin-bottom: 0.5rem;
     }
 
     h3 {
@@ -66,7 +66,7 @@
       line-height: 1.7;
     }
 
-    /* Section card styling */
+    /* Card section */
     section {
       background: var(--card-bg);
       padding: 3.5rem 3rem;
@@ -76,41 +76,48 @@
     }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Image layout */
     .photo-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.75rem;
+      gap: 3rem;
       margin: 3.5rem 0;
+      text-align: center;
     }
 
     img.hero {
       width: 100%;
       border-radius: 1.5rem;
       box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.15),
-        0 10px 20px rgba(0, 0, 0, 0.08);
+        0 30px 60px rgba(0,0,0,0.15),
+        0 10px 20px rgba(0,0,0,0.08);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
+    /* Engagement photo (primary) */
     .hero-primary {
       max-width: 980px;
       margin: 0 auto;
     }
 
+    /* Wedding AI image (smaller) */
     .hero-secondary {
-      max-width: 900px;
+      max-width: 620px;
       margin: 0 auto;
+      opacity: 0.96;
+    }
+
+    /* AI label */
+    .ai-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.55);
+      margin-bottom: 0.75rem;
     }
 
     @media (hover: hover) {
@@ -127,14 +134,14 @@
       font-size: 1.25rem;
       font-weight: 600;
       color: var(--primary);
-      background: rgba(216, 195, 165, 0.25);
+      background: rgba(216,195,165,0.25);
       padding: 1rem 2rem;
       border-radius: 999px;
       display: inline-block;
       margin: 2rem 0 3rem 0;
     }
 
-    /* Registry buttons */
+    /* Registry */
     .registry-links {
       display: flex;
       flex-wrap: wrap;
@@ -171,6 +178,11 @@
       h2 {
         font-size: 2.2rem;
       }
+
+      .hero-primary,
+      .hero-secondary {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -206,7 +218,11 @@
 
     <div class="photo-grid">
       <img src="engagement.jpg" alt="Engagement photo" class="hero hero-primary">
-      <img src="wedding.png" alt="Wedding photo" class="hero hero-secondary">
+
+      <div>
+        <div class="ai-label">Concept Image (AI Generated)</div>
+        <img src="wedding.png" alt="Wedding concept image" class="hero hero-secondary">
+      </div>
     </div>
 
     <h3 id="details">Wedding Details</h3>
@@ -274,6 +290,11 @@
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
+
 </script>
 
 </body>
