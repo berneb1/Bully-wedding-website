@@ -5,182 +5,145 @@
   <title>Our Wedding • October 10, 2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- PicoCSS (reset only) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --green: #2f5d50;
-      --green-soft: #eef4f1;
-      --text-main: #1f2933;
-      --text-muted: #6b7280;
-      --divider: #e5e7eb;
+      --green:#2f5d50;
+      --soft:#eef4f1;
+      --text:#1f2933;
+      --muted:#6b7280;
+      --border:#e5e7eb;
     }
 
     body {
-      font-family: "Inter", sans-serif;
-      background: #ffffff;
-      color: var(--text-main);
+      font-family: Inter, sans-serif;
+      background:#fff;
+      color:var(--text);
     }
 
-    /* NAV */
     nav {
-      background: #ffffff;
-      border-bottom: 1px solid var(--divider);
+      background:#fff;
+      border-bottom:1px solid var(--border);
     }
 
-    nav strong {
-      color: var(--green);
-      font-weight: 500;
-    }
+    nav strong { color:var(--green); }
 
-    nav a {
-      color: var(--text-muted);
-      font-weight: 500;
-    }
+    nav a { color:var(--muted); font-weight:500; }
 
     nav a[role="button"] {
-      background: var(--green);
-      color: #fff;
-      border-radius: 999px;
-      padding: 0.4rem 1rem;
+      background:var(--green);
+      color:#fff;
+      border-radius:999px;
+      padding:0.4rem 1rem;
     }
 
-    /* HERO */
     .hero {
-      text-align: center;
-      padding: 4.5rem 1rem 3rem;
+      text-align:center;
+      padding:4.5rem 1rem 3rem;
     }
 
     .names {
-      font-family: "Playfair Display", serif;
-      font-size: 2.75rem;
-      color: var(--green);
-      margin-bottom: 0.25rem;
+      font-family:"Playfair Display", serif;
+      font-size:2.8rem;
+      color:var(--green);
     }
 
     .subtitle {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-bottom: 1.25rem;
+      color:var(--muted);
+      margin:0.5rem 0 1.5rem;
     }
 
-    .event-strip {
-      display: inline-flex;
-      gap: 0.75rem;
-      align-items: center;
-      background: var(--green-soft);
-      padding: 0.6rem 1.5rem;
-      border-radius: 999px;
-      color: var(--green);
-      font-weight: 500;
-      font-size: 0.95rem;
+    .pill {
+      display:inline-block;
+      background:var(--soft);
+      color:var(--green);
+      padding:0.6rem 1.5rem;
+      border-radius:999px;
+      font-weight:500;
+      font-size:0.95rem;
     }
 
-    /* IMAGES */
     .image-block {
-      max-width: 1200px;
-      margin: 0 auto 4rem;
-      padding: 0 1rem;
-      text-align: center;
+      max-width:1200px;
+      margin:0 auto 4rem;
+      padding:0 1rem;
+      text-align:center;
     }
 
     .image-block img {
-      width: 100%;
-      border-radius: 1.25rem;
+      width:100%;
+      border-radius:1.25rem;
     }
 
-    .engagement {
-      margin-bottom: 3rem;
-    }
+    .engagement { margin-bottom:3rem; }
 
-    .concept {
-      max-width: 520px;
-      margin: 0 auto;
-    }
+    .concept { max-width:520px; margin:0 auto; }
 
     .ai-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
+      font-size:0.7rem;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:var(--muted);
+      margin-bottom:0.5rem;
     }
 
-    /* DIVIDER */
     .divider {
-      max-width: 100px;
-      height: 1px;
-      background: var(--divider);
-      margin: 4rem auto;
+      max-width:100px;
+      height:1px;
+      background:var(--border);
+      margin:4rem auto;
     }
 
-    /* SECTIONS */
     .section {
-      max-width: 720px;
-      margin: 0 auto 4rem;
-      padding: 0 1.25rem;
+      max-width:720px;
+      margin:0 auto 4rem;
+      padding:0 1.25rem;
     }
 
     .section h2 {
-      font-family: "Playfair Display", serif;
-      color: var(--green);
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
+      font-family:"Playfair Display", serif;
+      color:var(--green);
+      margin-bottom:0.75rem;
     }
 
     .section p {
-      color: var(--text-muted);
-      line-height: 1.7;
-      font-size: 1rem;
+      color:var(--muted);
+      line-height:1.7;
     }
 
-    /* BUTTON */
-    .primary-btn {
-      display: inline-block;
-      margin-top: 1.25rem;
-      padding: 0.75rem 2rem;
-      background: var(--green);
-      color: #fff;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 500;
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+      gap:1.5rem;
+      margin-top:1.5rem;
     }
 
-    /* REGISTRY */
-    .registry {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.25rem;
+    .card {
+      text-align:center;
+      border:1px solid var(--border);
+      border-radius:1rem;
+      padding:1.25rem;
     }
 
-    .registry a {
-      padding: 0.65rem 1.25rem;
-      border: 1px solid var(--divider);
-      border-radius: 999px;
-      text-decoration: none;
-      color: var(--text-main);
-      font-weight: 500;
-      background: #fff;
+    .btn {
+      display:inline-block;
+      margin-top:1.25rem;
+      padding:0.75rem 2rem;
+      background:var(--green);
+      color:#fff;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:500;
     }
 
-    /* FOOTER */
     footer {
-      border-top: 1px solid var(--divider);
-      padding: 2.5rem 1rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    @media (max-width: 768px) {
-      .names {
-        font-size: 2.2rem;
-      }
+      border-top:1px solid var(--border);
+      padding:2.5rem 1rem;
+      text-align:center;
+      color:var(--muted);
+      font-size:0.85rem;
     }
   </style>
 </head>
@@ -188,92 +151,95 @@
 <body>
 
 <nav class="container-fluid">
+  <ul><li><strong>Our Wedding</strong></li></ul>
   <ul>
-    <li><strong>Our Wedding</strong></li>
-  </ul>
-  <ul>
+    <li><a href="#story">Our Story</a></li>
     <li><a href="#details">Details</a></li>
-    <li><a href="#rsvp">RSVP</a></li>
-    <li><a href="#registry">Registry</a></li>
-    <li><a href="#contact" role="button">Contact</a></li>
+    <li><a href="#party">Wedding Party</a></li>
+    <li><a href="#travel">Travel</a></li>
+    <li><a href="#rsvp" role="button">RSVP</a></li>
   </ul>
 </nav>
 
 <section class="hero">
-  <!-- CHANGE NAMES HERE -->
   <div class="names">Bernard &amp; Partner</div>
   <div class="subtitle">We’re Getting Married</div>
-
-  <div class="event-strip" id="countdown">
-    October 10, 2026
-  </div>
+  <div id="countdown" class="pill"></div>
 </section>
 
 <section class="image-block">
-  <img src="engagement.jpg?v=OFFICIAL" alt="Engagement photo" class="engagement">
-
+  <img src="engagement.jpg?v=FINAL" class="engagement">
   <div class="concept">
     <div class="ai-label">Concept Image (AI Generated)</div>
-    <img src="wedding.png?v=OFFICIAL" alt="Wedding concept image">
+    <img src="wedding.png?v=FINAL">
   </div>
 </section>
 
 <div class="divider"></div>
 
+<section id="story" class="section">
+  <h2>Our Story</h2>
+  <p>
+    Our journey began with a simple hello and grew into a love we are so
+    excited to celebrate with you.
+  </p>
+</section>
+
 <section id="details" class="section">
   <h2>Wedding Details</h2>
-  <p>
-    We are so excited to celebrate our wedding with you. Please join us for a
-    beautiful ceremony followed by an evening of dining, dancing, and joy.
-  </p>
+  <p><strong>Ceremony:</strong> Location TBD • 4:00 PM</p>
+  <p><strong>Reception:</strong> Immediately following</p>
+</section>
+
+<section id="party" class="section">
+  <h2>Wedding Party</h2>
+
+  <h3>Bridesmaids</h3>
+  <div class="grid">
+    <div class="card">Name</div>
+    <div class="card">Name</div>
+    <div class="card">Name</div>
+  </div>
+
+  <h3 style="margin-top:2.5rem;">Groomsmen</h3>
+  <div class="grid">
+    <div class="card">Name</div>
+    <div class="card">Name</div>
+    <div class="card">Name</div>
+  </div>
+</section>
+
+<section id="travel" class="section">
+  <h2>Travel & Stay</h2>
+  <p><strong>Hotel:</strong> Hotel Name • Group rate available</p>
+  <p><strong>Airport:</strong> Closest Airport</p>
+  <p><strong>Transportation:</strong> Shuttle details coming soon</p>
 </section>
 
 <section id="rsvp" class="section">
   <h2>RSVP</h2>
-  <p>
-    Kindly let us know if you’ll be able to attend by August 10, 2026.
-  </p>
-  <a class="primary-btn"
-     href="https://docs.google.com/forms/d/1RVqvYgcy-atKfP5WZDTrqz1urcX_nsVxgMAV4m9QFRI/viewform"
-     target="_blank">
-     RSVP
+  <a class="btn" href="https://docs.google.com/forms/d/1RVqvYgcy-atKfP5WZDTrqz1urcX_nsVxgMAV4m9QFRI/viewform" target="_blank">
+    RSVP Here
   </a>
 </section>
 
-<section id="registry" class="section">
-  <h2>Registry</h2>
-  <p>Your presence is the greatest gift. For those who wish to give:</p>
-
-  <div class="registry">
-    <a href="https://www.zola.com/wedding-registry" target="_blank">Zola</a>
-    <a href="https://www.amazon.com/wedding" target="_blank">Amazon</a>
-    <a href="https://www.crateandbarrel.com/gift-registry/" target="_blank">Crate &amp; Barrel</a>
-    <a href="https://www.potterybarn.com/registry/" target="_blank">Pottery Barn</a>
-  </div>
-</section>
-
-<footer id="contact">
-  © 2026 • Bernard &amp; Partner •  
+<footer>
+  © 2026 • Bernard &amp; Partner •
   <a href="mailto:berneb1@gmail.com">berneb1@gmail.com</a>
 </footer>
 
 <script>
-  const weddingDate = new Date("October 10, 2026 00:00:00").getTime();
+  const weddingDate = new Date("October 10, 2026").getTime();
   const el = document.getElementById("countdown");
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const diff = weddingDate - now;
-    if (diff < 0) {
-      el.innerHTML = "Today is the day 💍";
-      return;
-    }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  function update() {
+    const d = weddingDate - Date.now();
+    const days = Math.floor(d / (1000*60*60*24));
     el.innerHTML = `October 10, 2026 • ${days} days to go`;
   }
 
-  updateCountdown();
-  setInterval(updateCountdown, 60000);
+  update();
+  setInterval(update,60000);
 </script>
 
 </body>
