@@ -10,8 +10,8 @@
 
   <style>
     :root {
-      --primary: #1f3d2b;
-      --secondary: #d8c3a5;
+      --primary: #1f3d2b;      /* dark green */
+      --secondary: #d8c3a5;    /* gold / tan */
       --background-color: #fbfaf7;
     }
 
@@ -32,7 +32,7 @@
       color: var(--primary);
     }
 
-    /* Gold accent line */
+    /* Gold accent line under headers */
     h3 {
       position: relative;
       display: inline-block;
@@ -51,11 +51,12 @@
       border-radius: 2px;
     }
 
+    /* Photo layout */
     .photo-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
-      margin: 2.5rem 0;
+      gap: 3rem;
+      margin: 3rem 0;
     }
 
     img.hero {
@@ -67,14 +68,17 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
+    /* ENGAGEMENT PHOTO — LARGE FEATURE */
     .hero-large {
-      max-width: 900px;
-      margin: 0 auto 3rem auto;
+      max-width: 1200px;
+      margin: 0 auto 4rem auto;
     }
 
+    /* WEDDING PHOTO — SMALLER SUPPORTING IMAGE */
     .hero-small {
-      max-width: 600px;
+      max-width: 450px;
       margin: 0 auto;
+      opacity: 0.95;
     }
 
     @media (hover: hover) {
@@ -86,6 +90,7 @@
       }
     }
 
+    /* Countdown */
     .countdown {
       text-align: center;
       font-size: 1.25rem;
@@ -98,6 +103,7 @@
       margin: 1.5rem auto 3rem auto;
     }
 
+    /* Registry buttons */
     .registry-links {
       display: flex;
       flex-wrap: wrap;
@@ -126,10 +132,9 @@
       opacity: 0.75;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 900px) {
       .photo-grid {
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -235,10 +240,6 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 </script>
-
-</body>
-</html>
-
 
 </body>
 </html>
