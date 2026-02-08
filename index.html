@@ -5,10 +5,10 @@
   <title>Our Wedding • October 10, 2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- PicoCSS (base reset only) -->
+  <!-- PicoCSS (reset only) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 
-  <!-- Professional wedding fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -52,28 +52,30 @@
     /* HERO */
     .hero {
       text-align: center;
-      padding: 4.5rem 1rem 3.5rem;
+      padding: 4.5rem 1rem 3rem;
     }
 
-    .hero h1 {
+    .names {
       font-family: "Playfair Display", serif;
-      font-size: 3rem;
+      font-size: 2.75rem;
       color: var(--green);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
     }
 
-    .hero p {
+    .subtitle {
       color: var(--text-muted);
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
     }
 
-    .countdown {
-      display: inline-block;
-      padding: 0.6rem 1.5rem;
+    .event-strip {
+      display: inline-flex;
+      gap: 0.75rem;
+      align-items: center;
       background: var(--green-soft);
-      color: var(--green);
+      padding: 0.6rem 1.5rem;
       border-radius: 999px;
+      color: var(--green);
       font-weight: 500;
       font-size: 0.95rem;
     }
@@ -92,8 +94,7 @@
     }
 
     .engagement {
-      max-width: 1200px;
-      margin: 0 auto 3rem;
+      margin-bottom: 3rem;
     }
 
     .concept {
@@ -107,6 +108,14 @@
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 0.5rem;
+    }
+
+    /* DIVIDER */
+    .divider {
+      max-width: 100px;
+      height: 1px;
+      background: var(--divider);
+      margin: 4rem auto;
     }
 
     /* SECTIONS */
@@ -165,12 +174,12 @@
       padding: 2.5rem 1rem;
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.3rem;
+      .names {
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -191,25 +200,31 @@
 </nav>
 
 <section class="hero">
-  <h1>We’re Getting Married</h1>
-  <p>October 10, 2026</p>
-  <div id="countdown" class="countdown"></div>
+  <!-- CHANGE NAMES HERE -->
+  <div class="names">Bernard &amp; Partner</div>
+  <div class="subtitle">We’re Getting Married</div>
+
+  <div class="event-strip" id="countdown">
+    October 10, 2026
+  </div>
 </section>
 
 <section class="image-block">
-  <img src="engagement.jpg?v=PRO" alt="Engagement photo" class="engagement">
+  <img src="engagement.jpg?v=OFFICIAL" alt="Engagement photo" class="engagement">
 
   <div class="concept">
     <div class="ai-label">Concept Image (AI Generated)</div>
-    <img src="wedding.png?v=PRO" alt="Wedding concept image">
+    <img src="wedding.png?v=OFFICIAL" alt="Wedding concept image">
   </div>
 </section>
+
+<div class="divider"></div>
 
 <section id="details" class="section">
   <h2>Wedding Details</h2>
   <p>
-    We are so excited to celebrate our wedding with you. Please join us for
-    a beautiful ceremony followed by an evening of dining, dancing, and joy.
+    We are so excited to celebrate our wedding with you. Please join us for a
+    beautiful ceremony followed by an evening of dining, dancing, and joy.
   </p>
 </section>
 
@@ -238,7 +253,7 @@
 </section>
 
 <footer id="contact">
-  Questions? Email us at
+  © 2026 • Bernard &amp; Partner •  
   <a href="mailto:berneb1@gmail.com">berneb1@gmail.com</a>
 </footer>
 
@@ -254,7 +269,7 @@
       return;
     }
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    el.innerHTML = `${days} days to go`;
+    el.innerHTML = `October 10, 2026 • ${days} days to go`;
   }
 
   updateCountdown();
