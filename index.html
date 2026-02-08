@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Wedding – October 10, 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- PicoCSS (simple, beautiful default styles) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+  <style>
+    :root {
+      --primary: #1f3d2b;      /* dark green */
+      --secondary: #d8c3a5;    /* tan */
+      --background-color: #fbfaf7;
+    }
+
+    body {
+      background-color: var(--background-color);
+    }
+
+    nav {
+      background-color: var(--primary);
+    }
+
+    nav a, nav strong {
+      color: white;
+    }
+
+    h2, h3 {
+      color: var(--primary);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    @media (min-width: 768px) {
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    img.hero {
+      width: 100%;
+      border-radius: 1rem;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="container-fluid">
+  <ul>
+    <li><strong>Our Wedding</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#details">Details</a></li>
+    <li><a href="#rsvp">RSVP</a></li>
+    <li><a href="#contact" role="button">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+  <section>
+    <hgroup>
+      <h2>We’re Getting Married!</h2>
+      <h3>October 10, 2026</h3>
+    </hgroup>
+
+    <p>
+      Join us as we celebrate our love surrounded by family, friends,
+      and the beautiful colors of fall.
+    </p>
+
+    <div class="photo-grid">
+      <img src="wedding.jpg" alt="Fall wedding ceremony" class="hero">
+      <img src="engagement.jpg" alt="Engagement photo" class="hero">
+    </div>
+
+    <h3 id="details">Wedding Details</h3>
+    <p>
+      The ceremony will be held in a romantic hotel setting with beautiful
+      fall foliage. Reception to follow with delicious food, dancing,
+      and memories to last a lifetime.
+    </p>
+
+    <h3 id="rsvp">RSVP</h3>
+    <p>
+      Please let us know by <strong>August 10, 2026</strong> if you’ll be
+      able to join our celebration.
+    </p>
+  </section>
+</main>
+
+<footer id="contact" class="container">
+  <small>
+    With love • October 10, 2026
+  </small>
+</footer>
+
+</body>
+</html>
+
