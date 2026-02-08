@@ -13,9 +13,9 @@
 
   <style>
     :root {
-      --primary: #1f3d2b;
-      --secondary: #d8c3a5;
-      --background-color: #fbfaf7;
+      --primary: #1f3d2b;   /* deep green */
+      --secondary: #ffffff; /* white */
+      --background-color: #ffffff;
       --card-bg: #ffffff;
     }
 
@@ -32,6 +32,7 @@
       color: white;
     }
 
+    /* Typography */
     h2 {
       font-family: "Playfair Display", serif;
       font-size: 2.75rem;
@@ -48,6 +49,7 @@
       margin-bottom: 1.5rem;
     }
 
+    /* Green accent line */
     h3::after {
       content: "";
       position: absolute;
@@ -55,7 +57,7 @@
       bottom: 0;
       width: 60px;
       height: 3px;
-      background-color: var(--secondary);
+      background-color: var(--primary);
       border-radius: 2px;
     }
 
@@ -64,6 +66,7 @@
       line-height: 1.7;
     }
 
+    /* Card section */
     section {
       background: var(--card-bg);
       padding: 3.5rem 3rem;
@@ -77,34 +80,38 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Image layout */
     .photo-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 3.5rem;
       margin: 3.5rem 0;
       text-align: center;
     }
 
     img.hero {
       width: 100%;
-      border-radius: 1.5rem;
+      border-radius: 1.75rem;
       box-shadow:
         0 30px 60px rgba(0,0,0,0.15),
         0 10px 20px rgba(0,0,0,0.08);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
+    /* REAL engagement photo — VERY LARGE */
     .hero-primary {
-      max-width: 980px;
-      margin: 0 auto;
+      max-width: 1100px;
+      margin: 0 auto 3.5rem auto;
     }
 
+    /* AI concept image — MUCH SMALLER */
     .hero-secondary {
-      max-width: 620px;
+      max-width: 520px;
       margin: 0 auto;
-      opacity: 0.96;
+      opacity: 0.95;
     }
 
+    /* AI label */
     .ai-label {
       font-size: 0.75rem;
       letter-spacing: 0.08em;
@@ -113,37 +120,29 @@
       margin-bottom: 0.75rem;
     }
 
+    /* Buttons */
+    a[role="button"],
+    .registry-links a {
+      background-color: var(--primary);
+      color: white;
+      border-radius: 999px;
+    }
+
+    a[role="button"]:hover,
+    .registry-links a:hover {
+      background-color: #163022;
+    }
+
+    /* Countdown */
     .countdown {
       font-size: 1.25rem;
       font-weight: 600;
       color: var(--primary);
-      background: rgba(216,195,165,0.25);
+      background: rgba(31,61,43,0.08);
       padding: 1rem 2rem;
       border-radius: 999px;
       display: inline-block;
       margin: 2rem 0 3rem 0;
-    }
-
-    .registry-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .registry-links a {
-      background-color: var(--secondary);
-      color: #2b2b2b;
-      padding: 0.85rem 1.75rem;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .registry-links a:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
     }
 
     footer {
@@ -274,10 +273,6 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 </script>
-
-</body>
-</html>
-
 
 </body>
 </html>
