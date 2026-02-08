@@ -8,11 +8,15 @@
   <!-- PicoCSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 
+  <!-- Elegant serif font for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --primary: #1f3d2b;      /* dark green */
-      --secondary: #d8c3a5;    /* gold / tan */
+      --primary: #1f3d2b;
+      --secondary: #d8c3a5;
       --background-color: #fbfaf7;
+      --card-bg: #ffffff;
     }
 
     body {
@@ -28,18 +32,24 @@
       color: white;
     }
 
-    h2, h3 {
+    /* Typography */
+    h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.75rem;
+      margin-bottom: 0.5rem;
       color: var(--primary);
     }
 
-    /* Gold accent line under headers */
     h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--primary);
       position: relative;
       display: inline-block;
       padding-bottom: 0.75rem;
       margin-bottom: 1.5rem;
     }
 
+    /* Gold accent line */
     h3::after {
       content: "";
       position: absolute;
@@ -51,56 +61,77 @@
       border-radius: 2px;
     }
 
-    /* Photo layout */
+    p {
+      max-width: 720px;
+      line-height: 1.7;
+    }
+
+    /* Section card styling */
+    section {
+      background: var(--card-bg);
+      padding: 3.5rem 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.08);
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Image layout */
     .photo-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
-      margin: 3rem 0;
+      gap: 2.75rem;
+      margin: 3.5rem 0;
     }
 
     img.hero {
       width: 100%;
-      border-radius: 1.25rem;
+      border-radius: 1.5rem;
       box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.12),
-        0 8px 16px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+        0 30px 60px rgba(0, 0, 0, 0.15),
+        0 10px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    /* ENGAGEMENT PHOTO — LARGE FEATURE */
-    .hero-large {
-      max-width: 1200px;
-      margin: 0 auto 4rem auto;
-    }
-
-    /* WEDDING PHOTO — SMALLER SUPPORTING IMAGE */
-    .hero-small {
-      max-width: 450px;
+    .hero-primary {
+      max-width: 980px;
       margin: 0 auto;
-      opacity: 0.95;
+    }
+
+    .hero-secondary {
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     @media (hover: hover) {
       img.hero:hover {
-        transform: translateY(-4px);
+        transform: translateY(-6px);
         box-shadow:
-          0 28px 60px rgba(0, 0, 0, 0.16),
-          0 12px 24px rgba(0, 0, 0, 0.10);
+          0 40px 90px rgba(0,0,0,0.18),
+          0 18px 30px rgba(0,0,0,0.12);
       }
     }
 
     /* Countdown */
     .countdown {
-      text-align: center;
       font-size: 1.25rem;
       font-weight: 600;
       color: var(--primary);
-      background: rgba(216, 195, 165, 0.2);
-      padding: 1rem 1.75rem;
+      background: rgba(216, 195, 165, 0.25);
+      padding: 1rem 2rem;
       border-radius: 999px;
       display: inline-block;
-      margin: 1.5rem auto 3rem auto;
+      margin: 2rem 0 3rem 0;
     }
 
     /* Registry buttons */
@@ -114,16 +145,16 @@
     .registry-links a {
       background-color: var(--secondary);
       color: #2b2b2b;
-      padding: 0.75rem 1.5rem;
+      padding: 0.85rem 1.75rem;
       border-radius: 999px;
       font-weight: 600;
       text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .registry-links a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
     }
 
     footer {
@@ -132,9 +163,13 @@
       opacity: 0.75;
     }
 
-    @media (min-width: 900px) {
-      .photo-grid {
-        grid-template-columns: 1fr;
+    @media (max-width: 768px) {
+      section {
+        padding: 2.5rem 1.75rem;
+      }
+
+      h2 {
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -158,32 +193,32 @@
   <section>
 
     <hgroup>
-      <h2>We’re Getting Married!</h2>
+      <h2>We’re Getting Married</h2>
       <h3>October 10, 2026</h3>
     </hgroup>
 
     <div id="countdown" class="countdown"></div>
 
     <p>
-      Join us as we celebrate our love surrounded by family, friends,
-      and the beautiful colors of fall.
+      With hearts full of love, we invite you to join us as we celebrate
+      the beginning of our forever together.
     </p>
 
     <div class="photo-grid">
-      <img src="engagement.jpg" alt="Engagement photo" class="hero hero-large">
-      <img src="wedding.png" alt="Fall wedding ceremony" class="hero hero-small">
+      <img src="engagement.jpg" alt="Engagement photo" class="hero hero-primary">
+      <img src="wedding.png" alt="Wedding photo" class="hero hero-secondary">
     </div>
 
     <h3 id="details">Wedding Details</h3>
     <p>
-      The ceremony will be held in a romantic setting with beautiful fall
-      foliage. Reception to follow with food, dancing, and celebration.
+      Our ceremony will take place in an elegant setting surrounded by
+      the warmth and beauty of fall. A joyful evening of dining, dancing,
+      and celebration will follow.
     </p>
 
     <h3 id="rsvp">RSVP</h3>
     <p>
-      Please let us know by <strong>August 10, 2026</strong> if you’ll be able
-      to join our celebration.
+      Kindly respond by <strong>August 10, 2026</strong>.
     </p>
 
     <p>
@@ -196,8 +231,8 @@
 
     <h3 id="registry">Registry</h3>
     <p>
-      Your presence is the greatest gift of all. If you wish to celebrate with
-      a gift, we’ve registered at:
+      Your presence is the greatest gift. For those who wish to give,
+      we are registered at:
     </p>
 
     <div class="registry-links">
@@ -243,4 +278,3 @@
 
 </body>
 </html>
-
