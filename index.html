@@ -5,63 +5,134 @@
   <title>Our Wedding – October 10, 2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- PicoCSS (simple, beautiful default styles) -->
+  <!-- PicoCSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-<style>
-  :root {
-    --primary: #1f3d2b;      /* dark green */
-    --secondary: #d8c3a5;    /* tan */
-    --background-color: #fbfaf7;
-  }
 
-  body {
-    background-color: var(--background-color);
-  }
-
-  nav {
-    background-color: var(--primary);
-  }
-
-  nav a,
-  nav strong {
-    color: white;
-  }
-
-  h2, h3 {
-    color: var(--primary);
-  }
-
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin: 2rem 0;
-  }
-
-  img.hero {
-    width: 100%;
-    border-radius: 1rem;
-  }
-
-  .hero-large {
-    max-width: 900px;
-    margin: 0 auto 2rem auto;
-  }
-
-  .hero-small {
-    max-width: 600px;
-    margin: 0 auto;
-    opacity: 0.95;
-  }
-
-  @media (min-width: 768px) {
-    .photo-grid {
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
+  <style>
+    :root {
+      --primary: #1f3d2b;
+      --secondary: #d8c3a5;
+      --background-color: #fbfaf7;
     }
-  }
-</style>
 
+    body {
+      background-color: var(--background-color);
+    }
+
+    nav {
+      background-color: var(--primary);
+    }
+
+    nav a,
+    nav strong {
+      color: white;
+    }
+
+    h2, h3 {
+      color: var(--primary);
+    }
+
+    /* Gold accent line */
+    h3 {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h3::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--secondary);
+      border-radius: 2px;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin: 2.5rem 0;
+    }
+
+    img.hero {
+      width: 100%;
+      border-radius: 1.25rem;
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        0 8px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-large {
+      max-width: 900px;
+      margin: 0 auto 3rem auto;
+    }
+
+    .hero-small {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @media (hover: hover) {
+      img.hero:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 28px 60px rgba(0, 0, 0, 0.16),
+          0 12px 24px rgba(0, 0, 0, 0.10);
+      }
+    }
+
+    .countdown {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: rgba(216, 195, 165, 0.2);
+      padding: 1rem 1.75rem;
+      border-radius: 999px;
+      display: inline-block;
+      margin: 1.5rem auto 3rem auto;
+    }
+
+    .registry-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .registry-links a {
+      background-color: var(--secondary);
+      color: #2b2b2b;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .registry-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      opacity: 0.75;
+    }
+
+    @media (min-width: 768px) {
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -73,16 +144,20 @@
   <ul>
     <li><a href="#details">Details</a></li>
     <li><a href="#rsvp">RSVP</a></li>
+    <li><a href="#registry">Registry</a></li>
     <li><a href="#contact" role="button">Contact</a></li>
   </ul>
 </nav>
 
 <main class="container">
   <section>
+
     <hgroup>
       <h2>We’re Getting Married!</h2>
       <h3>October 10, 2026</h3>
     </hgroup>
+
+    <div id="countdown" class="countdown"></div>
 
     <p>
       Join us as we celebrate our love surrounded by family, friends,
@@ -90,41 +165,80 @@
     </p>
 
     <div class="photo-grid">
-  <img src="engagement.jpg" alt="Engagement photo" class="hero hero-large">
-  <img src="wedding.png" alt="Fall wedding ceremony" class="hero hero-small">
-</div>
-
-}
-
-.hero-small {
-  max-width: 600px;
-  margin: 0 auto;
-  opacity: 0.95;
-}
-
-Then:
+      <img src="engagement.jpg" alt="Engagement photo" class="hero hero-large">
+      <img src="wedding.png" alt="Fall wedding ceremony" class="hero hero-small">
     </div>
 
     <h3 id="details">Wedding Details</h3>
     <p>
-      The ceremony will be held in a romantic hotel setting with beautiful
-      fall foliage. Reception to follow with delicious food, dancing,
-      and memories to last a lifetime.
+      The ceremony will be held in a romantic setting with beautiful fall
+      foliage. Reception to follow with food, dancing, and celebration.
     </p>
 
     <h3 id="rsvp">RSVP</h3>
     <p>
-      Please let us know by <strong>August 10, 2026</strong> if you’ll be
-      able to join our celebration.
+      Please let us know by <strong>August 10, 2026</strong> if you’ll be able
+      to join our celebration.
     </p>
+
+    <p>
+      <a href="https://docs.google.com/forms/d/1RVqvYgcy-atKfP5WZDTrqz1urcX_nsVxgMAV4m9QFRI/viewform"
+         target="_blank"
+         role="button">
+        RSVP Here
+      </a>
+    </p>
+
+    <h3 id="registry">Registry</h3>
+    <p>
+      Your presence is the greatest gift of all. If you wish to celebrate with
+      a gift, we’ve registered at:
+    </p>
+
+    <div class="registry-links">
+      <a href="https://www.amazon.com/wedding" target="_blank">Amazon</a>
+      <a href="https://www.target.com/gift-registry" target="_blank">Target</a>
+      <a href="https://www.zola.com" target="_blank">Zola</a>
+    </div>
+
   </section>
 </main>
 
 <footer id="contact" class="container">
   <small>
-    With love • October 10, 2026
+    Questions? Email us at
+    <a href="mailto:berneb1@gmail.com">berneb1@gmail.com</a>
   </small>
 </footer>
+
+<script>
+  const weddingDate = new Date("October 10, 2026 00:00:00").getTime();
+  const countdownEl = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance < 0) {
+      countdownEl.innerHTML = "Today is the day! 💍";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    countdownEl.innerHTML =
+      `${days} Days • ${hours} Hours • ${minutes} Minutes`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
+
 
 </body>
 </html>
