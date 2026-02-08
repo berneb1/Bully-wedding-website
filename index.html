@@ -7,54 +7,61 @@
 
   <!-- PicoCSS (simple, beautiful default styles) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+<style>
+  :root {
+    --primary: #1f3d2b;      /* dark green */
+    --secondary: #d8c3a5;    /* tan */
+    --background-color: #fbfaf7;
+  }
 
-  <style>
-    :root {
-      --primary: #1f3d2b;      /* dark green */
-      --secondary: #d8c3a5;    /* tan */
-      --background-color: #fbfaf7;
-    }
+  body {
+    background-color: var(--background-color);
+  }
 
-    body {
-      background-color: var(--background-color);
-    }
+  nav {
+    background-color: var(--primary);
+  }
 
-    nav {
-      background-color: var(--primary);
-    }
+  nav a,
+  nav strong {
+    color: white;
+  }
 
-    nav a, nav strong {
-      color: white;
-    }
+  h2, h3 {
+    color: var(--primary);
+  }
 
-    h2, h3 {
-      color: var(--primary);
-    }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
 
+  img.hero {
+    width: 100%;
+    border-radius: 1rem;
+  }
+
+  .hero-large {
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+  }
+
+  .hero-small {
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.95;
+  }
+
+  @media (min-width: 768px) {
     .photo-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin: 2rem 0;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
     }
+  }
+</style>
 
-    @media (min-width: 768px) {
-      .photo-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    img.hero {
-      width: 100%;
-      border-radius: 1rem;
-    }
-
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      opacity: 0.7;
-    }
-  </style>
 </head>
 
 <body>
@@ -83,8 +90,18 @@
     </p>
 
     <div class="photo-grid">
-     <img src="wedding.png" alt="Fall wedding ceremony" class="hero">
-<img src="engagement.jpg" alt="Engagement photo" class="hero">
+  <img src="engagement.jpg" alt="Engagement photo" class="hero hero-large">
+  <img src="wedding.png" alt="Fall wedding ceremony" class="hero hero-small">
+</div>
+
+}
+
+.hero-small {
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
 Then:
     </div>
 
