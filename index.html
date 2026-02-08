@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Our Wedding • October 10, 2026</title>
+  <title>Berne & Courtney • October 10, 2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- PicoCSS (reset only) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -18,27 +21,35 @@
     }
 
     body {
-      font-family: Inter, sans-serif;
-      background:#fff;
+      font-family: "Inter", sans-serif;
+      background:#ffffff;
       color:var(--text);
     }
 
+    /* NAV */
     nav {
-      background:#fff;
+      background:#ffffff;
       border-bottom:1px solid var(--border);
     }
 
-    nav strong { color:var(--green); }
+    nav strong {
+      color:var(--green);
+      font-weight:500;
+    }
 
-    nav a { color:var(--muted); font-weight:500; }
+    nav a {
+      color:var(--muted);
+      font-weight:500;
+    }
 
     nav a[role="button"] {
       background:var(--green);
-      color:#fff;
+      color:#ffffff;
       border-radius:999px;
       padding:0.4rem 1rem;
     }
 
+    /* HERO */
     .hero {
       text-align:center;
       padding:4.5rem 1rem 3rem;
@@ -48,11 +59,13 @@
       font-family:"Playfair Display", serif;
       font-size:2.8rem;
       color:var(--green);
+      margin-bottom:0.25rem;
     }
 
     .subtitle {
       color:var(--muted);
-      margin:0.5rem 0 1.5rem;
+      font-size:1.1rem;
+      margin-bottom:1.25rem;
     }
 
     .pill {
@@ -65,6 +78,7 @@
       font-size:0.95rem;
     }
 
+    /* IMAGES */
     .image-block {
       max-width:1200px;
       margin:0 auto 4rem;
@@ -77,18 +91,24 @@
       border-radius:1.25rem;
     }
 
-    .engagement { margin-bottom:3rem; }
+    .engagement {
+      margin-bottom:3rem;
+    }
 
-    .concept { max-width:520px; margin:0 auto; }
+    .concept {
+      max-width:520px;
+      margin:0 auto;
+    }
 
     .ai-label {
       font-size:0.7rem;
-      text-transform:uppercase;
       letter-spacing:0.08em;
+      text-transform:uppercase;
       color:var(--muted);
       margin-bottom:0.5rem;
     }
 
+    /* DIVIDER */
     .divider {
       max-width:100px;
       height:1px;
@@ -96,6 +116,7 @@
       margin:4rem auto;
     }
 
+    /* SECTIONS */
     .section {
       max-width:720px;
       margin:0 auto 4rem;
@@ -132,7 +153,7 @@
       margin-top:1.25rem;
       padding:0.75rem 2rem;
       background:var(--green);
-      color:#fff;
+      color:#ffffff;
       border-radius:999px;
       text-decoration:none;
       font-weight:500;
@@ -145,13 +166,21 @@
       color:var(--muted);
       font-size:0.85rem;
     }
+
+    @media (max-width:768px) {
+      .names {
+        font-size:2.2rem;
+      }
+    }
   </style>
 </head>
 
 <body>
 
 <nav class="container-fluid">
-  <ul><li><strong>Our Wedding</strong></li></ul>
+  <ul>
+    <li><strong>Berne &amp; Courtney</strong></li>
+  </ul>
   <ul>
     <li><a href="#story">Our Story</a></li>
     <li><a href="#details">Details</a></li>
@@ -162,16 +191,17 @@
 </nav>
 
 <section class="hero">
-  <div class="names">Bernard &amp; Partner</div>
+  <div class="names">Berne &amp; Courtney</div>
   <div class="subtitle">We’re Getting Married</div>
   <div id="countdown" class="pill"></div>
 </section>
 
 <section class="image-block">
-  <img src="engagement.jpg?v=FINAL" class="engagement">
+  <img src="engagement.jpg?v=TEMPLATE" alt="Engagement photo" class="engagement">
+
   <div class="concept">
     <div class="ai-label">Concept Image (AI Generated)</div>
-    <img src="wedding.png?v=FINAL">
+    <img src="wedding.png?v=TEMPLATE" alt="Wedding concept image">
   </div>
 </section>
 
@@ -180,15 +210,15 @@
 <section id="story" class="section">
   <h2>Our Story</h2>
   <p>
-    Our journey began with a simple hello and grew into a love we are so
-    excited to celebrate with you.
+    Our story began with a simple hello and grew into a love we are so excited
+    to celebrate with you.
   </p>
 </section>
 
 <section id="details" class="section">
   <h2>Wedding Details</h2>
-  <p><strong>Ceremony:</strong> Location TBD • 4:00 PM</p>
-  <p><strong>Reception:</strong> Immediately following</p>
+  <p><strong>Ceremony:</strong> Details coming soon</p>
+  <p><strong>Reception:</strong> To follow</p>
 </section>
 
 <section id="party" class="section">
@@ -210,21 +240,23 @@
 </section>
 
 <section id="travel" class="section">
-  <h2>Travel & Stay</h2>
-  <p><strong>Hotel:</strong> Hotel Name • Group rate available</p>
-  <p><strong>Airport:</strong> Closest Airport</p>
-  <p><strong>Transportation:</strong> Shuttle details coming soon</p>
+  <h2>Travel &amp; Stay</h2>
+  <p><strong>Hotel:</strong> Information coming soon</p>
+  <p><strong>Airport:</strong> Closest airport details coming soon</p>
+  <p><strong>Transportation:</strong> Shuttle information coming soon</p>
 </section>
 
 <section id="rsvp" class="section">
   <h2>RSVP</h2>
-  <a class="btn" href="https://docs.google.com/forms/d/1RVqvYgcy-atKfP5WZDTrqz1urcX_nsVxgMAV4m9QFRI/viewform" target="_blank">
-    RSVP Here
+  <a class="btn"
+     href="https://docs.google.com/forms/d/1RVqvYgcy-atKfP5WZDTrqz1urcX_nsVxgMAV4m9QFRI/viewform"
+     target="_blank">
+     RSVP Here
   </a>
 </section>
 
-<footer>
-  © 2026 • Bernard &amp; Partner •
+<footer id="contact">
+  © 2026 • Berne &amp; Courtney •
   <a href="mailto:berneb1@gmail.com">berneb1@gmail.com</a>
 </footer>
 
@@ -232,14 +264,18 @@
   const weddingDate = new Date("October 10, 2026").getTime();
   const el = document.getElementById("countdown");
 
-  function update() {
-    const d = weddingDate - Date.now();
-    const days = Math.floor(d / (1000*60*60*24));
+  function updateCountdown() {
+    const diff = weddingDate - Date.now();
+    if (diff < 0) {
+      el.innerHTML = "Today is the day 💍";
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     el.innerHTML = `October 10, 2026 • ${days} days to go`;
   }
 
-  update();
-  setInterval(update,60000);
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
 </script>
 
 </body>
