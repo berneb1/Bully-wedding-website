@@ -8,7 +8,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Berne & Courtney • October 10, 2026</title>
-  <meta name="description" content="Join us to celebrate Berne & Courtney on October 10, 2026. Details, schedule, wedding party, and helpful info." />
+  <meta name="description" content="Join us to celebrate Berne & Courtney on October 10, 2026. Details, schedule, wedding party, and RSVP." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -99,6 +99,7 @@
       border-radius: 12px;
     }
 
+    /* NAV */
     .nav-wrap{
       position:sticky; top:0; z-index:50;
       background: rgba(255,255,255,.78);
@@ -164,6 +165,7 @@
       transform: translateY(-1px);
     }
 
+    /* HERO */
     header.hero{
       text-align:center;
       padding: 5.75rem 1rem 2.25rem;
@@ -216,13 +218,13 @@
       .hero-media{ grid-template-columns: 1fr; }
     }
 
-    /* HERO IMAGE: Photo1.JPG */
+    /* HERO IMAGE: Save the date uses Photo3.JPG */
     .hero-photo{
       position:relative;
       min-height: 340px;
       background:
         linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05)),
-        url("Photo1.JPG");
+        url("Photo3.JPG");
       background-size: cover;
       background-position: center;
       isolation:isolate;
@@ -385,6 +387,7 @@
       font-weight: 650;
     }
 
+    /* Wedding party */
     .people{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -429,6 +432,7 @@
       .person{ grid-column: span 12; }
     }
 
+    /* FAQ */
     details{
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -451,6 +455,7 @@
       line-height: 1.55;
     }
 
+    /* PHOTO GRID (uniform sizes) */
     .photo-grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -466,8 +471,8 @@
     }
     .photo img{
       width: 100%;
-      height: 320px;
-      object-fit: cover;
+      height: 320px;             /* SAME HEIGHT FOR ALL */
+      object-fit: cover;          /* CROPS EVENLY */
       object-position: center;
       display:block;
     }
@@ -489,6 +494,10 @@
     footer a:hover{ text-decoration: underline; }
 
     .muted{ color: var(--muted); }
+
+    /* RSVP status */
+    .status-ok{ color: #0f7a5c; font-weight: 850; }
+    .status-bad{ color: #b42318; font-weight: 850; }
   </style>
 </head>
 
@@ -523,9 +532,7 @@
 
     <div class="hero-card" role="region" aria-label="Wedding overview">
       <div class="hero-media">
-        <div class="hero-photo" role="img" aria-label="Engagement photo">
-          <div class="badge"><span class="dot" aria-hidden="true"></span> Save the date</div>
-        </div>
+        <div class="hero-photo" role="img" aria-label="Save the date photo"></div>
 
         <div class="hero-details">
           <div class="chips" aria-label="Key details">
@@ -548,6 +555,7 @@
   </header>
 
   <main id="main" class="container">
+    <!-- DETAILS -->
     <section id="details" class="block">
       <div class="section-head">
         <div>
@@ -581,6 +589,7 @@
       </div>
     </section>
 
+    <!-- SCHEDULE -->
     <section id="schedule" class="block">
       <div class="section-head">
         <div>
@@ -618,18 +627,16 @@
       </article>
     </section>
 
+    <!-- PHOTOS (replaced Photo1 and Photo6 with wedding + engagement) -->
     <section id="photos" class="block">
       <div class="section-head">
         <div>
           <h2>Photos</h2>
-          <p>Clean grid, same sizing, fast loading.</p>
+          <p>Moments from us — more coming soon.</p>
         </div>
       </div>
 
       <div class="photo-grid" aria-label="Photo gallery">
-        <figure class="photo">
-          <img src="Photo1.JPG" alt="Photo 1" loading="lazy" decoding="async" />
-        </figure>
         <figure class="photo">
           <img src="Photo2.JPG" alt="Photo 2" loading="lazy" decoding="async" />
         </figure>
@@ -643,11 +650,15 @@
           <img src="Photo5.jpeg" alt="Photo 5" loading="lazy" decoding="async" />
         </figure>
         <figure class="photo">
-          <img src="Photo6.JPG" alt="Photo 6" loading="lazy" decoding="async" />
+          <img src="engagement.JPG" alt="Engagement photo" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="photo">
+          <img src="wedding.png" alt="Wedding photo" loading="lazy" decoding="async" />
         </figure>
       </div>
     </section>
 
+    <!-- WEDDING PARTY (alphabetical within group) -->
     <section id="party" class="block">
       <div class="section-head">
         <div>
@@ -669,6 +680,7 @@
                     <span>Bride</span>
                   </div>
                 </div>
+                <!-- Add bridesmaids here (keep alphabetical) -->
               </div>
             </div>
 
@@ -689,6 +701,7 @@
                     <span>Groom</span>
                   </div>
                 </div>
+                <!-- Add more groomsmen here (keep alphabetical) -->
               </div>
             </div>
           </div>
@@ -696,11 +709,11 @@
       </article>
     </section>
 
+    <!-- FAQ (subtitle removed per request) -->
     <section id="faq" class="block">
       <div class="section-head">
         <div>
           <h2>FAQ</h2>
-          <p>Quick answers, clean UI, no clutter.</p>
         </div>
       </div>
 
@@ -710,32 +723,43 @@
             <summary>Where should I park?</summary>
             <p>Add parking details (garage name, cost, and whether validation is available).</p>
           </details>
+          <details>
+            <summary>Can I bring a plus-one?</summary>
+            <p>Add your policy here.</p>
+          </details>
         </div>
+
         <div class="col-6">
           <details>
             <summary>Is there a hotel block?</summary>
             <p>Add hotel name(s) + booking link + cutoff date.</p>
           </details>
+          <details>
+            <summary>What time should I arrive?</summary>
+            <p>Recommended arrival time + note about ceremony start.</p>
+          </details>
         </div>
       </div>
     </section>
 
+    <!-- RSVP (REAL: Google Sheets via Apps Script) -->
     <section id="rsvp" class="block">
       <div class="section-head">
         <div>
           <h2>RSVP</h2>
-          <p>This form is front-end only right now. Next step: connect to a real RSVP list.</p>
+          <p>Please RSVP by (add date).</p>
         </div>
       </div>
 
       <article class="card">
         <div class="card-pad">
-          <form class="grid" id="rsvpForm" autocomplete="on" novalidate>
+          <form class="grid" id="rsvpForm" autocomplete="on">
             <div class="col-6">
               <label for="name" style="font-weight:900; color:var(--green);">Full name</label>
               <input id="name" name="name" type="text" placeholder="Your name" required
                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
             </div>
+
             <div class="col-6">
               <label for="email" style="font-weight:900; color:var(--green);">Email</label>
               <input id="email" name="email" type="email" placeholder="you@example.com" required
@@ -744,7 +768,7 @@
 
             <div class="col-6">
               <label for="attending" style="font-weight:900; color:var(--green);">Attendance</label>
-              <select id="attending" name="attending"
+              <select id="attending" name="attending" required
                       style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
                 <option value="yes">Happily accepting</option>
                 <option value="no">Regretfully decline</option>
@@ -752,14 +776,29 @@
             </div>
 
             <div class="col-6">
+              <label for="guests" style="font-weight:900; color:var(--green);">Number of guests</label>
+              <select id="guests" name="guests" required
+                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+
+            <div class="col-12">
               <label for="notes" style="font-weight:900; color:var(--green);">Notes</label>
               <input id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc."
                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
             </div>
 
             <div class="col-12" style="display:flex; gap:.65rem; flex-wrap:wrap; align-items:center; margin-top:.25rem;">
-              <button class="btn btn-primary" type="submit">Send RSVP</button>
+              <button class="btn btn-primary" type="submit" id="rsvpBtn">Send RSVP</button>
               <span class="muted" id="rsvpMsg" role="status" aria-live="polite"></span>
+            </div>
+
+            <div class="col-12">
+              <small class="muted">If the RSVP button doesn’t work, your RSVP link isn’t set yet (see setup below).</small>
             </div>
           </form>
         </div>
@@ -780,6 +819,7 @@
 
   <script>
     (function () {
+      // ========= Scroll progress + active nav =========
       const progress = document.getElementById('progress');
       const year = document.getElementById('year');
       year.textContent = new Date().getFullYear();
@@ -796,9 +836,8 @@
 
         const y = window.scrollY + 120;
         let active = null;
-        for (const s of sections) {
-          if (s.offsetTop <= y) active = s;
-        }
+        for (const s of sections) if (s.offsetTop <= y) active = s;
+
         links.forEach(a => a.classList.remove('active'));
         if (active) {
           const a = links.find(l => l.getAttribute('href') === '#' + active.id);
@@ -808,21 +847,83 @@
       document.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
+      // ========= REAL RSVP: Google Sheets Web App =========
+      // 1) Create Google Apps Script Web App (instructions below)
+      // 2) Paste your deployed Web App URL here:
+      const RSVP_ENDPOINT = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL_HERE";
+
       const form = document.getElementById('rsvpForm');
       const msg = document.getElementById('rsvpMsg');
+      const btn = document.getElementById('rsvpBtn');
 
-      form.addEventListener('submit', (e) => {
+      function setStatus(text, ok){
+        msg.textContent = text;
+        msg.className = ok ? "status-ok" : "status-bad";
+      }
+
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const name = form.name.value.trim();
-        const email = form.email.value.trim();
-        if(!name || !email){
-          msg.textContent = "Please add your name and email.";
+
+        if (!RSVP_ENDPOINT || RSVP_ENDPOINT.includes("PASTE_YOUR")) {
+          setStatus("RSVP isn’t connected yet. Add your Google Sheets RSVP link in the code.", false);
           return;
         }
-        msg.textContent = "RSVP saved (demo). Next: connect to your real RSVP list.";
-        form.reset();
+
+        const payload = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          attending: form.attending.value,
+          guests: form.guests.value,
+          notes: form.notes.value.trim(),
+          timestamp: new Date().toISOString()
+        };
+
+        if (!payload.name || !payload.email) {
+          setStatus("Please enter your name and email.", false);
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+        setStatus("", true);
+
+        try {
+          // Use no-cors to avoid CORS hassles; the Apps Script still receives the request.
+          await fetch(RSVP_ENDPOINT, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          form.reset();
+          setStatus("Thank you! Your RSVP has been received.", true);
+        } catch (err) {
+          setStatus("Something went wrong sending your RSVP. Please try again.", false);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Send RSVP";
+        }
       });
     })();
+  </script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Event",
+    "name":"Berne & Courtney Wedding",
+    "startDate":"2026-10-10",
+    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus":"https://schema.org/EventScheduled",
+    "description":"Wedding celebration for Berne & Courtney.",
+    "location":{
+      "@type":"Place",
+      "name":"(Add venue name)",
+      "address":"(Add venue address)"
+    }
+  }
   </script>
 </body>
 </html>
