@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Berne & Courtney • October 10, 2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Nice-to-have meta polish -->
-  <meta name="theme-color" content="#1f4d43" />
   <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#1f4d43" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <!-- Fonts (kept simple + reliable) -->
+  <title>Berne & Courtney • October 10, 2026</title>
+  <meta name="description" content="Join us to celebrate Berne & Courtney on October 10, 2026. Details, schedule, wedding party, and helpful info." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -25,14 +24,16 @@
       --text:#111a1f;
       --muted:#667085;
 
-      --glass:rgba(255,255,255,.74);
-      --border:rgba(0,0,0,.08);
+      --glass:rgba(255,255,255,.76);
+      --border:rgba(0,0,0,.09);
 
       --shadow: 0 24px 80px rgba(0,0,0,.10);
       --shadow2: 0 18px 52px rgba(31,77,67,.18);
 
       --radius: 24px;
       --ring: 0 0 0 4px rgba(31,77,67,.18);
+
+      --container: 1120px;
     }
 
     html { scroll-behavior: smooth; }
@@ -43,143 +44,115 @@
       overflow-x:hidden;
 
       background:
-        radial-gradient(900px 400px at 50% 0%, rgba(31,77,67,.18), transparent 60%),
-        radial-gradient(700px 420px at 12% 18%, rgba(199,168,79,.14), transparent 55%),
-        radial-gradient(700px 420px at 88% 20%, rgba(47,107,92,.10), transparent 60%),
+        radial-gradient(900px 420px at 50% 0%, rgba(31,77,67,.18), transparent 60%),
+        radial-gradient(700px 440px at 12% 18%, rgba(199,168,79,.14), transparent 55%),
+        radial-gradient(760px 460px at 88% 20%, rgba(47,107,92,.10), transparent 60%),
         linear-gradient(180deg, #f4f8f6, #ffffff 58%);
     }
 
-    /* Inline noise texture (no external dependency) */
     body::after{
       content:"";
       position:fixed;
       inset:0;
       pointer-events:none;
       z-index:0;
-      opacity:.06;
+      opacity:.055;
       background-image:
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
       background-repeat:repeat;
     }
 
-    /* Reduced motion support */
     @media (prefers-reduced-motion: reduce){
       html { scroll-behavior:auto; }
       * { animation:none !important; transition:none !important; }
     }
 
-    /* Skip link (pro accessibility) */
     .skip-link{
-      position:absolute;
-      left:-999px;
-      top:10px;
-      background:#fff;
-      color:var(--green);
+      position:absolute; left:-999px; top:10px;
+      background:#fff; color:var(--green);
       border:1px solid var(--border);
-      padding:.7rem 1rem;
-      border-radius:999px;
-      z-index:9999;
-      font-weight:800;
+      padding:.7rem 1rem; border-radius:999px;
+      z-index:9999; font-weight:900;
       box-shadow: var(--shadow);
     }
-    .skip-link:focus{
-      left:10px;
-      outline:none;
-      box-shadow: var(--ring), var(--shadow);
-    }
+    .skip-link:focus{ left:10px; outline:none; box-shadow: var(--ring), var(--shadow); }
 
-    /* Scroll progress bar */
     .progress{
-      position:fixed;
-      top:0;
-      left:0;
-      height:3px;
-      width:0%;
+      position:fixed; top:0; left:0;
+      height:3px; width:0%;
       background: linear-gradient(90deg, var(--gold), var(--green2));
       z-index: 9999;
       box-shadow: 0 8px 24px rgba(0,0,0,.12);
     }
 
     .container{
-      max-width:1120px;
+      max-width: var(--container);
       margin:0 auto;
       padding: 2rem 1.25rem;
       position:relative;
       z-index:1;
     }
 
-    /* ===== NAV ===== */
+    a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible{
+      outline:none;
+      box-shadow: var(--ring);
+      border-radius: 12px;
+    }
+
     .nav-wrap{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background: rgba(255,255,255,.72);
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.78);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom:1px solid var(--border);
     }
     .nav{
-      max-width:1120px;
+      max-width: var(--container);
       margin:0 auto;
       padding:.85rem 1.25rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display:flex; align-items:center; justify-content:space-between;
       gap:1rem;
     }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:.75rem;
-      text-decoration:none;
-      color:inherit;
-      min-width: 210px;
+      display:flex; align-items:center; gap:.75rem;
+      text-decoration:none; color:inherit;
+      min-width: 220px;
     }
     .monogram{
-      width:42px;height:42px;
+      width:44px;height:44px;
       border-radius:16px;
       background: linear-gradient(135deg, var(--green), var(--green2));
       box-shadow: 0 16px 40px rgba(31,77,67,.25);
       display:grid; place-items:center;
-      color:#fff;
-      font-weight:900;
-      letter-spacing:.10em;
-      font-size:.85rem;
+      color:#fff; font-weight:900; letter-spacing:.12em; font-size:.85rem;
+      user-select:none;
     }
-    .brand-text{ line-height:1.1; }
+    .brand-text{ line-height:1.05; }
     .brand-text strong{
       display:block;
       font-family:"Playfair Display",serif;
       color:var(--green);
       font-weight:600;
-      font-size:1.08rem;
+      font-size:1.10rem;
     }
     .brand-text span{ color:var(--muted); font-size:.86rem; }
 
     .nav-links{
-      display:flex;
-      align-items:center;
-      gap:.55rem;
-      flex-wrap:wrap;
-      justify-content:flex-end;
+      display:flex; align-items:center; gap:.35rem;
+      flex-wrap:wrap; justify-content:flex-end;
     }
     .nav-links a{
       text-decoration:none;
       color:var(--muted);
       font-weight:900;
-      font-size:.92rem;
-      padding:.55rem .8rem;
+      font-size:.90rem;
+      padding:.55rem .75rem;
       border-radius:999px;
       transition: background .15s ease, color .15s ease, transform .15s ease;
+      white-space:nowrap;
     }
-    .nav-links a:hover{
-      background: rgba(31,77,67,.08);
-      color:var(--green);
-    }
-    .nav-links a.active{
-      background: rgba(31,77,67,.10);
-      color: var(--green);
-    }
+    .nav-links a:hover{ background: rgba(31,77,67,.08); color:var(--green); }
+    .nav-links a.active{ background: rgba(31,77,67,.10); color: var(--green); }
     .nav-links .cta{
       background: var(--green);
       color:#fff;
@@ -191,673 +164,665 @@
       transform: translateY(-1px);
     }
 
-    /* Keyboard focus (pro) */
-    a:focus, button:focus, summary:focus{
-      outline:none;
-      box-shadow: var(--ring);
-    }
-
-    /* ===== HERO ===== */
-    .hero{
+    header.hero{
       text-align:center;
-      padding: 6rem 1rem 2.5rem;
+      padding: 5.75rem 1rem 2.25rem;
       position:relative;
       z-index:1;
     }
-    .hero::before{
+    header.hero::before{
       content:"";
       position:absolute;
-      inset:-50px 0 auto 0;
-      height:360px;
+      inset:-60px 0 auto 0;
+      height:380px;
       background:
-        radial-gradient(circle at 50% 30%, rgba(199,168,79,.18), transparent 60%),
-        radial-gradient(circle at 45% 18%, rgba(31,77,67,.16), transparent 60%);
+        radial-gradient(circle at 50% 28%, rgba(199,168,79,.20), transparent 60%),
+        radial-gradient(circle at 45% 18%, rgba(31,77,67,.18), transparent 60%);
       z-index:-1;
     }
+
     .names{
       margin:0;
       font-family:"Playfair Display",serif;
-      font-size:3.25rem;
+      font-size:clamp(2.2rem, 5.2vw, 3.35rem);
       color:var(--green);
       letter-spacing:.01em;
       text-shadow:0 24px 80px rgba(31,77,67,.18);
     }
-    .date{
-      margin-top:.75rem;
+    .subline{
+      margin:.8rem auto 0;
       color:var(--muted);
       font-weight:700;
       font-size:1.05rem;
-    }
-    .ribbon{
-      display:inline-flex; align-items:center; gap:.6rem;
-      margin-top:1.25rem;
-      padding:.55rem 1.15rem;
-      border-radius:999px;
-      background: rgba(255,255,255,.72);
-      border:1px solid var(--border);
-      box-shadow: 0 16px 44px rgba(0,0,0,.08);
-      color:var(--green);
-      font-weight:900;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      font-size:.78rem;
-    }
-    .ribbon .dot{
-      width:8px;height:8px;border-radius:999px;
-      background:var(--gold);
-      box-shadow:0 0 22px rgba(199,168,79,.55);
-    }
-    .countdown{
-      display:inline-block;
-      margin-top:1.25rem;
-      padding:.75rem 1.75rem;
-      border-radius:999px;
-      background: var(--soft);
-      color: var(--green);
-      font-weight:900;
-      box-shadow: 0 16px 40px rgba(31,77,67,.10);
-    }
-    .divider{
-      width: 92px;
-      height: 2px;
-      margin: 2.2rem auto 0;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      border-radius: 999px;
-      opacity: .9;
+      max-width: 60ch;
     }
 
-    /* ===== PANELS ===== */
-    .panel{
+    .hero-card{
+      margin: 2.1rem auto 0;
+      max-width: 980px;
       background: var(--glass);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px);
       box-shadow: var(--shadow);
-      padding: 2rem;
-      margin: 0 auto 2.25rem;
-    }
-    .reveal{
-      opacity:0;
-      transform: translateY(16px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .reveal.on{
-      opacity:1;
-      transform: translateY(0);
-    }
-
-    .section-title{
-      font-family:"Playfair Display",serif;
-      color:var(--green);
-      font-size:2rem;
-      margin:0 0 1.2rem;
-      text-align:center;
-    }
-    .muted{
-      color:var(--muted);
-      line-height:1.7;
-      max-width:860px;
-      margin:0 auto;
-      text-align:center;
-    }
-
-    /* ===== PHOTOS ===== */
-    .image-section{ text-align:center; }
-    .image-section img{ width:100%; border-radius:22px; }
-    .engagement{
-      max-width:1050px;
-      margin:0 auto 2.25rem;
-      box-shadow: 0 42px 140px rgba(0,0,0,.22);
-      border: 1px solid rgba(0,0,0,.06);
-    }
-    .concept-wrap{ max-width:520px; margin:0 auto; }
-    .ai-label{
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      font-size:.75rem;
-      color:var(--muted);
-      margin-bottom:.6rem;
-    }
-
-    /* ===== WEDDING PARTY ===== */
-    .featured{
-      margin: 1.35rem auto;
-      padding: 1.6rem;
-      border-radius: 20px;
-      background:#fff;
-      border:2px solid var(--gold);
-      box-shadow: 0 0 46px rgba(199,168,79,.28);
-      position:relative;
       overflow:hidden;
     }
-    .featured::after{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background: radial-gradient(circle, rgba(199,168,79,.30), transparent 62%);
-      filter: blur(10px);
-      animation: glow 3.2s ease-in-out infinite;
-    }
-    @keyframes glow{
-      0%{ transform: translate(-12%, -6%) scale(1); opacity:.55; }
-      50%{ transform: translate(8%, 10%) scale(1.08); opacity:.85; }
-      100%{ transform: translate(-12%, -6%) scale(1); opacity:.55; }
-    }
-    .featured-inner{ position:relative; z-index:2; text-align:center; }
-    .featured h3{ margin:0; font-size:1.25rem; color:var(--green); }
-    .featured span{
-      display:block;
-      margin-top:.35rem;
-      font-size:.8rem;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      color:var(--gold);
-      font-weight:900;
-    }
 
-    .subhead{
-      text-align:center;
-      margin-top:2.25rem;
-      color:var(--green);
-      font-family:"Playfair Display",serif;
-      font-size:1.35rem;
-    }
-    .grid{
+    .hero-media{
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 1rem;
-      margin-top: 1.1rem;
+      grid-template-columns: 1.2fr .8fr;
+      gap:0;
     }
-    .card{
-      padding: 1.1rem;
-      background:#fff;
-      border-radius: 16px;
-      border:1px solid var(--border);
-      box-shadow: 0 14px 34px rgba(0,0,0,.08);
-      text-align:center;
-      font-weight:900;
-      color:#22303a;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 18px 44px rgba(0,0,0,.10);
+    @media (max-width: 860px){
+      .hero-media{ grid-template-columns: 1fr; }
     }
 
-    /* ===== REGISTRY CHIPS ===== */
-    .chips{
+    /* HERO IMAGE: Photo1.JPG */
+    .hero-photo{
+      position:relative;
+      min-height: 340px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05)),
+        url("Photo1.JPG");
+      background-size: cover;
+      background-position: center;
+      isolation:isolate;
+    }
+    .hero-photo::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(600px 220px at 20% 10%, rgba(199,168,79,.22), transparent 55%),
+        radial-gradient(700px 260px at 90% 15%, rgba(31,77,67,.25), transparent 60%);
+      mix-blend-mode: soft-light;
+      opacity:.9;
+    }
+    .hero-photo .badge{
+      position:absolute;
+      left: 20px; bottom: 18px;
+      display:inline-flex; gap:.55rem; align-items:center;
+      padding:.55rem .75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.14);
+      font-weight: 900;
+      color: var(--green);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--green2));
+      box-shadow: 0 8px 18px rgba(31,77,67,.25);
+    }
+
+    .hero-details{
+      padding: 1.2rem 1.2rem 1.25rem;
       display:flex;
-      flex-wrap:wrap;
-      gap:.65rem;
+      flex-direction:column;
       justify-content:center;
-      margin-top: 1.25rem;
+      gap:.85rem;
+    }
+    .chips{
+      display:flex; flex-wrap:wrap; gap:.5rem;
+      justify-content:center;
     }
     .chip{
       display:inline-flex;
       align-items:center;
-      gap:.55rem;
-      padding:.75rem 1rem;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:#fff;
-      text-decoration:none;
-      color:#22303a;
-      font-weight:900;
-      box-shadow: 0 14px 34px rgba(0,0,0,.06);
-      transition: transform .18s ease, box-shadow .18s ease;
+      gap:.45rem;
+      padding:.55rem .75rem;
+      border-radius: 999px;
+      background: rgba(31,77,67,.06);
+      border: 1px solid rgba(31,77,67,.10);
+      color: var(--green);
+      font-weight: 900;
+      font-size:.92rem;
     }
-    .chip:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 18px 44px rgba(0,0,0,.10);
-    }
-    .chip .dot{
-      width:10px;height:10px;border-radius:999px;
-      background: linear-gradient(135deg, var(--gold), var(--green2));
-    }
-
-    /* ===== FAQ ===== */
-    details{
-      max-width: 860px;
-      margin: .85rem auto 0;
-      background: rgba(255,255,255,.72);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1rem 1.1rem;
-    }
-    summary{
-      cursor:pointer;
-      font-weight:900;
-      color:var(--green);
-    }
-    details p{
-      margin:.75rem 0 0;
-      color:var(--muted);
-      line-height:1.65;
-    }
-
-    /* ===== BUTTON ===== */
-    .btn{
-      display:inline-block;
-      padding:.95rem 2.25rem;
-      border-radius:999px;
-      background: linear-gradient(135deg, var(--green), var(--green2));
-      color:#fff;
-      text-decoration:none;
-      font-weight:900;
-      box-shadow: 0 18px 52px rgba(31,77,67,.28);
-    }
-    .btn:hover{ filter: brightness(.96); }
-
-    footer{
-      text-align:center;
-      padding: 2.5rem 1rem 3.5rem;
-      color:var(--muted);
-      font-size:.95rem;
-      position:relative;
-      z-index:1;
-    }
-    footer a{ color:var(--green); font-weight:900; text-decoration:none; }
-    footer a:hover{ text-decoration:underline; }
-
-    /* ===== MUSIC INTRO ===== */
-    .intro{
-      position:fixed;
-      inset:0;
-      z-index:1000;
-      display:grid;
-      place-items:center;
-      background:
-        radial-gradient(circle at top, rgba(31,77,67,.26), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.78));
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .intro-card{
-      width:min(590px, calc(100% - 2.2rem));
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(0,0,0,.08);
-      border-radius: 28px;
-      box-shadow: 0 46px 140px rgba(0,0,0,.18);
-      padding: 2rem;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-    .intro-card::before{
-      content:"";
-      position:absolute;
-      inset:-45%;
-      background: radial-gradient(circle, rgba(199,168,79,.22), transparent 60%);
-      filter: blur(10px);
-      animation: glow 3.6s ease-in-out infinite;
-    }
-    .intro-card > *{ position:relative; z-index:2; }
-    .intro-title{
-      font-family:"Playfair Display",serif;
-      font-size:2.1rem;
-      color:var(--green);
-      margin:0 0 .35rem;
-    }
-    .intro-sub{
-      color:var(--muted);
-      margin:0 0 1.25rem;
-      line-height:1.5;
-    }
-    .intro-actions{
-      display:flex;
-      gap:.75rem;
+    .hero-actions{
+      display:flex; gap:.65rem;
       justify-content:center;
       flex-wrap:wrap;
-      margin-top:1rem;
+      margin-top:.35rem;
     }
-    .intro-actions button{
-      border:0;
-      border-radius:999px;
-      padding:.95rem 1.35rem;
-      font-weight:900;
-      cursor:pointer;
-    }
-    .btn-play{
-      background: linear-gradient(135deg, var(--green), var(--green2));
-      color:#fff;
-      box-shadow: 0 18px 52px rgba(31,77,67,.28);
-    }
-    .btn-silent{
-      background: rgba(31,77,67,.08);
-      color: var(--green);
-    }
-    .now-playing{
-      margin-top: 1rem;
-      font-size:.9rem;
-      color:var(--muted);
-    }
-
-    .music-mini{
-      position: fixed;
-      right: 14px;
-      bottom: 14px;
-      z-index: 60;
-      display:flex;
+    .btn{
+      appearance:none; border:0; cursor:pointer;
+      text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center;
       gap:.55rem;
-      align-items:center;
-      background: rgba(255,255,255,.80);
-      border: 1px solid rgba(0,0,0,.08);
+      padding:.9rem 1.05rem;
       border-radius: 999px;
-      padding: .55rem .6rem;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 20px 70px rgba(0,0,0,.12);
+      font-weight: 950;
+      letter-spacing:.01em;
+      transition: transform .15s ease, filter .15s ease, background .15s ease;
+      will-change: transform;
     }
-    .music-mini button{
-      border:0;
-      border-radius:999px;
-      padding:.48rem .75rem;
-      cursor:pointer;
-      font-weight:900;
+    .btn-primary{
+      background: var(--green);
+      color:#fff;
+      box-shadow: var(--shadow2);
     }
-    .music-mini .toggle{
-      background: rgba(31,77,67,.08);
+    .btn-primary:hover{ background:#163a32; transform: translateY(-1px); }
+    .btn-ghost{
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--border);
       color: var(--green);
+      box-shadow: 0 14px 40px rgba(0,0,0,.10);
     }
-    .music-mini .label{
-      font-size:.85rem;
+    .btn-ghost:hover{ filter: brightness(.98); transform: translateY(-1px); }
+
+    section.block{ margin-top: 2.25rem; }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:1rem;
+      margin-bottom: 1.0rem;
+    }
+    .section-head h2{
+      margin:0;
+      font-family:"Playfair Display",serif;
+      color: var(--green);
+      font-size: clamp(1.45rem, 2.8vw, 1.9rem);
+      letter-spacing:.01em;
+    }
+    .section-head p{
+      margin:0;
       color: var(--muted);
-      padding:0 .35rem;
-      white-space:nowrap;
+      font-weight: 650;
+      max-width: 56ch;
     }
 
-    /* Mobile tuning */
-    @media (max-width: 768px){
-      .names{ font-size:2.25rem; }
-      .panel{ padding:1.35rem; border-radius:18px; }
-      .hero{ padding: 5.25rem 1rem 2rem; }
-      .brand-text span{ display:none; }
-      .engagement{ box-shadow: 0 26px 80px rgba(0,0,0,.18); }
-      .concept-wrap{ max-width:100%; }
+    .card{
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
+    .card-pad{ padding: 1.1rem; }
+
+    .grid{
+      display:grid;
+      gap: 1rem;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .col-6{ grid-column: span 6; }
+    .col-12{ grid-column: span 12; }
+    @media (max-width: 920px){
+      .col-6{ grid-column: span 12; }
+    }
+
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:.8rem;
+      margin:0; padding:0;
+      list-style:none;
+    }
+    .event{
+      display:flex;
+      gap:.85rem;
+      align-items:flex-start;
+      padding:.9rem;
+      border-radius: 18px;
+      border: 1px solid rgba(31,77,67,.10);
+      background: rgba(31,77,67,.04);
+    }
+    .event .time{
+      min-width: 110px;
+      font-weight: 950;
+      color: var(--green);
+    }
+    .event .meta strong{
+      display:block;
+      font-weight: 950;
+      color: var(--text);
+      margin-bottom:.15rem;
+    }
+    .event .meta span{
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .people{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .person{
+      grid-column: span 6;
+      padding: 1rem;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 14px 40px rgba(0,0,0,.08);
+      display:flex;
+      gap:.9rem;
+      align-items:center;
+    }
+    .avatar{
+      width:52px; height:52px; border-radius: 18px;
+      background: linear-gradient(135deg, rgba(31,77,67,.18), rgba(199,168,79,.18));
+      border: 1px solid rgba(0,0,0,.06);
+      display:grid; place-items:center;
+      color: var(--green);
+      font-weight: 950;
+      letter-spacing:.08em;
+      user-select:none;
+      flex: 0 0 auto;
+    }
+    .person .who strong{
+      display:block;
+      font-weight: 950;
+      color: var(--text);
+      line-height:1.15;
+    }
+    .person .who span{
+      display:block;
+      margin-top:.12rem;
+      color: var(--muted);
+      font-weight: 750;
+      font-size:.92rem;
+    }
+    @media (max-width: 620px){
+      .person{ grid-column: span 12; }
+    }
+
+    details{
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      padding: .85rem 1rem;
+      box-shadow: 0 14px 40px rgba(0,0,0,.07);
+    }
+    details + details{ margin-top: .75rem; }
+    summary{
+      cursor:pointer;
+      font-weight: 950;
+      color: var(--green);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{
+      margin: .6rem 0 0;
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.55;
+    }
+
+    .photo-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .photo{
+      grid-column: span 4;
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 14px 40px rgba(0,0,0,.08);
+    }
+    .photo img{
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: center;
+      display:block;
+    }
+    @media (max-width: 980px){
+      .photo{ grid-column: span 6; }
+      .photo img{ height: 300px; }
+    }
+    @media (max-width: 620px){
+      .photo{ grid-column: span 12; }
+      .photo img{ height: 320px; }
+    }
+
+    footer{
+      padding: 2.25rem 1.25rem 3.25rem;
+      color: var(--muted);
+      text-align:center;
+    }
+    footer a{ color: var(--green); text-decoration: none; font-weight: 900; }
+    footer a:hover{ text-decoration: underline; }
+
+    .muted{ color: var(--muted); }
   </style>
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="progress" id="progress"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <!-- Music Intro Overlay -->
-  <div class="intro" id="intro" aria-modal="true" role="dialog" aria-label="Welcome screen">
-    <div class="intro-card">
-      <div class="intro-title">Welcome</div>
-      <p class="intro-sub">
-        <strong>Berne &amp; Courtney</strong> • October 10, 2026<br>
-        Tap to enter — music optional.
-      </p>
-
-      <div class="intro-actions">
-        <button class="btn-play" id="enterWithMusic" type="button">Enter with Music</button>
-        <button class="btn-silent" id="enterSilent" type="button">Enter without Music</button>
-      </div>
-
-      <div class="now-playing">
-        Music file expected in your repo:<br>
-        <strong>lets-get-married-instrumental.mp3</strong>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mini music control -->
-  <div class="music-mini" id="musicMini" style="display:none;">
-    <button class="toggle" id="musicToggle" type="button">Play</button>
-    <div class="label" id="musicStatus">Music: Off</div>
-  </div>
-
-  <!-- Nav -->
-  <div class="nav-wrap">
+  <div class="nav-wrap" role="banner">
     <div class="nav">
-      <a class="brand" href="#top" aria-label="Home">
-        <div class="monogram">B+C</div>
+      <a class="brand" href="#top" aria-label="Back to top">
+        <div class="monogram" aria-hidden="true">B&C</div>
         <div class="brand-text">
-          <strong>Berne &amp; Courtney</strong>
+          <strong>Berne & Courtney</strong>
           <span>October 10, 2026</span>
         </div>
       </a>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#photos" data-section="photos">Photos</a>
-        <a href="#party" data-section="party">Wedding Party</a>
-        <a href="#registry" data-section="registry">Registry</a>
-        <a href="#faq" data-section="faq">FAQ</a>
-        <a class="cta" href="#rsvp" data-section="rsvp">RSVP</a>
+      <div class="nav-links" role="navigation" aria-label="Primary">
+        <a href="#details">Details</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#photos">Photos</a>
+        <a href="#party">Wedding Party</a>
+        <a href="#faq">FAQ</a>
+        <a class="cta" href="#rsvp">RSVP</a>
       </div>
     </div>
   </div>
 
-  <!-- Hero -->
-  <div id="top" class="hero">
-    <h1 class="names">Berne &amp; Courtney</h1>
-    <div class="date">October 10, 2026</div>
-    <div class="ribbon"><span class="dot"></span> Wedding Website</div>
-    <div id="countdown" class="countdown" aria-live="polite"></div>
-    <div class="divider"></div>
-  </div>
+  <header id="top" class="hero">
+    <h1 class="names">Berne & Courtney</h1>
+    <p class="subline">We’re getting married — and we’d love for you to celebrate with us on <strong>October 10, 2026</strong>.</p>
+
+    <div class="hero-card" role="region" aria-label="Wedding overview">
+      <div class="hero-media">
+        <div class="hero-photo" role="img" aria-label="Engagement photo">
+          <div class="badge"><span class="dot" aria-hidden="true"></span> Save the date</div>
+        </div>
+
+        <div class="hero-details">
+          <div class="chips" aria-label="Key details">
+            <div class="chip">🗓️ Oct 10, 2026</div>
+            <div class="chip">📍 Add venue + city</div>
+            <div class="chip">🕔 Add ceremony time</div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#rsvp">RSVP</a>
+            <a class="btn btn-ghost" href="#details">See details</a>
+          </div>
+
+          <p class="muted" style="margin:0; text-align:center;">
+            Add your venue address and I’ll wire in one-tap maps + calendar add.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <main id="main" class="container">
-    <!-- Photos -->
-    <section id="photos" class="panel image-section reveal">
-      <h2 class="section-title">Photos</h2>
-      <img src="engagement.jpg?v=final-polish" alt="Engagement photo" class="engagement" />
-
-      <div class="concept-wrap">
-        <div class="ai-label">Concept Image (AI Generated)</div>
-        <img src="wedding.png?v=final-polish" alt="Wedding concept image" />
-      </div>
-    </section>
-
-    <!-- Wedding Party -->
-    <section id="party" class="panel reveal">
-      <h2 class="section-title">Wedding Party</h2>
-
-      <div class="featured">
-        <div class="featured-inner">
-          <h3>Quandra Foster</h3>
-          <span>Maid of Honor</span>
+    <section id="details" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Weekend Details</h2>
+          <p>Everything you need — location, timing, attire, and quick links.</p>
         </div>
       </div>
 
-      <div class="featured">
-        <div class="featured-inner">
-          <h3>Christopher Watts</h3>
-          <span>Best Man</span>
+      <div class="grid">
+        <article class="card col-6">
+          <div class="card-pad">
+            <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Ceremony & Reception</h3>
+            <p class="muted" style="margin:.25rem 0 0;">
+              <strong>Venue:</strong> Add venue name<br/>
+              <strong>Address:</strong> Add street, city, state<br/>
+              <strong>Time:</strong> Add start time
+            </p>
+          </div>
+        </article>
+
+        <article class="card col-6">
+          <div class="card-pad">
+            <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Attire & Notes</h3>
+            <p class="muted" style="margin:.25rem 0 0; line-height:1.6;">
+              <strong>Attire:</strong> Add dress code<br/>
+              <strong>Unplugged?</strong> Add preference<br/>
+              <strong>Kids?</strong> Add preference
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="schedule" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Schedule</h2>
+          <p>A simple, elegant timeline (easy to update).</p>
         </div>
       </div>
 
-      <div class="subhead">Bridesmaids</div>
+      <article class="card">
+        <div class="card-pad">
+          <ul class="timeline" aria-label="Wedding day timeline">
+            <li class="event">
+              <div class="time">4:00 PM</div>
+              <div class="meta">
+                <strong>Ceremony</strong>
+                <span>Doors open at 3:30 PM</span>
+              </div>
+            </li>
+            <li class="event">
+              <div class="time">5:00 PM</div>
+              <div class="meta">
+                <strong>Cocktail Hour</strong>
+                <span>Drinks + light bites</span>
+              </div>
+            </li>
+            <li class="event">
+              <div class="time">6:00 PM</div>
+              <div class="meta">
+                <strong>Reception</strong>
+                <span>Dinner, toasts, and dancing</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section id="photos" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Photos</h2>
+          <p>Clean grid, same sizing, fast loading.</p>
+        </div>
+      </div>
+
+      <div class="photo-grid" aria-label="Photo gallery">
+        <figure class="photo">
+          <img src="Photo1.JPG" alt="Photo 1" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="photo">
+          <img src="Photo2.JPG" alt="Photo 2" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="photo">
+          <img src="Photo3.JPG" alt="Photo 3" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="photo">
+          <img src="Photo4.JPG" alt="Photo 4" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="photo">
+          <img src="Photo5.jpeg" alt="Photo 5" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="photo">
+          <img src="Photo6.JPG" alt="Photo 6" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+    </section>
+
+    <section id="party" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Wedding Party</h2>
+          <p>Alphabetical lists for a clean, consistent look.</p>
+        </div>
+      </div>
+
+      <article class="card">
+        <div class="card-pad">
+          <div class="grid" style="align-items:start;">
+            <div class="col-6">
+              <h3 style="margin:.1rem 0 .8rem; color:var(--green); font-family:'Playfair Display',serif;">Bride</h3>
+              <div class="people" aria-label="Bride party list (alphabetical)">
+                <div class="person">
+                  <div class="avatar" aria-hidden="true">C</div>
+                  <div class="who">
+                    <strong>Courtney</strong>
+                    <span>Bride</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <h3 style="margin:.1rem 0 .8rem; color:var(--green); font-family:'Playfair Display',serif;">Groom</h3>
+              <div class="people" aria-label="Groom party list (alphabetical)">
+                <div class="person">
+                  <div class="avatar" aria-hidden="true">H</div>
+                  <div class="who">
+                    <strong>Hamid Dawson</strong>
+                    <span>Groomsman</span>
+                  </div>
+                </div>
+                <div class="person">
+                  <div class="avatar" aria-hidden="true">R</div>
+                  <div class="who">
+                    <strong>Ronald Johnson</strong>
+                    <span>Groom</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="faq" class="block">
+      <div class="section-head">
+        <div>
+          <h2>FAQ</h2>
+          <p>Quick answers, clean UI, no clutter.</p>
+        </div>
+      </div>
+
       <div class="grid">
-        <div class="card">Cydney Gardner</div>
-        <div class="card">Cameron Gardner</div>
-        <div class="card">Mia Marshall</div>
-        <div class="card">Breonna Bolden</div>
-      </div>
-
-      <div class="subhead" style="margin-top:2.6rem;">Groomsmen</div>
-      <div class="grid">
-        <div class="card">Deandre Bush</div>
-        <div class="card">Andre Williams</div>
-        <div class="card">Kenneth Cousins</div>
-        <div class="card">Ryan Gardner</div>
-        <div class="card">Hamid Dawsin</div>
-        <div class="card">Louis Swanks</div>
-        <div class="card">Rashaad Cox</div>
-        <div class="card">Sidney Smith</div>
-        <div class="card">Joseph Fogg</div>
-        <div class="card">Michael Roberts</div>
+        <div class="col-6">
+          <details>
+            <summary>Where should I park?</summary>
+            <p>Add parking details (garage name, cost, and whether validation is available).</p>
+          </details>
+        </div>
+        <div class="col-6">
+          <details>
+            <summary>Is there a hotel block?</summary>
+            <p>Add hotel name(s) + booking link + cutoff date.</p>
+          </details>
+        </div>
       </div>
     </section>
 
-    <!-- Registry -->
-    <section id="registry" class="panel reveal" style="text-align:center;">
-      <h2 class="section-title">Registry</h2>
-      <p class="muted">You can update these links anytime.</p>
-
-      <div class="chips">
-        <a class="chip" href="https://www.zola.com/wedding-registry" target="_blank" rel="noopener">
-          <span class="dot"></span> Zola
-        </a>
-        <a class="chip" href="https://www.amazon.com/wedding" target="_blank" rel="noopener">
-          <span class="dot"></span> Amazon
-        </a>
-        <a class="chip" href="https://www.crateandbarrel.com/gift-registry/" target="_blank" rel="noopener">
-          <span class="dot"></span> Crate &amp; Barrel
-        </a>
-        <a class="chip" href="https://www.potterybarn.com/registry/" target="_blank" rel="noopener">
-          <span class="dot"></span> Pottery Barn
-        </a>
+    <section id="rsvp" class="block">
+      <div class="section-head">
+        <div>
+          <h2>RSVP</h2>
+          <p>This form is front-end only right now. Next step: connect to a real RSVP list.</p>
+        </div>
       </div>
-    </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="panel reveal">
-      <h2 class="section-title">FAQ</h2>
+      <article class="card">
+        <div class="card-pad">
+          <form class="grid" id="rsvpForm" autocomplete="on" novalidate>
+            <div class="col-6">
+              <label for="name" style="font-weight:900; color:var(--green);">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+            <div class="col-6">
+              <label for="email" style="font-weight:900; color:var(--green);">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
 
-      <details>
-        <summary>What should I wear?</summary>
-        <p>Dress code details will be posted here once finalized.</p>
-      </details>
+            <div class="col-6">
+              <label for="attending" style="font-weight:900; color:var(--green);">Attendance</label>
+              <select id="attending" name="attending"
+                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
+                <option value="yes">Happily accepting</option>
+                <option value="no">Regretfully decline</option>
+              </select>
+            </div>
 
-      <details>
-        <summary>Can I bring a guest?</summary>
-        <p>Please follow the invitation details. If you’re unsure, contact us.</p>
-      </details>
+            <div class="col-6">
+              <label for="notes" style="font-weight:900; color:var(--green);">Notes</label>
+              <input id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc."
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
 
-      <details>
-        <summary>Are kids invited?</summary>
-        <p>We’ll share guidance here closer to the date.</p>
-      </details>
-    </section>
-
-    <!-- RSVP -->
-    <section id="rsvp" class="panel reveal" style="text-align:center;">
-      <h2 class="section-title">RSVP</h2>
-      <p class="muted" style="margin-bottom:1.35rem;">Please RSVP using our form. Thank you!</p>
-      <a class="btn"
-         href="https://docs.google.com/forms/d/1RVqvYgcy-atKfP5WZDTrqz1urcX_nsVxgMAV4m9QFRI/viewform"
-         target="_blank" rel="noopener">
-        RSVP Here
-      </a>
+            <div class="col-12" style="display:flex; gap:.65rem; flex-wrap:wrap; align-items:center; margin-top:.25rem;">
+              <button class="btn btn-primary" type="submit">Send RSVP</button>
+              <span class="muted" id="rsvpMsg" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+        </div>
+      </article>
     </section>
   </main>
 
   <footer>
-    © 2026 • Berne &amp; Courtney • <a href="mailto:berneb1@gmail.com">berneb1@gmail.com</a>
+    <small>
+      <a href="#top">Back to top</a> •
+      <a href="#details">Details</a> •
+      <a href="#rsvp">RSVP</a>
+    </small>
+    <div style="margin-top:.8rem;">
+      <small class="muted">© <span id="year"></span> Berne & Courtney</small>
+    </div>
   </footer>
 
-  <!-- Audio: upload a licensed MP3 with this exact name into your repo root -->
-  <audio id="bgMusic" preload="auto" loop>
-    <source src="lets-get-married-instrumental.mp3?v=3" type="audio/mpeg" />
-  </audio>
-
   <script>
-    // Countdown
-    const weddingDate = new Date("October 10, 2026 00:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
+    (function () {
+      const progress = document.getElementById('progress');
+      const year = document.getElementById('year');
+      year.textContent = new Date().getFullYear();
 
-    function updateCountdown(){
-      const now = Date.now();
-      const diff = weddingDate - now;
+      const links = Array.from(document.querySelectorAll('.nav-links a')).filter(a => a.getAttribute('href')?.startsWith('#'));
+      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
-      if(diff <= 0){
-        countdownEl.textContent = "Today is the day 💍";
-        return;
-      }
+      function onScroll(){
+        const doc = document.documentElement;
+        const scrollTop = doc.scrollTop || document.body.scrollTop;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight;
+        const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        progress.style.width = pct.toFixed(2) + '%';
 
-      const days = Math.floor(diff / (1000*60*60*24));
-      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-      const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-      countdownEl.textContent = `${days} Days • ${hours} Hours • ${mins} Minutes`;
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 60000);
-
-    // Music Intro Logic (iPhone requires user tap)
-    const intro = document.getElementById("intro");
-    const enterWithMusic = document.getElementById("enterWithMusic");
-    const enterSilent = document.getElementById("enterSilent");
-    const bgMusic = document.getElementById("bgMusic");
-
-    const musicMini = document.getElementById("musicMini");
-    const musicToggle = document.getElementById("musicToggle");
-    const musicStatus = document.getElementById("musicStatus");
-
-    let musicOn = false;
-
-    function showSite(){
-      intro.style.display = "none";
-      musicMini.style.display = "flex";
-    }
-
-    async function startMusic(){
-      try{
-        await bgMusic.play();
-        musicOn = true;
-        musicToggle.textContent = "Pause";
-        musicStatus.textContent = "Music: On";
-      } catch(e){
-        musicOn = false;
-        musicToggle.textContent = "Play";
-        musicStatus.textContent = "Music: Off (file missing?)";
-      }
-    }
-
-    enterWithMusic.addEventListener("click", async () => {
-      showSite();
-      await startMusic();
-    });
-
-    enterSilent.addEventListener("click", () => {
-      showSite();
-      musicOn = false;
-      musicToggle.textContent = "Play";
-      musicStatus.textContent = "Music: Off";
-    });
-
-    musicToggle.addEventListener("click", async () => {
-      if(!musicOn){
-        await startMusic();
-      } else {
-        bgMusic.pause();
-        musicOn = false;
-        musicToggle.textContent = "Play";
-        musicStatus.textContent = "Music: Off";
-      }
-    });
-
-    // Scroll progress bar
-    const progress = document.getElementById("progress");
-    window.addEventListener("scroll", () => {
-      const h = document.documentElement;
-      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-      progress.style.width = `${Math.min(100, Math.max(0, scrolled))}%`;
-    }, { passive:true });
-
-    // Reveal on scroll
-    const revealEls = document.querySelectorAll(".reveal");
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("on"); });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-
-    // Active nav highlight
-    const navLinks = Array.from(document.querySelectorAll("#navLinks a[data-section]"));
-    const sections = navLinks
-      .map(a => document.getElementById(a.dataset.section))
-      .filter(Boolean);
-
-    const secObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          navLinks.forEach(a => a.classList.toggle("active", a.dataset.section === entry.target.id));
+        const y = window.scrollY + 120;
+        let active = null;
+        for (const s of sections) {
+          if (s.offsetTop <= y) active = s;
         }
-      });
-    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0.01 });
+        links.forEach(a => a.classList.remove('active'));
+        if (active) {
+          const a = links.find(l => l.getAttribute('href') === '#' + active.id);
+          if (a) a.classList.add('active');
+        }
+      }
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
 
-    sections.forEach(s => secObserver.observe(s));
+      const form = document.getElementById('rsvpForm');
+      const msg = document.getElementById('rsvpMsg');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        if(!name || !email){
+          msg.textContent = "Please add your name and email.";
+          return;
+        }
+        msg.textContent = "RSVP saved (demo). Next: connect to your real RSVP list.";
+        form.reset();
+      });
+    })();
   </script>
 </body>
 </html>
