@@ -50,7 +50,6 @@
         linear-gradient(180deg, #f4f8f6, #ffffff 58%);
     }
 
-    /* Inline grain texture */
     body::after{
       content:"";
       position:fixed;
@@ -68,7 +67,6 @@
       * { animation:none !important; transition:none !important; }
     }
 
-    /* Skip link */
     .skip-link{
       position:absolute; left:-999px; top:10px;
       background:#fff; color:var(--green);
@@ -79,7 +77,6 @@
     }
     .skip-link:focus{ left:10px; outline:none; box-shadow: var(--ring), var(--shadow); }
 
-    /* Scroll progress */
     .progress{
       position:fixed; top:0; left:0;
       height:3px; width:0%;
@@ -102,7 +99,6 @@
       border-radius: 12px;
     }
 
-    /* Nav */
     .nav-wrap{
       position:sticky; top:0; z-index:50;
       background: rgba(255,255,255,.78);
@@ -168,7 +164,6 @@
       transform: translateY(-1px);
     }
 
-    /* Hero */
     header.hero{
       text-align:center;
       padding: 5.75rem 1rem 2.25rem;
@@ -221,7 +216,6 @@
       .hero-media{ grid-template-columns: 1fr; }
     }
 
-    /* Save the date uses Photo3.JPG */
     .hero-photo{
       position:relative;
       min-height: 340px;
@@ -318,7 +312,6 @@
     }
     .btn-ghost:hover{ filter: brightness(.98); transform: translateY(-1px); }
 
-    /* Sections */
     section.block{ margin-top: 2.4rem; }
     .section-head{
       display:flex;
@@ -350,7 +343,6 @@
     }
     .card-pad{ padding: 1.1rem; }
 
-    /* Grid */
     .grid{
       display:grid;
       gap: 1rem;
@@ -362,7 +354,6 @@
       .col-6{ grid-column: span 12; }
     }
 
-    /* Timeline */
     .timeline{
       display:flex;
       flex-direction:column;
@@ -395,7 +386,6 @@
       font-weight: 650;
     }
 
-    /* Story */
     .story-wrap{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -465,7 +455,6 @@
       box-shadow: 0 8px 18px rgba(31,77,67,.20);
     }
 
-    /* FAQ */
     details{
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -488,7 +477,6 @@
       line-height: 1.55;
     }
 
-    /* Wedding party featured */
     .party-grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -573,7 +561,6 @@
       .feature-card, .party-col{ grid-column: span 12; }
     }
 
-    /* Luxury masonry */
     .masonry-wrap{ margin-top: 1rem; }
     .masonry{ column-count: 3; column-gap: 1rem; }
     @media (max-width: 980px){ .masonry{ column-count: 2; } }
@@ -641,122 +628,6 @@
       box-shadow: 0 8px 18px rgba(31,77,67,.20);
     }
 
-    /* Lightbox */
-    .lightbox{
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      display: none;
-    }
-    .lightbox[aria-hidden="false"]{ display:block; }
-    .lightbox__backdrop{
-      position:absolute;
-      inset:0;
-      background: rgba(10,12,14,.78);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .lightbox__panel{
-      position:absolute;
-      inset:0;
-      display:grid;
-      grid-template-rows: auto 1fr auto;
-      padding: 16px;
-    }
-    .lightbox__top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      padding: 10px 10px;
-    }
-    .lightbox__title{
-      display:flex;
-      align-items:center;
-      gap:.6rem;
-      color: rgba(255,255,255,.92);
-      font-weight: 900;
-    }
-    .lightbox__title .spark{
-      width:10px;height:10px;border-radius:999px;
-      background: linear-gradient(135deg, var(--gold), var(--green2));
-      box-shadow: 0 8px 18px rgba(0,0,0,.25);
-    }
-    .lightbox__btn{
-      appearance:none;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-      color: rgba(255,255,255,.95);
-      border-radius: 999px;
-      padding: .65rem .85rem;
-      font-weight: 950;
-      cursor:pointer;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .lightbox__btn:hover{ background: rgba(255,255,255,.14); transform: translateY(-1px); }
-    .lightbox__btn:active{ transform: translateY(0px); }
-    .lightbox__stage{
-      display:grid;
-      place-items:center;
-      padding: 10px;
-    }
-    .lightbox__img{
-      max-width: min(1100px, 92vw);
-      max-height: 74vh;
-      width:auto;
-      height:auto;
-      border-radius: 22px;
-      box-shadow: 0 30px 120px rgba(0,0,0,.45);
-      border: 1px solid rgba(255,255,255,.12);
-      user-select:none;
-      -webkit-user-drag: none;
-      cursor: pointer;
-    }
-    .lightbox__bottom{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 12px 10px 6px;
-      flex-wrap: wrap;
-    }
-    .lightbox__pill{
-      display:inline-flex;
-      align-items:center;
-      gap:.6rem;
-      padding:.55rem .8rem;
-      border-radius: 999px;
-      color: rgba(255,255,255,.9);
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.16);
-      font-weight: 850;
-      user-select:none;
-    }
-    .lightbox__nav{
-      position:absolute;
-      top:50%;
-      transform: translateY(-50%);
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      display:grid;
-      place-items:center;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-      color: rgba(255,255,255,.95);
-      cursor:pointer;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .lightbox__nav:hover{ background: rgba(255,255,255,.14); transform: translateY(-50%) scale(1.03); }
-    .lightbox__nav:active{ transform: translateY(-50%) scale(1.0); }
-    .lightbox__nav--prev{ left: 14px; }
-    .lightbox__nav--next{ right: 14px; }
-    @media (max-width: 620px){
-      .lightbox__img{ max-height: 68vh; border-radius: 18px; }
-      .lightbox__nav{ display:none; }
-    }
-
-    /* Music */
     audio{ display:none; }
     .music-btn{
       position: fixed;
@@ -799,7 +670,6 @@
       background: linear-gradient(135deg, #fff2b8, #c7a84f);
     }
 
-    /* Footer */
     footer{
       padding: 2.25rem 1.25rem 3.25rem;
       color: var(--muted);
@@ -809,35 +679,15 @@
     footer a:hover{ text-decoration: underline; }
 
     .muted{ color: var(--muted); }
-
-    /* RSVP status */
     .status-ok{ color: #0f7a5c; font-weight: 850; }
     .status-bad{ color: #b42318; font-weight: 850; }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Event",
-    "name":"Berne & Courtney Wedding",
-    "startDate":"2026-10-10",
-    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus":"https://schema.org/EventScheduled",
-    "description":"Wedding celebration for Berne & Courtney.",
-    "location":{
-      "@type":"Place",
-      "name":"Add venue name",
-      "address":"Add venue address"
-    }
-  }
-  </script>
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <!-- Background music -->
   <audio id="bgMusic" preload="metadata" loop>
     <source src="lets-get-married-instrumental.mp3" type="audio/mpeg" />
   </audio>
@@ -1300,7 +1150,7 @@
       document.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // Music toggle, restores state
+      // Music
       const audio = document.getElementById('bgMusic');
       const musicBtn = document.getElementById('musicBtn');
       const musicText = document.getElementById('musicText');
@@ -1312,9 +1162,28 @@
         localStorage.setItem('wedding_music', isPlaying ? 'playing' : 'paused');
       }
 
+      // Play once on first user interaction anywhere
+      let startedOnce = false;
+      async function tryAutoStart(){
+        if (startedOnce) return;
+        startedOnce = true;
+        try{
+          await audio.play();
+          setMusicUI(true);
+        } catch {
+          startedOnce = false;
+        }
+      }
+
+      // Capture first gesture on touch or click or key
+      window.addEventListener('pointerdown', tryAutoStart, { once: true });
+      window.addEventListener('keydown', tryAutoStart, { once: true });
+
+      // Restore state if previously playing (still requires gesture on some browsers)
       const savedMusic = localStorage.getItem('wedding_music') || 'paused';
       if (savedMusic === 'playing') {
-        audio.play().then(() => setMusicUI(true)).catch(() => setMusicUI(false));
+        // wait for first gesture then it will auto start
+        setMusicUI(false);
       } else {
         setMusicUI(false);
       }
@@ -1333,9 +1202,8 @@
         }
       });
 
-      // Real RSVP to Google Sheets Web App
+      // RSVP
       const RSVP_ENDPOINT = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL_HERE";
-
       const form = document.getElementById('rsvpForm');
       const msg = document.getElementById('rsvpMsg');
       const btn = document.getElementById('rsvpBtn');
@@ -1389,7 +1257,7 @@
         }
       });
 
-      // Lightbox fullscreen with swipe
+      // Lightbox
       const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
       if (!galleryImgs.length) return;
 
