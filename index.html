@@ -49,7 +49,6 @@
         linear-gradient(180deg, #f4f8f6, #ffffff 58%);
     }
 
-    /* Inline grain texture */
     body::after{
       content:"";
       position:fixed;
@@ -314,7 +313,6 @@
     }
     .btn-ghost:hover{ filter: brightness(.98); transform: translateY(-1px); }
 
-    /* Sections */
     section.block{ margin-top: 2.4rem; }
     .section-head{
       display:flex;
@@ -346,7 +344,6 @@
     }
     .card-pad{ padding: 1.1rem; }
 
-    /* Grid */
     .grid{
       display:grid;
       gap: 1rem;
@@ -358,7 +355,6 @@
       .col-6{ grid-column: span 12; }
     }
 
-    /* Timeline */
     .timeline{
       display:flex;
       flex-direction:column;
@@ -461,7 +457,6 @@
       box-shadow: 0 8px 18px rgba(31,77,67,.20);
     }
 
-    /* FAQ */
     details{
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -596,13 +591,6 @@
       background: rgba(31,77,67,.06);
       color: var(--green);
       white-space:nowrap;
-    }
-    .names-list li.is-empty{
-      border: 1px dashed rgba(31,77,67,.18);
-      background: rgba(255,255,255,.60);
-      color: rgba(102,112,133,.95);
-      font-weight: 800;
-      box-shadow: none;
     }
 
     /* Luxury Masonry */
@@ -1133,23 +1121,20 @@
           </div>
 
           <div class="party-columns" aria-label="Wedding party lists">
-            <!-- Bridesmaids: 12 total, alphabetical, blanks kept -->
+            <!-- Bridesmaids: alphabetical, no blanks -->
             <div class="party-col">
               <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Bridesmaids</h3>
               <div class="list-card">
                 <ul class="names-list" aria-label="Bridesmaids list">
-                  <li><span>Breonna Bolden</span><span class="pill">Bridesmaid</span></li>
+                  <li><span>Alina Marie</span><span class="pill">Bridesmaid</span></li>
+                  <li><span>Breanna Bolden</span><span class="pill">Bridesmaid</span></li>
+                  <li><span>Crisanta White</span><span class="pill">Bridesmaid</span></li>
+                  <li><span>Janice Winter</span><span class="pill">Bridesmaid</span></li>
                   <li><span>Mariah Mitchell</span><span class="pill">Bridesmaid</span></li>
                   <li><span>Mia Marshall</span><span class="pill">Bridesmaid</span></li>
                   <li><span>Shashanta Cox</span><span class="pill">Bridesmaid</span></li>
-                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
-                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
-                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
-                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
-                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
-                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
-                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
-                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
+                  <li><span>Tytiana Horton</span><span class="pill">Bridesmaid</span></li>
+                  <li><span>Victoria France</span><span class="pill">Bridesmaid</span></li>
                 </ul>
               </div>
             </div>
@@ -1159,6 +1144,7 @@
               <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Groomsmen</h3>
               <div class="list-card">
                 <ul class="names-list" aria-label="Groomsmen list">
+                  <li><span>Andre Williams</span><span class="pill">Groomsman</span></li>
                   <li><span>Hamid Dawson</span><span class="pill">Groomsman</span></li>
                   <li><span>Joseph Fogg</span><span class="pill">Groomsman</span></li>
                   <li><span>Kenneth Cousins</span><span class="pill">Groomsman</span></li>
