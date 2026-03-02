@@ -550,6 +550,7 @@
       color: rgba(31,77,67,.92);
       font-weight: 850;
     }
+
     .party-columns{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -557,16 +558,51 @@
       margin-top: 1.15rem;
     }
     .party-col{ grid-column: span 6; }
-    .empty-list{
-      border: 1px dashed rgba(31,77,67,.18);
-      background: rgba(31,77,67,.03);
-      border-radius: var(--radius);
-      padding: 1rem;
-      color: var(--muted);
-      font-weight: 750;
-    }
     @media (max-width: 920px){
       .feature-card, .party-col{ grid-column: span 12; }
+    }
+
+    .list-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(31,77,67,.10);
+      background: rgba(31,77,67,.03);
+      padding: 1rem;
+    }
+    .names-list{
+      list-style:none;
+      margin: .25rem 0 0;
+      padding: 0;
+      display:grid;
+      gap: .55rem;
+    }
+    .names-list li{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: .75rem .85rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 10px 34px rgba(0,0,0,.06);
+      font-weight: 850;
+    }
+    .names-list li .pill{
+      font-size:.85rem;
+      font-weight: 950;
+      padding: .3rem .55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(31,77,67,.10);
+      background: rgba(31,77,67,.06);
+      color: var(--green);
+      white-space:nowrap;
+    }
+    .names-list li.is-empty{
+      border: 1px dashed rgba(31,77,67,.18);
+      background: rgba(255,255,255,.60);
+      color: rgba(102,112,133,.95);
+      font-weight: 800;
+      box-shadow: none;
     }
 
     /* Luxury Masonry */
@@ -807,23 +843,6 @@
     .status-ok{ color: #0f7a5c; font-weight: 850; }
     .status-bad{ color: #b42318; font-weight: 850; }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Event",
-    "name":"Berne & Courtney Wedding",
-    "startDate":"2026-10-10",
-    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus":"https://schema.org/EventScheduled",
-    "description":"Wedding celebration for Berne & Courtney.",
-    "location":{
-      "@type":"Place",
-      "name":"Add venue name",
-      "address":"Add venue address"
-    }
-  }
-  </script>
 </head>
 
 <body>
@@ -885,7 +904,7 @@
           </div>
 
           <p class="muted" style="margin:0; text-align:center;">
-            Add your venue address and I’ll wire in one tap maps and a calendar add.
+            Add your venue address and I will wire in one tap maps and a calendar add.
           </p>
         </div>
       </div>
@@ -893,6 +912,7 @@
   </header>
 
   <main id="main" class="container">
+    <!-- DETAILS -->
     <section id="details" class="block">
       <div class="section-head">
         <div>
@@ -930,6 +950,7 @@
       </div>
     </section>
 
+    <!-- STORY -->
     <section id="story" class="block">
       <div class="section-head">
         <div>
@@ -989,6 +1010,7 @@
       </div>
     </section>
 
+    <!-- SCHEDULE -->
     <section id="schedule" class="block">
       <div class="section-head">
         <div>
@@ -1033,6 +1055,7 @@
       </article>
     </section>
 
+    <!-- PHOTOS -->
     <section id="photos" class="block">
       <div class="section-head">
         <div>
@@ -1074,6 +1097,7 @@
       </div>
     </section>
 
+    <!-- WEDDING PARTY -->
     <section id="party" class="block">
       <div class="section-head">
         <div>
@@ -1090,7 +1114,7 @@
                 <div class="medal" aria-hidden="true">👑</div>
                 <div>
                   <h3 class="feature-title">Maid of Honor</h3>
-                  <p class="feature-name">Qunadra Foster</p>
+                  <p class="feature-name">Quandra Foster</p>
                   <p class="feature-sub">Gold standard energy.</p>
                 </div>
               </div>
@@ -1109,14 +1133,43 @@
           </div>
 
           <div class="party-columns" aria-label="Wedding party lists">
+            <!-- Bridesmaids: 12 total, alphabetical, blanks kept -->
             <div class="party-col">
               <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Bridesmaids</h3>
-              <div class="empty-list">Names coming soon.</div>
+              <div class="list-card">
+                <ul class="names-list" aria-label="Bridesmaids list">
+                  <li><span>Breonna Bolden</span><span class="pill">Bridesmaid</span></li>
+                  <li><span>Mariah Mitchell</span><span class="pill">Bridesmaid</span></li>
+                  <li><span>Mia Marshall</span><span class="pill">Bridesmaid</span></li>
+                  <li><span>Shashanta Cox</span><span class="pill">Bridesmaid</span></li>
+                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
+                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
+                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
+                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
+                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
+                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
+                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
+                  <li class="is-empty"><span>Bridesmaid</span><span class="pill">Open</span></li>
+                </ul>
+              </div>
             </div>
 
+            <!-- Groomsmen: alphabetical -->
             <div class="party-col">
               <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Groomsmen</h3>
-              <div class="empty-list">Names coming soon.</div>
+              <div class="list-card">
+                <ul class="names-list" aria-label="Groomsmen list">
+                  <li><span>Hamid Dawson</span><span class="pill">Groomsman</span></li>
+                  <li><span>Joseph Fogg</span><span class="pill">Groomsman</span></li>
+                  <li><span>Kenneth Cousins</span><span class="pill">Groomsman</span></li>
+                  <li><span>Louis Swanks</span><span class="pill">Groomsman</span></li>
+                  <li><span>Michael Roberts</span><span class="pill">Groomsman</span></li>
+                  <li><span>Rashaad Cox</span><span class="pill">Groomsman</span></li>
+                  <li><span>Ronald Johnson</span><span class="pill">Groomsman</span></li>
+                  <li><span>Ryan Gardner</span><span class="pill">Groomsman</span></li>
+                  <li><span>Sidney Smith</span><span class="pill">Groomsman</span></li>
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -1128,6 +1181,7 @@
       </article>
     </section>
 
+    <!-- FAQ -->
     <section id="faq" class="block">
       <div class="section-head">
         <div>
@@ -1160,6 +1214,7 @@
       </div>
     </section>
 
+    <!-- RSVP -->
     <section id="rsvp" class="block">
       <div class="section-head">
         <div>
@@ -1292,7 +1347,7 @@
       document.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // Music: start on the very first touch or click anywhere (iPhone friendly)
+      // Music: start on the first touch or click anywhere (iPhone friendly)
       const audio = document.getElementById("bgMusic");
       const musicBtn = document.getElementById("musicBtn");
       const musicText = document.getElementById("musicText");
