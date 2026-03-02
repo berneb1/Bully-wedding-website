@@ -1,247 +1,1518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#1f4d43" />
-<title>Berne & Courtney • October 10, 2026</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#1f4d43" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <title>Berne & Courtney • October 10, 2026</title>
+  <meta name="description" content="Join us to celebrate Berne & Courtney on October 10, 2026. Details, story, schedule, photos, wedding party, FAQ, and RSVP." />
 
-<style>
-:root{
---green:#1f4d43;
---green2:#2f6b5c;
---gold:#c7a84f;
---text:#111a1f;
---muted:#667085;
---radius:24px;
-}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-body{
-margin:0;
-font-family:"Inter",sans-serif;
-color:var(--text);
-background:linear-gradient(180deg,#f4f8f6,#fff 60%);
-}
+  <style>
+    :root{
+      --green:#1f4d43;
+      --green2:#2f6b5c;
+      --soft:#eef4f1;
+      --gold:#c7a84f;
 
-h1,h2,h3{font-family:"Playfair Display",serif;color:var(--green);}
+      --text:#111a1f;
+      --muted:#667085;
 
-.container{max-width:1100px;margin:auto;padding:2rem;}
+      --glass:rgba(255,255,255,.76);
+      --border:rgba(0,0,0,.09);
 
-.hero{
-text-align:center;
-padding:5rem 1rem 2rem;
-}
+      --shadow: 0 24px 80px rgba(0,0,0,.10);
+      --shadow2: 0 18px 52px rgba(31,77,67,.18);
 
-.names{font-size:3rem;margin:0;}
+      --radius: 24px;
+      --ring: 0 0 0 4px rgba(31,77,67,.18);
 
-.section{margin-top:3rem;}
+      --container: 1120px;
+    }
 
-.card{
-background:#fff;
-border-radius:var(--radius);
-padding:1.5rem;
-box-shadow:0 20px 60px rgba(0,0,0,.08);
-}
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      color:var(--text);
+      overflow-x:hidden;
 
-.btn{
-background:var(--green);
-color:#fff;
-padding:.9rem 1.2rem;
-border-radius:999px;
-font-weight:900;
-border:none;
-cursor:pointer;
-}
+      background:
+        radial-gradient(900px 420px at 50% 0%, rgba(31,77,67,.18), transparent 60%),
+        radial-gradient(700px 440px at 12% 18%, rgba(199,168,79,.14), transparent 55%),
+        radial-gradient(760px 460px at 88% 20%, rgba(47,107,92,.10), transparent 60%),
+        linear-gradient(180deg, #f4f8f6, #ffffff 58%);
+    }
 
-.btn:hover{background:#163a32;}
+    /* inline grain texture */
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      opacity:.055;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      background-repeat:repeat;
+    }
 
-.masonry{
-column-count:3;
-column-gap:1rem;
-}
-@media(max-width:900px){.masonry{column-count:2;}}
-@media(max-width:600px){.masonry{column-count:1;}}
+    @media (prefers-reduced-motion: reduce){
+      html { scroll-behavior:auto; }
+      * { animation:none !important; transition:none !important; }
+    }
 
-.masonry img{
-width:100%;
-margin-bottom:1rem;
-border-radius:20px;
-cursor:pointer;
-transition:transform .3s ease;
-}
-.masonry img:hover{transform:scale(1.05);}
+    /* Skip link */
+    .skip-link{
+      position:absolute; left:-999px; top:10px;
+      background:#fff; color:var(--green);
+      border:1px solid var(--border);
+      padding:.7rem 1rem; border-radius:999px;
+      z-index:9999; font-weight:900;
+      box-shadow: var(--shadow);
+    }
+    .skip-link:focus{ left:10px; outline:none; box-shadow: var(--ring), var(--shadow); }
 
-.feature{
-border:2px solid var(--gold);
-background:linear-gradient(135deg,#fff8dc,#fff);
-padding:1.2rem;
-border-radius:var(--radius);
-margin-bottom:1rem;
-}
+    /* Scroll progress */
+    .progress{
+      position:fixed; top:0; left:0;
+      height:3px; width:0%;
+      background: linear-gradient(90deg, var(--gold), var(--green2));
+      z-index: 9999;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    }
 
-.music-btn{
-position:fixed;
-right:16px;
-bottom:16px;
-background:var(--green);
-color:#fff;
-padding:.8rem 1rem;
-border-radius:999px;
-font-weight:900;
-cursor:pointer;
-border:none;
-}
+    .container{
+      max-width: var(--container);
+      margin:0 auto;
+      padding: 2rem 1.25rem;
+      position:relative;
+      z-index:1;
+    }
 
-audio{display:none;}
+    a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible{
+      outline:none;
+      box-shadow: var(--ring);
+      border-radius: 12px;
+    }
 
-.lightbox{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.8);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-.lightbox img{
-max-width:90%;
-max-height:80%;
-border-radius:20px;
-}
-</style>
+    /* NAV */
+    .nav-wrap{
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      max-width: var(--container);
+      margin:0 auto;
+      padding:.85rem 1.25rem;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:1rem;
+    }
+    .brand{
+      display:flex; align-items:center; gap:.75rem;
+      text-decoration:none; color:inherit;
+      min-width: 220px;
+    }
+    .monogram{
+      width:44px;height:44px;
+      border-radius:16px;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      box-shadow: 0 16px 40px rgba(31,77,67,.25);
+      display:grid; place-items:center;
+      color:#fff; font-weight:900; letter-spacing:.12em; font-size:.85rem;
+      user-select:none;
+    }
+    .brand-text{ line-height:1.05; }
+    .brand-text strong{
+      display:block;
+      font-family:"Playfair Display",serif;
+      color:var(--green);
+      font-weight:600;
+      font-size:1.10rem;
+    }
+    .brand-text span{ color:var(--muted); font-size:.86rem; }
+
+    .nav-links{
+      display:flex; align-items:center; gap:.35rem;
+      flex-wrap:wrap; justify-content:flex-end;
+    }
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:900;
+      font-size:.90rem;
+      padding:.55rem .75rem;
+      border-radius:999px;
+      transition: background .15s ease, color .15s ease, transform .15s ease;
+      white-space:nowrap;
+    }
+    .nav-links a:hover{ background: rgba(31,77,67,.08); color:var(--green); }
+    .nav-links a.active{ background: rgba(31,77,67,.10); color: var(--green); }
+    .nav-links .cta{
+      background: var(--green);
+      color:#fff;
+      box-shadow: var(--shadow2);
+    }
+    .nav-links .cta:hover{
+      background:#163a32;
+      color:#fff;
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+    header.hero{
+      text-align:center;
+      padding: 5.75rem 1rem 2.25rem;
+      position:relative;
+      z-index:1;
+    }
+    header.hero::before{
+      content:"";
+      position:absolute;
+      inset:-60px 0 auto 0;
+      height:380px;
+      background:
+        radial-gradient(circle at 50% 28%, rgba(199,168,79,.20), transparent 60%),
+        radial-gradient(circle at 45% 18%, rgba(31,77,67,.18), transparent 60%);
+      z-index:-1;
+    }
+
+    .names{
+      margin:0;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2.2rem, 5.2vw, 3.35rem);
+      color:var(--green);
+      letter-spacing:.01em;
+      text-shadow:0 24px 80px rgba(31,77,67,.18);
+    }
+    .subline{
+      margin:.8rem auto 0;
+      color:var(--muted);
+      font-weight:700;
+      font-size:1.05rem;
+      max-width: 62ch;
+    }
+
+    .hero-card{
+      margin: 2.1rem auto 0;
+      max-width: 980px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-media{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:0;
+    }
+    @media (max-width: 860px){
+      .hero-media{ grid-template-columns: 1fr; }
+    }
+
+    /* Save the date uses Photo3.JPG */
+    .hero-photo{
+      position:relative;
+      min-height: 340px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05)),
+        url("Photo3.JPG");
+      background-size: cover;
+      background-position: center;
+      isolation:isolate;
+    }
+    .hero-photo::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(600px 220px at 20% 10%, rgba(199,168,79,.22), transparent 55%),
+        radial-gradient(700px 260px at 90% 15%, rgba(31,77,67,.25), transparent 60%);
+      mix-blend-mode: soft-light;
+      opacity:.9;
+    }
+    .hero-photo .badge{
+      position:absolute;
+      left: 20px; bottom: 18px;
+      display:inline-flex; gap:.55rem; align-items:center;
+      padding:.55rem .75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.14);
+      font-weight: 900;
+      color: var(--green);
+      user-select:none;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--green2));
+      box-shadow: 0 8px 18px rgba(31,77,67,.25);
+    }
+
+    .hero-details{
+      padding: 1.2rem 1.2rem 1.25rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:.85rem;
+    }
+    .chips{
+      display:flex; flex-wrap:wrap; gap:.5rem;
+      justify-content:center;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      padding:.55rem .75rem;
+      border-radius: 999px;
+      background: rgba(31,77,67,.06);
+      border: 1px solid rgba(31,77,67,.10);
+      color: var(--green);
+      font-weight: 900;
+      font-size:.92rem;
+      user-select:none;
+    }
+    .hero-actions{
+      display:flex; gap:.65rem;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:.35rem;
+    }
+    .btn{
+      appearance:none; border:0; cursor:pointer;
+      text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:.55rem;
+      padding:.9rem 1.05rem;
+      border-radius: 999px;
+      font-weight: 950;
+      letter-spacing:.01em;
+      transition: transform .15s ease, filter .15s ease, background .15s ease;
+      will-change: transform;
+    }
+    .btn-primary{
+      background: var(--green);
+      color:#fff;
+      box-shadow: var(--shadow2);
+    }
+    .btn-primary:hover{ background:#163a32; transform: translateY(-1px); }
+    .btn-ghost{
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--border);
+      color: var(--green);
+      box-shadow: 0 14px 40px rgba(0,0,0,.10);
+    }
+    .btn-ghost:hover{ filter: brightness(.98); transform: translateY(-1px); }
+
+    /* Sections */
+    section.block{ margin-top: 2.4rem; }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:1rem;
+      margin-bottom: 1.0rem;
+    }
+    .section-head h2{
+      margin:0;
+      font-family:"Playfair Display",serif;
+      color: var(--green);
+      font-size: clamp(1.45rem, 2.8vw, 1.95rem);
+      letter-spacing:.01em;
+    }
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      font-weight: 650;
+      max-width: 60ch;
+    }
+
+    .card{
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-pad{ padding: 1.1rem; }
+
+    /* Grid */
+    .grid{
+      display:grid;
+      gap: 1rem;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .col-6{ grid-column: span 6; }
+    .col-12{ grid-column: span 12; }
+    @media (max-width: 920px){
+      .col-6{ grid-column: span 12; }
+    }
+
+    /* Timeline */
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:.8rem;
+      margin:0; padding:0;
+      list-style:none;
+    }
+    .event{
+      display:flex;
+      gap:.85rem;
+      align-items:flex-start;
+      padding:.95rem;
+      border-radius: 18px;
+      border: 1px solid rgba(31,77,67,.10);
+      background: rgba(31,77,67,.04);
+    }
+    .event .time{
+      min-width: 110px;
+      font-weight: 950;
+      color: var(--green);
+    }
+    .event .meta strong{
+      display:block;
+      font-weight: 950;
+      color: var(--text);
+      margin-bottom:.15rem;
+    }
+    .event .meta span{
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    /* Story */
+    .story-wrap{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .story-card{ grid-column: span 8; }
+    .story-side{ grid-column: span 4; }
+    @media (max-width: 920px){
+      .story-card, .story-side{ grid-column: span 12; }
+    }
+    .story-title{
+      margin:.1rem 0 .5rem;
+      color:var(--green);
+      font-family:"Playfair Display",serif;
+      font-size: 1.55rem;
+    }
+    .story-p{
+      margin:.65rem 0 0;
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.8;
+    }
+    .quote{
+      border-radius: var(--radius);
+      border: 1px solid rgba(199,168,79,.28);
+      background:
+        radial-gradient(700px 240px at 15% 0%, rgba(199,168,79,.18), transparent 55%),
+        rgba(255,255,255,.86);
+      box-shadow: 0 20px 70px rgba(0,0,0,.09);
+      padding: 1.05rem 1.1rem;
+    }
+    .quote strong{
+      display:block;
+      color: var(--green);
+      font-weight: 950;
+      margin-bottom:.25rem;
+    }
+    .quote p{
+      margin:0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.6;
+    }
+    .three{
+      display:flex;
+      gap:.6rem;
+      flex-wrap:wrap;
+      margin-top: .85rem;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.55rem .75rem;
+      border-radius:999px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+      font-weight: 950;
+      color: var(--green);
+      user-select:none;
+    }
+    .tag .spark{
+      width:10px; height:10px;
+      border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--green2));
+      box-shadow: 0 8px 18px rgba(31,77,67,.20);
+    }
+
+    /* FAQ */
+    details{
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255,255,255,.82);
+      padding: .85rem 1rem;
+      box-shadow: 0 14px 40px rgba(0,0,0,.07);
+    }
+    details + details{ margin-top: .75rem; }
+    summary{
+      cursor:pointer;
+      font-weight: 950;
+      color: var(--green);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{
+      margin: .6rem 0 0;
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.55;
+    }
+
+    /* ===== Wedding Party: premium featured roles ===== */
+    .party-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .feature-card{
+      grid-column: span 6;
+      border-radius: calc(var(--radius) + 6px);
+      overflow:hidden;
+      border: 1px solid rgba(199,168,79,.30);
+      background:
+        radial-gradient(700px 260px at 10% 0%, rgba(199,168,79,.22), transparent 55%),
+        radial-gradient(700px 260px at 90% 0%, rgba(31,77,67,.18), transparent 55%),
+        rgba(255,255,255,.88);
+      box-shadow: 0 26px 86px rgba(0,0,0,.11);
+      position:relative;
+    }
+    .feature-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(135deg, rgba(246,224,138,.22), rgba(31,77,67,.10));
+      opacity:.65;
+      pointer-events:none;
+    }
+    .feature-inner{
+      position:relative;
+      padding: 1.2rem 1.25rem 1.25rem;
+      display:flex;
+      align-items:center;
+      gap: 1rem;
+    }
+    .medal{
+      width:64px; height:64px;
+      border-radius: 22px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, #fff2b8, #c7a84f);
+      box-shadow:
+        0 18px 60px rgba(199,168,79,.30),
+        inset 0 1px 0 rgba(255,255,255,.55);
+      border: 1px solid rgba(0,0,0,.08);
+      color: #1f4d43;
+      font-weight: 1000;
+      letter-spacing:.06em;
+      flex: 0 0 auto;
+      user-select:none;
+    }
+    .feature-title{
+      margin:0;
+      font-family:"Playfair Display",serif;
+      color: var(--green);
+      font-size: 1.28rem;
+      letter-spacing:.01em;
+    }
+    .feature-name{
+      margin:.2rem 0 0;
+      font-weight: 950;
+      font-size: 1.12rem;
+      color: var(--text);
+    }
+    .feature-sub{
+      margin:.35rem 0 0;
+      color: rgba(31,77,67,.92);
+      font-weight: 850;
+    }
+    .party-columns{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-top: 1.15rem;
+    }
+    .party-col{ grid-column: span 6; }
+    .empty-list{
+      border: 1px dashed rgba(31,77,67,.18);
+      background: rgba(31,77,67,.03);
+      border-radius: var(--radius);
+      padding: 1rem;
+      color: var(--muted);
+      font-weight: 750;
+    }
+    @media (max-width: 920px){
+      .feature-card, .party-col{ grid-column: span 12; }
+    }
+
+    /* ===== Luxury Masonry Gallery ===== */
+    .masonry-wrap{ margin-top: 1rem; }
+    .masonry{ column-count: 3; column-gap: 1rem; }
+    @media (max-width: 980px){ .masonry{ column-count: 2; } }
+    @media (max-width: 620px){ .masonry{ column-count: 1; } }
+
+    .masonry figure{ break-inside: avoid; margin: 0 0 1rem; }
+    .masonry .shot{
+      position: relative;
+      border-radius: calc(var(--radius) + 4px);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.85);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,.10),
+        0 1px 0 rgba(255,255,255,.55) inset;
+      transform: translateZ(0);
+      cursor: zoom-in;
+    }
+    .masonry .shot::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(700px 240px at 20% 0%, rgba(199,168,79,.18), transparent 55%),
+        radial-gradient(700px 240px at 85% 0%, rgba(31,77,67,.14), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+      z-index:1;
+    }
+    .masonry img{
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: scale(1.02);
+      transition: transform .35s ease, filter .35s ease;
+      will-change: transform;
+    }
+    .masonry .shot:hover img{
+      transform: scale(1.06);
+      filter: saturate(1.03) contrast(1.03);
+    }
+    .masonry .cap{
+      position:absolute;
+      left: 12px;
+      bottom: 12px;
+      z-index: 2;
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.5rem .7rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 16px 44px rgba(0,0,0,.14);
+      font-weight: 900;
+      color: var(--green);
+      user-select:none;
+    }
+    .masonry .cap .spark{
+      width:10px; height:10px;
+      border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--green2));
+      box-shadow: 0 8px 18px rgba(31,77,67,.20);
+    }
+
+    /* ===== Fullscreen Lightbox (mobile swipe) ===== */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+    }
+    .lightbox[aria-hidden="false"]{ display:block; }
+    .lightbox__backdrop{
+      position:absolute;
+      inset:0;
+      background: rgba(10,12,14,.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .lightbox__panel{
+      position:absolute;
+      inset:0;
+      display:grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 16px;
+    }
+    .lightbox__top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 10px 10px;
+    }
+    .lightbox__title{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      color: rgba(255,255,255,.92);
+      font-weight: 900;
+    }
+    .lightbox__title .spark{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--green2));
+      box-shadow: 0 8px 18px rgba(0,0,0,.25);
+    }
+    .lightbox__btn{
+      appearance:none;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.95);
+      border-radius: 999px;
+      padding: .65rem .85rem;
+      font-weight: 950;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .lightbox__btn:hover{ background: rgba(255,255,255,.14); transform: translateY(-1px); }
+    .lightbox__btn:active{ transform: translateY(0px); }
+    .lightbox__stage{
+      display:grid;
+      place-items:center;
+      padding: 10px;
+    }
+    .lightbox__img{
+      max-width: min(1100px, 92vw);
+      max-height: 74vh;
+      width:auto;
+      height:auto;
+      border-radius: 22px;
+      box-shadow: 0 30px 120px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.12);
+      user-select:none;
+      -webkit-user-drag: none;
+      cursor: pointer;
+    }
+    .lightbox__bottom{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 10px 6px;
+      flex-wrap: wrap;
+    }
+    .lightbox__pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+      padding:.55rem .8rem;
+      border-radius: 999px;
+      color: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      font-weight: 850;
+      user-select:none;
+    }
+    .lightbox__nav{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.95);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .lightbox__nav:hover{ background: rgba(255,255,255,.14); transform: translateY(-50%) scale(1.03); }
+    .lightbox__nav:active{ transform: translateY(-50%) scale(1.0); }
+    .lightbox__nav--prev{ left: 14px; }
+    .lightbox__nav--next{ right: 14px; }
+    @media (max-width: 620px){
+      .lightbox__img{ max-height: 68vh; border-radius: 18px; }
+      .lightbox__nav{ display:none; }
+    }
+
+    /* ===== Music button (elite floating control) ===== */
+    audio{ display:none; }
+    .music-btn{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 99998;
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+      padding:.75rem .95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(31,77,67,.88);
+      color: #fff;
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 0 18px 60px rgba(0,0,0,.20);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform .15s ease, filter .15s ease, background .15s ease;
+      user-select:none;
+    }
+    .music-btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+    .music-btn:active{ transform: translateY(0); }
+    .music-ico{
+      width:34px;height:34px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, var(--gold), var(--green2));
+      color:#10322c;
+      box-shadow: 0 14px 44px rgba(0,0,0,.18);
+      font-weight: 1000;
+    }
+    .music-btn.is-playing{
+      background: rgba(255,255,255,.86);
+      color: var(--green);
+      border: 1px solid rgba(0,0,0,.10);
+    }
+    .music-btn.is-playing .music-ico{
+      background: linear-gradient(135deg, #fff2b8, #c7a84f);
+    }
+
+    /* Footer */
+    footer{
+      padding: 2.25rem 1.25rem 3.25rem;
+      color: var(--muted);
+      text-align:center;
+    }
+    footer a{ color: var(--green); text-decoration: none; font-weight: 900; }
+    footer a:hover{ text-decoration: underline; }
+
+    .muted{ color: var(--muted); }
+
+    /* RSVP status */
+    .status-ok{ color: #0f7a5c; font-weight: 850; }
+    .status-bad{ color: #b42318; font-weight: 850; }
+  </style>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Event",
+    "name":"Berne & Courtney Wedding",
+    "startDate":"2026-10-10",
+    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus":"https://schema.org/EventScheduled",
+    "description":"Wedding celebration for Berne & Courtney.",
+    "location":{
+      "@type":"Place",
+      "name":"(Add venue name)",
+      "address":"(Add venue address)"
+    }
+  }
+  </script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop>
-<source src="lets-get-married-instrumental.mp3" type="audio/mpeg">
-</audio>
+  <!-- Music -->
+  <audio id="bgMusic" preload="metadata" loop>
+    <source src="lets-get-married-instrumental.mp3" type="audio/mpeg" />
+  </audio>
 
-<button class="music-btn" id="musicBtn">Play Music</button>
+  <button class="music-btn" id="musicBtn" type="button" aria-pressed="false" aria-label="Toggle music">
+    <span class="music-ico" aria-hidden="true">♪</span>
+    <span id="musicText">Play music</span>
+  </button>
 
-<div class="hero">
-<h1 class="names">Berne & Courtney</h1>
-<p>October 10, 2026</p>
-</div>
+  <div class="nav-wrap" role="banner">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <div class="monogram" aria-hidden="true">B&C</div>
+        <div class="brand-text">
+          <strong>Berne & Courtney</strong>
+          <span>October 10, 2026</span>
+        </div>
+      </a>
 
-<div class="container">
+      <div class="nav-links" role="navigation" aria-label="Primary">
+        <a href="#details">Details</a>
+        <a href="#story">Story</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#photos">Photos</a>
+        <a href="#party">Wedding Party</a>
+        <a href="#faq">FAQ</a>
+        <a class="cta" href="#rsvp">RSVP</a>
+      </div>
+    </div>
+  </div>
 
-<!-- STORY -->
-<section class="section">
-<h2>Our Story</h2>
-<div class="card">
-<p><strong>It all started with three words:</strong> “hey, wassup, hello.”</p>
+  <header id="top" class="hero">
+    <h1 class="names">Berne & Courtney</h1>
+    <p class="subline">We’re getting married — and we’d love for you to celebrate with us on <strong>October 10, 2026</strong>.</p>
 
-<p>Not poetry. Not a Shakespeare monologue. Just three legendary words that somehow kicked off everything.</p>
+    <div class="hero-card" role="region" aria-label="Wedding overview">
+      <div class="hero-media">
+        <div class="hero-photo" role="img" aria-label="Save the date photo">
+          <div class="badge"><span class="dot" aria-hidden="true"></span> Save the date</div>
+        </div>
 
-<p>“Hey” was cautious. “Wassup” was bold. “Hello” was the smooth recovery because apparently one greeting just wasn’t enough.</p>
+        <div class="hero-details">
+          <div class="chips" aria-label="Key details">
+            <div class="chip">🗓️ Oct 10, 2026</div>
+            <div class="chip">📍 Add venue + city</div>
+            <div class="chip">🕔 Add ceremony time</div>
+          </div>
 
-<p>Somewhere between the laughs, long talks, and “I’m not hungry” turning into sharing fries, something clicked.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#rsvp">RSVP</a>
+            <a class="btn btn-ghost" href="#story">Our story</a>
+          </div>
 
-<p>Fast forward a few plot twists later — here we are planning a wedding and pretending we aren’t stressed with 47 tabs open.</p>
+          <p class="muted" style="margin:0; text-align:center;">
+            Add your venue address and I’ll wire in one-tap maps + calendar add.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<p>And now we can’t wait to celebrate this next chapter with all of you.</p>
-</div>
-</section>
+  <main id="main" class="container">
+    <!-- DETAILS -->
+    <section id="details" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Weekend Details</h2>
+          <p>Everything you need — location, timing, attire, and quick links.</p>
+        </div>
+      </div>
 
-<!-- SCHEDULE -->
-<section class="section">
-<h2>Schedule</h2>
-<div class="card">
-<p><strong>4:00 PM</strong> Ceremony</p>
-<p><strong>5:00 PM</strong> Cocktail Hour</p>
-<p><strong>6:00 PM</strong> Reception</p>
-<p><strong>10:30 PM</strong> Send Off</p>
-</div>
-</section>
+      <div class="grid">
+        <article class="card col-6">
+          <div class="card-pad">
+            <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Ceremony & Reception</h3>
+            <p class="muted" style="margin:.25rem 0 0; line-height:1.65;">
+              <strong>Venue:</strong> Add venue name<br/>
+              <strong>Address:</strong> Add street, city, state<br/>
+              <strong>Time:</strong> Add start time
+            </p>
+            <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem;">
+              <a class="btn btn-ghost" href="#" onclick="event.preventDefault()" aria-label="Open maps (add link)">📍 Maps</a>
+              <a class="btn btn-ghost" href="#" onclick="event.preventDefault()" aria-label="Add to calendar (add link)">🗓️ Add to calendar</a>
+            </div>
+          </div>
+        </article>
 
-<!-- PHOTOS -->
-<section class="section">
-<h2>Photos</h2>
-<div class="masonry">
-<img src="Photo2.JPG">
-<img src="Photo3.JPG">
-<img src="Photo4.JPG">
-<img src="Photo5.jpeg">
-</div>
-</section>
+        <article class="card col-6">
+          <div class="card-pad">
+            <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Attire & Notes</h3>
+            <p class="muted" style="margin:.25rem 0 0; line-height:1.65;">
+              <strong>Attire:</strong> Add dress code (Cocktail / Black Tie Optional, etc.)<br/>
+              <strong>Unplugged?</strong> Add preference<br/>
+              <strong>Kids?</strong> Add preference
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-<!-- WEDDING PARTY -->
-<section class="section">
-<h2>Wedding Party</h2>
+    <!-- STORY -->
+    <section id="story" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Our Story</h2>
+          <p>It started with three words… and somehow turned into forever.</p>
+        </div>
+      </div>
 
-<div class="feature">
-<h3>Maid of Honor</h3>
-<p><strong>Qunadra Foster</strong></p>
-</div>
+      <div class="story-wrap">
+        <article class="card story-card">
+          <div class="card-pad">
+            <h3 class="story-title">Three words. One legendary beginning.</h3>
 
-<div class="feature">
-<h3>Best Man</h3>
-<p><strong>Christopher Watts</strong></p>
-</div>
+            <p class="story-p">
+              It all started with <strong>three words</strong>: <strong>“hey, wassup, hello.”</strong>
+              Not a poem. Not a grand romantic speech. Just three little words that somehow hit like a movie trailer.
+            </p>
 
-<p><strong>Bride:</strong> Courtney</p>
-<p><strong>Groom:</strong> Berne</p>
-</section>
+            <p class="story-p">
+              “Hey” was the warm-up. “Wassup” was the confidence. “Hello” was the smooth reset — because apparently we were both
+              committed to making sure the first impression happened <em>at least</em> three times.
+            </p>
 
-<!-- RSVP -->
-<section class="section">
-<h2>RSVP</h2>
-<div class="card">
-<form id="rsvpForm">
-<input type="text" placeholder="Full Name" required style="width:100%;padding:.8rem;margin-bottom:1rem;border-radius:12px;border:1px solid #ccc;">
-<input type="email" placeholder="Email" required style="width:100%;padding:.8rem;margin-bottom:1rem;border-radius:12px;border:1px solid #ccc;">
-<select style="width:100%;padding:.8rem;margin-bottom:1rem;border-radius:12px;border:1px solid #ccc;">
-<option>Happily Accept</option>
-<option>Regretfully Decline</option>
-</select>
-<button class="btn" type="submit">Send RSVP</button>
-</form>
-</div>
-</section>
+            <p class="story-p">
+              After that? A lot of laughing, a little flirting, and the kind of conversations that accidentally turn into
+              “Wait… what time is it?” (and then you check your phone like it personally betrayed you).
+            </p>
 
-</div>
+            <p class="story-p">
+              Somewhere between the jokes, the late-night talks, and the “I’m not hungry” that somehow became a full meal,
+              we realized this wasn’t just a vibe — it was <strong>home</strong>.
+            </p>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-<img id="lightboxImg">
-</div>
+            <p class="story-p">
+              Now we’re here — grateful, excited, and ready to celebrate with the people we love most.
+              We can’t wait to share this day with you.
+            </p>
+          </div>
+        </article>
 
-<script>
-// Music Toggle
-const audio = document.getElementById("bgMusic");
-const btn = document.getElementById("musicBtn");
+        <aside class="quote story-side">
+          <strong>The Original Trilogy</strong>
+          <p>“Hey.”<br/>“Wassup.”<br/>“Hello.”</p>
 
-btn.addEventListener("click", async () => {
-if(audio.paused){
-await audio.play();
-btn.textContent="Pause Music";
-}else{
-audio.pause();
-btn.textContent="Play Music";
-}
-});
+          <div class="three" aria-label="Three words">
+            <span class="tag"><span class="spark" aria-hidden="true"></span> hey</span>
+            <span class="tag"><span class="spark" aria-hidden="true"></span> wassup</span>
+            <span class="tag"><span class="spark" aria-hidden="true"></span> hello</span>
+          </div>
 
-// Lightbox
-const images = document.querySelectorAll(".masonry img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
+          <div style="margin-top:.9rem;">
+            <p style="margin:0; color:var(--muted); font-weight:700; line-height:1.6;">
+              Proof that romance doesn’t need a script… it just needs the right person (and a slightly chaotic opener).
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-images.forEach(img=>{
-img.addEventListener("click",()=>{
-lightbox.style.display="flex";
-lightboxImg.src=img.src;
-});
-});
+    <!-- SCHEDULE -->
+    <section id="schedule" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Schedule</h2>
+          <p>A simple, elegant timeline (easy to update).</p>
+        </div>
+      </div>
 
-lightbox.addEventListener("click",()=>{
-lightbox.style.display="none";
-});
-</script>
+      <article class="card">
+        <div class="card-pad">
+          <ul class="timeline" aria-label="Wedding day timeline">
+            <li class="event">
+              <div class="time">4:00 PM</div>
+              <div class="meta">
+                <strong>Ceremony</strong>
+                <span>Doors open at 3:30 PM</span>
+              </div>
+            </li>
+            <li class="event">
+              <div class="time">5:00 PM</div>
+              <div class="meta">
+                <strong>Cocktail Hour</strong>
+                <span>Drinks + light bites</span>
+              </div>
+            </li>
+            <li class="event">
+              <div class="time">6:00 PM</div>
+              <div class="meta">
+                <strong>Reception</strong>
+                <span>Dinner, toasts, and dancing</span>
+              </div>
+            </li>
+            <li class="event">
+              <div class="time">10:30 PM</div>
+              <div class="meta">
+                <strong>Send-off</strong>
+                <span>Final song + goodbye hugs</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
 
+    <!-- PHOTOS (Luxury Masonry + Lightbox) -->
+    <section id="photos" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Photos</h2>
+          <p>Moments from us — more coming soon.</p>
+        </div>
+      </div>
+
+      <div class="masonry-wrap" aria-label="Photo gallery">
+        <div class="masonry">
+          <figure>
+            <div class="shot">
+              <img src="Photo2.JPG" alt="Photo 2" loading="lazy" decoding="async" />
+              <div class="cap"><span class="spark" aria-hidden="true"></span> Photo</div>
+            </div>
+          </figure>
+
+          <figure>
+            <div class="shot">
+              <img src="Photo3.JPG" alt="Photo 3" loading="lazy" decoding="async" />
+              <div class="cap"><span class="spark" aria-hidden="true"></span> Photo</div>
+            </div>
+          </figure>
+
+          <figure>
+            <div class="shot">
+              <img src="Photo4.JPG" alt="Photo 4" loading="lazy" decoding="async" />
+              <div class="cap"><span class="spark" aria-hidden="true"></span> Photo</div>
+            </div>
+          </figure>
+
+          <figure>
+            <div class="shot">
+              <img src="Photo5.jpeg" alt="Photo 5" loading="lazy" decoding="async" />
+              <div class="cap"><span class="spark" aria-hidden="true"></span> Photo</div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEDDING PARTY (featured only for now; lists blank) -->
+    <section id="party" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Wedding Party</h2>
+          <p>With love — our honored people.</p>
+        </div>
+      </div>
+
+      <article class="card">
+        <div class="card-pad">
+
+          <div class="party-grid" aria-label="Featured wedding party roles">
+            <div class="feature-card" aria-label="Maid of Honor">
+              <div class="feature-inner">
+                <div class="medal" aria-hidden="true">👑</div>
+                <div>
+                  <h3 class="feature-title">Maid of Honor</h3>
+                  <p class="feature-name">Qunadra Foster</p>
+                  <p class="feature-sub">Grace, strength, and sparkle.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card" aria-label="Best Man">
+              <div class="feature-inner">
+                <div class="medal" aria-hidden="true">🏆</div>
+                <div>
+                  <h3 class="feature-title">Best Man</h3>
+                  <p class="feature-name">Christopher Watts</p>
+                  <p class="feature-sub">Steady hand. Big heart.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="party-columns" aria-label="Wedding party lists">
+            <div class="party-col">
+              <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Bridesmaids</h3>
+              <div class="empty-list">Names coming soon.</div>
+            </div>
+
+            <div class="party-col">
+              <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Groomsmen</h3>
+              <div class="empty-list">Names coming soon.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:1.1rem; display:flex; gap:.75rem; flex-wrap:wrap;">
+            <span class="chip">👰 Courtney — Bride</span>
+            <span class="chip">🤵 Berne — Groom</span>
+          </div>
+
+        </div>
+      </article>
+    </section>
+
+    <!-- FAQ (subtitle removed) -->
+    <section id="faq" class="block">
+      <div class="section-head">
+        <div>
+          <h2>FAQ</h2>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="col-6">
+          <details>
+            <summary>Where should I park?</summary>
+            <p>Add parking details (garage name, cost, and whether validation is available).</p>
+          </details>
+          <details>
+            <summary>Can I bring a plus-one?</summary>
+            <p>Add your policy here.</p>
+          </details>
+        </div>
+
+        <div class="col-6">
+          <details>
+            <summary>Is there a hotel block?</summary>
+            <p>Add hotel name(s) + booking link + cutoff date.</p>
+          </details>
+          <details>
+            <summary>What time should I arrive?</summary>
+            <p>Recommended arrival time + note about ceremony start.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP (Real: Google Sheets via Apps Script Web App) -->
+    <section id="rsvp" class="block">
+      <div class="section-head">
+        <div>
+          <h2>RSVP</h2>
+          <p>Please RSVP by (add date).</p>
+        </div>
+      </div>
+
+      <article class="card">
+        <div class="card-pad">
+          <form class="grid" id="rsvpForm" autocomplete="on">
+            <div class="col-6">
+              <label for="name" style="font-weight:900; color:var(--green);">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-6">
+              <label for="email" style="font-weight:900; color:var(--green);">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-6">
+              <label for="attending" style="font-weight:900; color:var(--green);">Attendance</label>
+              <select id="attending" name="attending" required
+                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
+                <option value="yes">Happily accepting</option>
+                <option value="no">Regretfully decline</option>
+              </select>
+            </div>
+
+            <div class="col-6">
+              <label for="guests" style="font-weight:900; color:var(--green);">Number of guests</label>
+              <select id="guests" name="guests" required
+                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label for="notes" style="font-weight:900; color:var(--green);">Notes</label>
+              <input id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc."
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-12" style="display:flex; gap:.65rem; flex-wrap:wrap; align-items:center; margin-top:.25rem;">
+              <button class="btn btn-primary" type="submit" id="rsvpBtn">Send RSVP</button>
+              <span class="muted" id="rsvpMsg" role="status" aria-live="polite"></span>
+            </div>
+
+            <div class="col-12">
+              <small class="muted">
+                RSVP is connected via Google Sheets Web App. Make sure the endpoint is set in the script below.
+              </small>
+            </div>
+          </form>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <small>
+      <a href="#top">Back to top</a> •
+      <a href="#details">Details</a> •
+      <a href="#rsvp">RSVP</a>
+    </small>
+    <div style="margin-top:.8rem;">
+      <small class="muted">© <span id="year"></span> Berne & Courtney</small>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox__backdrop" data-close></div>
+
+    <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <div class="lightbox__top">
+        <div class="lightbox__title">
+          <span class="spark" aria-hidden="true"></span>
+          <span id="lightboxLabel">Photo</span>
+        </div>
+        <button class="lightbox__btn" type="button" data-close aria-label="Close">✕</button>
+      </div>
+
+      <button class="lightbox__nav lightbox__nav--prev" type="button" id="lbPrev" aria-label="Previous photo">‹</button>
+      <button class="lightbox__nav lightbox__nav--next" type="button" id="lbNext" aria-label="Next photo">›</button>
+
+      <div class="lightbox__stage" id="lbStage">
+        <img class="lightbox__img" id="lightboxImg" alt="" />
+      </div>
+
+      <div class="lightbox__bottom">
+        <span class="lightbox__pill" id="lightboxCount">1 / 1</span>
+        <span class="lightbox__pill">Swipe on mobile • Use ← → • Esc to close</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // ===== Year =====
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // ===== Scroll progress + active nav =====
+      const progress = document.getElementById('progress');
+      const links = Array.from(document.querySelectorAll('.nav-links a'))
+        .filter(a => a.getAttribute('href')?.startsWith('#'));
+      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+      function onScroll(){
+        const doc = document.documentElement;
+        const scrollTop = doc.scrollTop || document.body.scrollTop;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight;
+        const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        progress.style.width = pct.toFixed(2) + '%';
+
+        const y = window.scrollY + 120;
+        let active = null;
+        for (const s of sections) if (s.offsetTop <= y) active = s;
+
+        links.forEach(a => a.classList.remove('active'));
+        if (active) {
+          const a = links.find(l => l.getAttribute('href') === '#' + active.id);
+          if (a) a.classList.add('active');
+        }
+      }
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // ===== Music toggle (restores state) =====
+      const audio = document.getElementById('bgMusic');
+      const musicBtn = document.getElementById('musicBtn');
+      const musicText = document.getElementById('musicText');
+
+      function setMusicUI(isPlaying){
+        musicBtn.classList.toggle('is-playing', isPlaying);
+        musicBtn.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+        musicText.textContent = isPlaying ? 'Pause music' : 'Play music';
+        localStorage.setItem('wedding_music', isPlaying ? 'playing' : 'paused');
+      }
+
+      const savedMusic = localStorage.getItem('wedding_music') || 'paused';
+      if (savedMusic === 'playing') {
+        audio.play().then(() => setMusicUI(true)).catch(() => setMusicUI(false));
+      } else {
+        setMusicUI(false);
+      }
+
+      musicBtn.addEventListener('click', async () => {
+        try{
+          if (audio.paused) {
+            await audio.play();
+            setMusicUI(true);
+          } else {
+            audio.pause();
+            setMusicUI(false);
+          }
+        } catch {
+          setMusicUI(false);
+        }
+      });
+
+      // ===== REAL RSVP: Google Sheets Web App =====
+      // Paste your deployed Apps Script Web App URL here:
+      const RSVP_ENDPOINT = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL_HERE";
+
+      const form = document.getElementById('rsvpForm');
+      const msg = document.getElementById('rsvpMsg');
+      const btn = document.getElementById('rsvpBtn');
+
+      function setStatus(text, ok){
+        msg.textContent = text;
+        msg.className = ok ? "status-ok" : "status-bad";
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (!RSVP_ENDPOINT || RSVP_ENDPOINT.includes("PASTE_YOUR")) {
+          setStatus("RSVP isn’t connected yet. Add your Google Sheets Web App URL in the code.", false);
+          return;
+        }
+
+        const payload = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          attending: form.attending.value,
+          guests: form.guests.value,
+          notes: form.notes.value.trim(),
+          timestamp: new Date().toISOString()
+        };
+
+        if (!payload.name || !payload.email) {
+          setStatus("Please enter your name and email.", false);
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+        setStatus("", true);
+
+        try {
+          // no-cors avoids CORS issues; Apps Script still receives the POST.
+          await fetch(RSVP_ENDPOINT, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          form.reset();
+          setStatus("Thank you! Your RSVP has been received.", true);
+        } catch (err) {
+          setStatus("Something went wrong sending your RSVP. Please try again.", false);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Send RSVP";
+        }
+      });
+
+      // ===== Lightbox: fullscreen + swipe =====
+      const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
+      if (!galleryImgs.length) return;
+
+      galleryImgs.forEach((img, idx) => {
+        img.addEventListener('click', () => openAt(idx));
+        img.setAttribute('tabindex', '0');
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(idx); }
+        });
+      });
+
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      const lbLabel = document.getElementById('lightboxLabel');
+      const lbCount = document.getElementById('lightboxCount');
+      const prevBtn = document.getElementById('lbPrev');
+      const nextBtn = document.getElementById('lbNext');
+      const stage = document.getElementById('lbStage');
+
+      let current = 0;
+      let startX = 0;
+      let startY = 0;
+      let isTouching = false;
+
+      function lockScroll(lock){
+        document.documentElement.style.overflow = lock ? 'hidden' : '';
+        document.body.style.overflow = lock ? 'hidden' : '';
+      }
+
+      function setSlide(i){
+        const n = galleryImgs.length;
+        current = (i + n) % n;
+
+        const src = galleryImgs[current].getAttribute('src');
+        const alt = galleryImgs[current].getAttribute('alt') || 'Photo';
+        lbImg.src = src;
+        lbImg.alt = alt;
+
+        lbLabel.textContent = alt;
+        lbCount.textContent = `${current + 1} / ${n}`;
+
+        // Preload neighbors
+        const next = new Image();
+        next.src = galleryImgs[(current + 1) % n].getAttribute('src');
+        const prev = new Image();
+        prev.src = galleryImgs[(current - 1 + n) % n].getAttribute('src');
+      }
+
+      function openAt(i){
+        setSlide(i);
+        lb.setAttribute('aria-hidden', 'false');
+        lockScroll(true);
+        const closeBtn = lb.querySelector('[data-close]');
+        closeBtn && closeBtn.focus();
+      }
+
+      function close(){
+        lb.setAttribute('aria-hidden', 'true');
+        lockScroll(false);
+        lbImg.src = '';
+      }
+
+      function next(){ setSlide(current + 1); }
+      function prev(){ setSlide(current - 1); }
+
+      lb.addEventListener('click', (e) => {
+        const target = e.target;
+        if (target && target.hasAttribute('data-close')) close();
+      });
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      window.addEventListener('keydown', (e) => {
+        if (lb.getAttribute('aria-hidden') !== 'false') return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft') prev();
+      });
+
+      stage.addEventListener('touchstart', (e) => {
+        if (!e.touches || e.touches.length !== 1) return;
+        isTouching = true;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+
+      stage.addEventListener('touchmove', (e) => {
+        if (lb.getAttribute('aria-hidden') === 'false') e.preventDefault();
+      }, { passive: false });
+
+      stage.addEventListener('touchend', (e) => {
+        if (!isTouching) return;
+        isTouching = false;
+
+        const touch = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
+        if (!touch) return;
+
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          if (dx < 0) next();
+          else prev();
+        }
+      }, { passive: true });
+
+      // Click image to advance (desktop feels slick)
+      lbImg.addEventListener('click', next);
+    })();
+  </script>
 </body>
 </html>
