@@ -8,8 +8,9 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Berne & Courtney • October 10, 2026</title>
-  <meta name="description" content="Join us to celebrate Berne & Courtney on October 10, 2026. Details, schedule, wedding party, and RSVP." />
+  <meta name="description" content="Join us to celebrate Berne & Courtney on October 10, 2026. Details, schedule, photos, wedding party, FAQ, and RSVP." />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -50,6 +51,7 @@
         linear-gradient(180deg, #f4f8f6, #ffffff 58%);
     }
 
+    /* inline grain texture (no external dependency) */
     body::after{
       content:"";
       position:fixed;
@@ -67,6 +69,7 @@
       * { animation:none !important; transition:none !important; }
     }
 
+    /* Skip link */
     .skip-link{
       position:absolute; left:-999px; top:10px;
       background:#fff; color:var(--green);
@@ -77,6 +80,7 @@
     }
     .skip-link:focus{ left:10px; outline:none; box-shadow: var(--ring), var(--shadow); }
 
+    /* Scroll progress */
     .progress{
       position:fixed; top:0; left:0;
       height:3px; width:0%;
@@ -218,7 +222,7 @@
       .hero-media{ grid-template-columns: 1fr; }
     }
 
-    /* HERO IMAGE: Save the date uses Photo3.JPG */
+    /* Save the date uses Photo3.JPG */
     .hero-photo{
       position:relative;
       min-height: 340px;
@@ -313,6 +317,7 @@
     }
     .btn-ghost:hover{ filter: brightness(.98); transform: translateY(-1px); }
 
+    /* Sections */
     section.block{ margin-top: 2.25rem; }
     .section-head{
       display:flex;
@@ -344,6 +349,7 @@
     }
     .card-pad{ padding: 1.1rem; }
 
+    /* Grid */
     .grid{
       display:grid;
       gap: 1rem;
@@ -355,6 +361,7 @@
       .col-6{ grid-column: span 12; }
     }
 
+    /* Timeline */
     .timeline{
       display:flex;
       flex-direction:column;
@@ -387,51 +394,6 @@
       font-weight: 650;
     }
 
-    /* Wedding party */
-    .people{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-    }
-    .person{
-      grid-column: span 6;
-      padding: 1rem;
-      border-radius: var(--radius);
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.82);
-      box-shadow: 0 14px 40px rgba(0,0,0,.08);
-      display:flex;
-      gap:.9rem;
-      align-items:center;
-    }
-    .avatar{
-      width:52px; height:52px; border-radius: 18px;
-      background: linear-gradient(135deg, rgba(31,77,67,.18), rgba(199,168,79,.18));
-      border: 1px solid rgba(0,0,0,.06);
-      display:grid; place-items:center;
-      color: var(--green);
-      font-weight: 950;
-      letter-spacing:.08em;
-      user-select:none;
-      flex: 0 0 auto;
-    }
-    .person .who strong{
-      display:block;
-      font-weight: 950;
-      color: var(--text);
-      line-height:1.15;
-    }
-    .person .who span{
-      display:block;
-      margin-top:.12rem;
-      color: var(--muted);
-      font-weight: 750;
-      font-size:.92rem;
-    }
-    @media (max-width: 620px){
-      .person{ grid-column: span 12; }
-    }
-
     /* FAQ */
     details{
       border: 1px solid var(--border);
@@ -455,36 +417,306 @@
       line-height: 1.55;
     }
 
-    /* PHOTO GRID (uniform sizes) */
-    .photo-grid{
+    /* ===== Wedding Party: premium featured roles ===== */
+    .party-grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 1rem;
     }
-    .photo{
-      grid-column: span 4;
-      border-radius: var(--radius);
+
+    .feature-card{
+      grid-column: span 6;
+      border-radius: calc(var(--radius) + 6px);
       overflow:hidden;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.78);
-      box-shadow: 0 14px 40px rgba(0,0,0,.08);
-    }
-    .photo img{
-      width: 100%;
-      height: 320px;             /* SAME HEIGHT FOR ALL */
-      object-fit: cover;          /* CROPS EVENLY */
-      object-position: center;
-      display:block;
-    }
-    @media (max-width: 980px){
-      .photo{ grid-column: span 6; }
-      .photo img{ height: 300px; }
-    }
-    @media (max-width: 620px){
-      .photo{ grid-column: span 12; }
-      .photo img{ height: 320px; }
+      border: 1px solid rgba(199,168,79,.30);
+      background:
+        radial-gradient(700px 260px at 10% 0%, rgba(199,168,79,.22), transparent 55%),
+        radial-gradient(700px 260px at 90% 0%, rgba(31,77,67,.18), transparent 55%),
+        rgba(255,255,255,.88);
+      box-shadow: 0 26px 86px rgba(0,0,0,.11);
+      position:relative;
     }
 
+    .feature-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(135deg, rgba(246,224,138,.22), rgba(31,77,67,.10));
+      opacity:.65;
+      pointer-events:none;
+    }
+
+    .feature-inner{
+      position:relative;
+      padding: 1.2rem 1.25rem 1.25rem;
+      display:flex;
+      align-items:center;
+      gap: 1rem;
+    }
+
+    .medal{
+      width:64px; height:64px;
+      border-radius: 22px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, #fff2b8, #c7a84f);
+      box-shadow:
+        0 18px 60px rgba(199,168,79,.30),
+        inset 0 1px 0 rgba(255,255,255,.55);
+      border: 1px solid rgba(0,0,0,.08);
+      color: #1f4d43;
+      font-weight: 1000;
+      letter-spacing:.06em;
+      flex: 0 0 auto;
+      user-select:none;
+    }
+
+    .feature-title{
+      margin:0;
+      font-family:"Playfair Display",serif;
+      color: var(--green);
+      font-size: 1.28rem;
+      letter-spacing:.01em;
+    }
+
+    .feature-name{
+      margin:.2rem 0 0;
+      font-weight: 950;
+      font-size: 1.12rem;
+      color: var(--text);
+    }
+
+    .feature-sub{
+      margin:.35rem 0 0;
+      color: rgba(31,77,67,.92);
+      font-weight: 850;
+    }
+
+    .party-columns{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-top: 1.15rem;
+    }
+
+    .party-col{
+      grid-column: span 6;
+    }
+
+    .empty-list{
+      border: 1px dashed rgba(31,77,67,.18);
+      background: rgba(31,77,67,.03);
+      border-radius: var(--radius);
+      padding: 1rem;
+      color: var(--muted);
+      font-weight: 750;
+    }
+
+    @media (max-width: 920px){
+      .feature-card, .party-col{ grid-column: span 12; }
+    }
+
+    /* ===== Luxury Masonry Gallery ===== */
+    .masonry-wrap{ margin-top: 1rem; }
+    .masonry{ column-count: 3; column-gap: 1rem; }
+    @media (max-width: 980px){ .masonry{ column-count: 2; } }
+    @media (max-width: 620px){ .masonry{ column-count: 1; } }
+
+    .masonry figure{ break-inside: avoid; margin: 0 0 1rem; }
+
+    .masonry .shot{
+      position: relative;
+      border-radius: calc(var(--radius) + 4px);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.85);
+      box-shadow:
+        0 18px 55px rgba(0,0,0,.10),
+        0 1px 0 rgba(255,255,255,.55) inset;
+      transform: translateZ(0);
+      cursor: zoom-in;
+    }
+
+    .masonry .shot::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(700px 240px at 20% 0%, rgba(199,168,79,.18), transparent 55%),
+        radial-gradient(700px 240px at 85% 0%, rgba(31,77,67,.14), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .masonry img{
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: scale(1.02);
+      transition: transform .35s ease, filter .35s ease;
+      will-change: transform;
+    }
+
+    .masonry .shot:hover img{
+      transform: scale(1.06);
+      filter: saturate(1.03) contrast(1.03);
+    }
+
+    .masonry .cap{
+      position:absolute;
+      left: 12px;
+      bottom: 12px;
+      z-index: 2;
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.5rem .7rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 16px 44px rgba(0,0,0,.14);
+      font-weight: 900;
+      color: var(--green);
+      user-select:none;
+    }
+
+    .masonry .cap .spark{
+      width:10px; height:10px;
+      border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--green2));
+      box-shadow: 0 8px 18px rgba(31,77,67,.20);
+    }
+
+    /* ===== Fullscreen Lightbox (mobile swipe) ===== */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+    }
+    .lightbox[aria-hidden="false"]{ display:block; }
+
+    .lightbox__backdrop{
+      position:absolute;
+      inset:0;
+      background: rgba(10,12,14,.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .lightbox__panel{
+      position:absolute;
+      inset:0;
+      display:grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 16px;
+    }
+
+    .lightbox__top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 10px 10px;
+    }
+
+    .lightbox__title{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      color: rgba(255,255,255,.92);
+      font-weight: 900;
+    }
+    .lightbox__title .spark{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--green2));
+      box-shadow: 0 8px 18px rgba(0,0,0,.25);
+    }
+
+    .lightbox__btn{
+      appearance:none;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.95);
+      border-radius: 999px;
+      padding: .65rem .85rem;
+      font-weight: 950;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .lightbox__btn:hover{ background: rgba(255,255,255,.14); transform: translateY(-1px); }
+    .lightbox__btn:active{ transform: translateY(0px); }
+
+    .lightbox__stage{
+      display:grid;
+      place-items:center;
+      padding: 10px;
+    }
+
+    .lightbox__img{
+      max-width: min(1100px, 92vw);
+      max-height: 74vh;
+      width:auto;
+      height:auto;
+      border-radius: 22px;
+      box-shadow: 0 30px 120px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.12);
+      user-select:none;
+      -webkit-user-drag: none;
+      cursor: pointer;
+    }
+
+    .lightbox__bottom{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 10px 6px;
+      flex-wrap: wrap;
+    }
+
+    .lightbox__pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+      padding:.55rem .8rem;
+      border-radius: 999px;
+      color: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      font-weight: 850;
+      user-select:none;
+    }
+
+    .lightbox__nav{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.95);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .lightbox__nav:hover{ background: rgba(255,255,255,.14); transform: translateY(-50%) scale(1.03); }
+    .lightbox__nav:active{ transform: translateY(-50%) scale(1.0); }
+
+    .lightbox__nav--prev{ left: 14px; }
+    .lightbox__nav--next{ right: 14px; }
+
+    @media (max-width: 620px){
+      .lightbox__img{ max-height: 68vh; border-radius: 18px; }
+      .lightbox__nav{ display:none; }
+    }
+
+    /* Footer */
     footer{
       padding: 2.25rem 1.25rem 3.25rem;
       color: var(--muted);
@@ -499,6 +731,24 @@
     .status-ok{ color: #0f7a5c; font-weight: 850; }
     .status-bad{ color: #b42318; font-weight: 850; }
   </style>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Event",
+    "name":"Berne & Courtney Wedding",
+    "startDate":"2026-10-10",
+    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus":"https://schema.org/EventScheduled",
+    "description":"Wedding celebration for Berne & Courtney.",
+    "location":{
+      "@type":"Place",
+      "name":"(Add venue name)",
+      "address":"(Add venue address)"
+    }
+  }
+  </script>
 </head>
 
 <body>
@@ -532,7 +782,9 @@
 
     <div class="hero-card" role="region" aria-label="Wedding overview">
       <div class="hero-media">
-        <div class="hero-photo" role="img" aria-label="Save the date photo"></div>
+        <div class="hero-photo" role="img" aria-label="Save the date photo">
+          <div class="badge"><span class="dot" aria-hidden="true"></span> Save the date</div>
+        </div>
 
         <div class="hero-details">
           <div class="chips" aria-label="Key details">
@@ -568,19 +820,23 @@
         <article class="card col-6">
           <div class="card-pad">
             <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Ceremony & Reception</h3>
-            <p class="muted" style="margin:.25rem 0 0;">
+            <p class="muted" style="margin:.25rem 0 0; line-height:1.65;">
               <strong>Venue:</strong> Add venue name<br/>
               <strong>Address:</strong> Add street, city, state<br/>
               <strong>Time:</strong> Add start time
             </p>
+            <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem;">
+              <a class="btn btn-ghost" href="#" onclick="event.preventDefault()" aria-label="Open maps (add link)">📍 Maps</a>
+              <a class="btn btn-ghost" href="#" onclick="event.preventDefault()" aria-label="Add to calendar (add link)">🗓️ Add to calendar</a>
+            </div>
           </div>
         </article>
 
         <article class="card col-6">
           <div class="card-pad">
             <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Attire & Notes</h3>
-            <p class="muted" style="margin:.25rem 0 0; line-height:1.6;">
-              <strong>Attire:</strong> Add dress code<br/>
+            <p class="muted" style="margin:.25rem 0 0; line-height:1.65;">
+              <strong>Attire:</strong> Add dress code (Cocktail / Black Tie Optional, etc.)<br/>
               <strong>Unplugged?</strong> Add preference<br/>
               <strong>Kids?</strong> Add preference
             </p>
@@ -622,12 +878,19 @@
                 <span>Dinner, toasts, and dancing</span>
               </div>
             </li>
+            <li class="event">
+              <div class="time">10:30 PM</div>
+              <div class="meta">
+                <strong>Send-off</strong>
+                <span>Final song + goodbye hugs</span>
+              </div>
+            </li>
           </ul>
         </div>
       </article>
     </section>
 
-    <!-- PHOTOS (replaced Photo1 and Photo6 with wedding + engagement) -->
+    <!-- PHOTOS (Luxury Masonry + Lightbox) -->
     <section id="photos" class="block">
       <div class="section-head">
         <div>
@@ -636,80 +899,97 @@
         </div>
       </div>
 
-      <div class="photo-grid" aria-label="Photo gallery">
-        <figure class="photo">
-          <img src="Photo2.JPG" alt="Photo 2" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="photo">
-          <img src="Photo3.JPG" alt="Photo 3" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="photo">
-          <img src="Photo4.JPG" alt="Photo 4" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="photo">
-          <img src="Photo5.jpeg" alt="Photo 5" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="photo">
-          <img src="engagement.JPG" alt="Engagement photo" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="photo">
-          <img src="wedding.png" alt="Wedding photo" loading="lazy" decoding="async" />
-        </figure>
+      <div class="masonry-wrap" aria-label="Photo gallery">
+        <div class="masonry">
+          <figure>
+            <div class="shot">
+              <img src="Photo2.JPG" alt="Photo 2" loading="lazy" decoding="async" />
+              <div class="cap"><span class="spark" aria-hidden="true"></span> Photo</div>
+            </div>
+          </figure>
+
+          <figure>
+            <div class="shot">
+              <img src="Photo3.JPG" alt="Photo 3" loading="lazy" decoding="async" />
+              <div class="cap"><span class="spark" aria-hidden="true"></span> Photo</div>
+            </div>
+          </figure>
+
+          <figure>
+            <div class="shot">
+              <img src="Photo4.JPG" alt="Photo 4" loading="lazy" decoding="async" />
+              <div class="cap"><span class="spark" aria-hidden="true"></span> Photo</div>
+            </div>
+          </figure>
+
+          <figure>
+            <div class="shot">
+              <img src="Photo5.jpeg" alt="Photo 5" loading="lazy" decoding="async" />
+              <div class="cap"><span class="spark" aria-hidden="true"></span> Photo</div>
+            </div>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <!-- WEDDING PARTY (alphabetical within group) -->
+    <!-- WEDDING PARTY (featured only for now) -->
     <section id="party" class="block">
       <div class="section-head">
         <div>
           <h2>Wedding Party</h2>
-          <p>Alphabetical lists for a clean, consistent look.</p>
+          <p>With love — our honored people.</p>
         </div>
       </div>
 
       <article class="card">
         <div class="card-pad">
-          <div class="grid" style="align-items:start;">
-            <div class="col-6">
-              <h3 style="margin:.1rem 0 .8rem; color:var(--green); font-family:'Playfair Display',serif;">Bride</h3>
-              <div class="people" aria-label="Bride party list (alphabetical)">
-                <div class="person">
-                  <div class="avatar" aria-hidden="true">C</div>
-                  <div class="who">
-                    <strong>Courtney</strong>
-                    <span>Bride</span>
-                  </div>
+
+          <div class="party-grid" aria-label="Featured wedding party roles">
+            <div class="feature-card" aria-label="Maid of Honor">
+              <div class="feature-inner">
+                <div class="medal" aria-hidden="true">👑</div>
+                <div>
+                  <h3 class="feature-title">Maid of Honor</h3>
+                  <p class="feature-name">Qunadra Foster</p>
+                  <p class="feature-sub">Grace, strength, and sparkle.</p>
                 </div>
-                <!-- Add bridesmaids here (keep alphabetical) -->
               </div>
             </div>
 
-            <div class="col-6">
-              <h3 style="margin:.1rem 0 .8rem; color:var(--green); font-family:'Playfair Display',serif;">Groom</h3>
-              <div class="people" aria-label="Groom party list (alphabetical)">
-                <div class="person">
-                  <div class="avatar" aria-hidden="true">H</div>
-                  <div class="who">
-                    <strong>Hamid Dawson</strong>
-                    <span>Groomsman</span>
-                  </div>
+            <div class="feature-card" aria-label="Best Man">
+              <div class="feature-inner">
+                <div class="medal" aria-hidden="true">🏆</div>
+                <div>
+                  <h3 class="feature-title">Best Man</h3>
+                  <p class="feature-name">Christopher Watts</p>
+                  <p class="feature-sub">Steady hand. Big heart.</p>
                 </div>
-                <div class="person">
-                  <div class="avatar" aria-hidden="true">R</div>
-                  <div class="who">
-                    <strong>Ronald Johnson</strong>
-                    <span>Groom</span>
-                  </div>
-                </div>
-                <!-- Add more groomsmen here (keep alphabetical) -->
               </div>
             </div>
           </div>
+
+          <div class="party-columns" aria-label="Wedding party lists">
+            <div class="party-col">
+              <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Bridesmaids</h3>
+              <div class="empty-list">Names coming soon.</div>
+            </div>
+
+            <div class="party-col">
+              <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Groomsmen</h3>
+              <div class="empty-list">Names coming soon.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:1.1rem; display:flex; gap:.75rem; flex-wrap:wrap;">
+            <span class="chip">👰 Courtney — Bride</span>
+            <span class="chip">🤵 Ronald Johnson — Groom</span>
+          </div>
+
         </div>
       </article>
     </section>
 
-    <!-- FAQ (subtitle removed per request) -->
+    <!-- FAQ (subtitle removed) -->
     <section id="faq" class="block">
       <div class="section-head">
         <div>
@@ -742,7 +1022,7 @@
       </div>
     </section>
 
-    <!-- RSVP (REAL: Google Sheets via Apps Script) -->
+    <!-- RSVP (Real: Google Sheets via Apps Script Web App) -->
     <section id="rsvp" class="block">
       <div class="section-head">
         <div>
@@ -798,9 +1078,42 @@
             </div>
 
             <div class="col-12">
-              <small class="muted">If the RSVP button doesn’t work, your RSVP link isn’t set yet (see setup below).</small>
+              <small class="muted">
+                Admin setup: connect RSVP to Google Sheets (Apps Script Web App) and paste the endpoint in the code.
+              </small>
             </div>
           </form>
+
+          <!-- Admin Instructions (keep or delete) -->
+          <details style="margin-top:1rem;">
+            <summary>How to connect RSVP to Google Sheets</summary>
+            <p>
+              1) Create a Google Sheet named “RSVP List”. Add headers: <strong>timestamp, name, email, attending, guests, notes</strong>.<br/>
+              2) Extensions → Apps Script → paste:
+            </p>
+            <pre style="overflow:auto; padding:12px; border-radius:16px; border:1px solid var(--border); background: rgba(255,255,255,.85);">
+function doPost(e) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName('RSVP List') || ss.getSheets()[0];
+  const data = JSON.parse(e.postData.contents || "{}");
+  sheet.appendRow([
+    data.timestamp || new Date().toISOString(),
+    data.name || "",
+    data.email || "",
+    data.attending || "",
+    data.guests || "",
+    data.notes || ""
+  ]);
+  return ContentService
+    .createTextOutput(JSON.stringify({ ok: true }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+            </pre>
+            <p>
+              3) Deploy → New deployment → Web app → Execute as “Me” → Access “Anyone” → Deploy.<br/>
+              4) Copy the Web app URL and paste it into <code>RSVP_ENDPOINT</code> in the script below.
+            </p>
+          </details>
         </div>
       </article>
     </section>
@@ -817,9 +1130,36 @@
     </div>
   </footer>
 
+  <!-- Lightbox (single instance) -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox__backdrop" data-close></div>
+
+    <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <div class="lightbox__top">
+        <div class="lightbox__title">
+          <span class="spark" aria-hidden="true"></span>
+          <span id="lightboxLabel">Photo</span>
+        </div>
+        <button class="lightbox__btn" type="button" data-close aria-label="Close">✕</button>
+      </div>
+
+      <button class="lightbox__nav lightbox__nav--prev" type="button" id="lbPrev" aria-label="Previous photo">‹</button>
+      <button class="lightbox__nav lightbox__nav--next" type="button" id="lbNext" aria-label="Next photo">›</button>
+
+      <div class="lightbox__stage" id="lbStage">
+        <img class="lightbox__img" id="lightboxImg" alt="" />
+      </div>
+
+      <div class="lightbox__bottom">
+        <span class="lightbox__pill" id="lightboxCount">1 / 1</span>
+        <span class="lightbox__pill">Swipe on mobile • Use ← → • Esc to close</span>
+      </div>
+    </div>
+  </div>
+
   <script>
     (function () {
-      // ========= Scroll progress + active nav =========
+      // ===== Scroll progress + active nav =====
       const progress = document.getElementById('progress');
       const year = document.getElementById('year');
       year.textContent = new Date().getFullYear();
@@ -847,9 +1187,8 @@
       document.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // ========= REAL RSVP: Google Sheets Web App =========
-      // 1) Create Google Apps Script Web App (instructions below)
-      // 2) Paste your deployed Web App URL here:
+      // ===== REAL RSVP: Google Sheets Web App =====
+      // Paste your deployed Apps Script Web App URL here:
       const RSVP_ENDPOINT = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL_HERE";
 
       const form = document.getElementById('rsvpForm');
@@ -865,7 +1204,7 @@
         e.preventDefault();
 
         if (!RSVP_ENDPOINT || RSVP_ENDPOINT.includes("PASTE_YOUR")) {
-          setStatus("RSVP isn’t connected yet. Add your Google Sheets RSVP link in the code.", false);
+          setStatus("RSVP isn’t connected yet. Add your Google Sheets Web App URL in the code.", false);
           return;
         }
 
@@ -888,7 +1227,7 @@
         setStatus("", true);
 
         try {
-          // Use no-cors to avoid CORS hassles; the Apps Script still receives the request.
+          // no-cors avoids CORS issues; Apps Script still receives the POST.
           await fetch(RSVP_ENDPOINT, {
             method: "POST",
             mode: "no-cors",
@@ -905,25 +1244,118 @@
           btn.textContent = "Send RSVP";
         }
       });
-    })();
-  </script>
 
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Event",
-    "name":"Berne & Courtney Wedding",
-    "startDate":"2026-10-10",
-    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus":"https://schema.org/EventScheduled",
-    "description":"Wedding celebration for Berne & Courtney.",
-    "location":{
-      "@type":"Place",
-      "name":"(Add venue name)",
-      "address":"(Add venue address)"
-    }
-  }
+      // ===== Lightbox: fullscreen + swipe =====
+      const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
+      if (!galleryImgs.length) return;
+
+      galleryImgs.forEach((img, idx) => {
+        img.dataset.index = String(idx);
+        img.addEventListener('click', () => openAt(idx));
+        img.setAttribute('tabindex', '0');
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(idx); }
+        });
+      });
+
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      const lbLabel = document.getElementById('lightboxLabel');
+      const lbCount = document.getElementById('lightboxCount');
+      const prevBtn = document.getElementById('lbPrev');
+      const nextBtn = document.getElementById('lbNext');
+      const stage = document.getElementById('lbStage');
+
+      let current = 0;
+      let startX = 0;
+      let startY = 0;
+      let isTouching = false;
+
+      function lockScroll(lock){
+        document.documentElement.style.overflow = lock ? 'hidden' : '';
+        document.body.style.overflow = lock ? 'hidden' : '';
+      }
+
+      function setSlide(i){
+        const n = galleryImgs.length;
+        current = (i + n) % n;
+
+        const src = galleryImgs[current].getAttribute('src');
+        const alt = galleryImgs[current].getAttribute('alt') || 'Photo';
+        lbImg.src = src;
+        lbImg.alt = alt;
+
+        lbLabel.textContent = alt;
+        lbCount.textContent = `${current + 1} / ${n}`;
+
+        // Preload neighbors
+        const next = new Image();
+        next.src = galleryImgs[(current + 1) % n].getAttribute('src');
+        const prev = new Image();
+        prev.src = galleryImgs[(current - 1 + n) % n].getAttribute('src');
+      }
+
+      function openAt(i){
+        setSlide(i);
+        lb.setAttribute('aria-hidden', 'false');
+        lockScroll(true);
+        const closeBtn = lb.querySelector('[data-close]');
+        closeBtn && closeBtn.focus();
+      }
+
+      function close(){
+        lb.setAttribute('aria-hidden', 'true');
+        lockScroll(false);
+        lbImg.src = '';
+      }
+
+      function next(){ setSlide(current + 1); }
+      function prev(){ setSlide(current - 1); }
+
+      lb.addEventListener('click', (e) => {
+        const target = e.target;
+        if (target && target.hasAttribute('data-close')) close();
+      });
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      window.addEventListener('keydown', (e) => {
+        if (lb.getAttribute('aria-hidden') !== 'false') return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft') prev();
+      });
+
+      stage.addEventListener('touchstart', (e) => {
+        if (!e.touches || e.touches.length !== 1) return;
+        isTouching = true;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+
+      stage.addEventListener('touchmove', (e) => {
+        if (lb.getAttribute('aria-hidden') === 'false') e.preventDefault();
+      }, { passive: false });
+
+      stage.addEventListener('touchend', (e) => {
+        if (!isTouching) return;
+        isTouching = false;
+
+        const touch = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
+        if (!touch) return;
+
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          if (dx < 0) next();
+          else prev();
+        }
+      }, { passive: true });
+
+      // Click image to advance (desktop feels slick)
+      lbImg.addEventListener('click', next);
+    })();
   </script>
 </body>
 </html>
