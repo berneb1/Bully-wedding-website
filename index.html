@@ -10,7 +10,6 @@
   <title>Berne & Courtney • October 10, 2026</title>
   <meta name="description" content="Join us to celebrate Berne & Courtney on October 10, 2026. Details, story, schedule, photos, wedding party, FAQ, and RSVP." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -51,7 +50,7 @@
         linear-gradient(180deg, #f4f8f6, #ffffff 58%);
     }
 
-    /* inline grain texture */
+    /* Inline grain texture */
     body::after{
       content:"";
       position:fixed;
@@ -103,7 +102,7 @@
       border-radius: 12px;
     }
 
-    /* NAV */
+    /* Nav */
     .nav-wrap{
       position:sticky; top:0; z-index:50;
       background: rgba(255,255,255,.78);
@@ -169,7 +168,7 @@
       transform: translateY(-1px);
     }
 
-    /* HERO */
+    /* Hero */
     header.hero{
       text-align:center;
       padding: 5.75rem 1rem 2.25rem;
@@ -200,7 +199,7 @@
       color:var(--muted);
       font-weight:700;
       font-size:1.05rem;
-      max-width: 62ch;
+      max-width: 64ch;
     }
 
     .hero-card{
@@ -489,7 +488,7 @@
       line-height: 1.55;
     }
 
-    /* ===== Wedding Party: premium featured roles ===== */
+    /* Wedding party featured */
     .party-grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -574,7 +573,7 @@
       .feature-card, .party-col{ grid-column: span 12; }
     }
 
-    /* ===== Luxury Masonry Gallery ===== */
+    /* Luxury masonry */
     .masonry-wrap{ margin-top: 1rem; }
     .masonry{ column-count: 3; column-gap: 1rem; }
     @media (max-width: 980px){ .masonry{ column-count: 2; } }
@@ -642,7 +641,7 @@
       box-shadow: 0 8px 18px rgba(31,77,67,.20);
     }
 
-    /* ===== Fullscreen Lightbox (mobile swipe) ===== */
+    /* Lightbox */
     .lightbox{
       position: fixed;
       inset: 0;
@@ -757,7 +756,7 @@
       .lightbox__nav{ display:none; }
     }
 
-    /* ===== Music button (elite floating control) ===== */
+    /* Music */
     audio{ display:none; }
     .music-btn{
       position: fixed;
@@ -816,7 +815,6 @@
     .status-bad{ color: #b42318; font-weight: 850; }
   </style>
 
-  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -828,8 +826,8 @@
     "description":"Wedding celebration for Berne & Courtney.",
     "location":{
       "@type":"Place",
-      "name":"(Add venue name)",
-      "address":"(Add venue address)"
+      "name":"Add venue name",
+      "address":"Add venue address"
     }
   }
   </script>
@@ -839,7 +837,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <!-- Music -->
+  <!-- Background music -->
   <audio id="bgMusic" preload="metadata" loop>
     <source src="lets-get-married-instrumental.mp3" type="audio/mpeg" />
   </audio>
@@ -873,7 +871,7 @@
 
   <header id="top" class="hero">
     <h1 class="names">Berne & Courtney</h1>
-    <p class="subline">We’re getting married — and we’d love for you to celebrate with us on <strong>October 10, 2026</strong>.</p>
+    <p class="subline">We’re getting married, and we’d love for you to celebrate with us on <strong>October 10, 2026</strong>.</p>
 
     <div class="hero-card" role="region" aria-label="Wedding overview">
       <div class="hero-media">
@@ -884,7 +882,7 @@
         <div class="hero-details">
           <div class="chips" aria-label="Key details">
             <div class="chip">🗓️ Oct 10, 2026</div>
-            <div class="chip">📍 Add venue + city</div>
+            <div class="chip">📍 Add venue and city</div>
             <div class="chip">🕔 Add ceremony time</div>
           </div>
 
@@ -894,7 +892,7 @@
           </div>
 
           <p class="muted" style="margin:0; text-align:center;">
-            Add your venue address and I’ll wire in one-tap maps + calendar add.
+            Add your venue address and I’ll wire in one tap maps and a calendar add.
           </p>
         </div>
       </div>
@@ -902,50 +900,48 @@
   </header>
 
   <main id="main" class="container">
-    <!-- DETAILS -->
     <section id="details" class="block">
       <div class="section-head">
         <div>
           <h2>Weekend Details</h2>
-          <p>Everything you need — location, timing, attire, and quick links.</p>
+          <p>Everything you need, location, timing, attire, and quick links.</p>
         </div>
       </div>
 
       <div class="grid">
         <article class="card col-6">
           <div class="card-pad">
-            <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Ceremony & Reception</h3>
+            <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Ceremony and Reception</h3>
             <p class="muted" style="margin:.25rem 0 0; line-height:1.65;">
               <strong>Venue:</strong> Add venue name<br/>
               <strong>Address:</strong> Add street, city, state<br/>
               <strong>Time:</strong> Add start time
             </p>
             <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem;">
-              <a class="btn btn-ghost" href="#" onclick="event.preventDefault()" aria-label="Open maps (add link)">📍 Maps</a>
-              <a class="btn btn-ghost" href="#" onclick="event.preventDefault()" aria-label="Add to calendar (add link)">🗓️ Add to calendar</a>
+              <a class="btn btn-ghost" href="#" onclick="event.preventDefault()" aria-label="Open maps">📍 Maps</a>
+              <a class="btn btn-ghost" href="#" onclick="event.preventDefault()" aria-label="Add to calendar">🗓️ Add to calendar</a>
             </div>
           </div>
         </article>
 
         <article class="card col-6">
           <div class="card-pad">
-            <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Attire & Notes</h3>
+            <h3 style="margin:.1rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Attire and Notes</h3>
             <p class="muted" style="margin:.25rem 0 0; line-height:1.65;">
-              <strong>Attire:</strong> Add dress code (Cocktail / Black Tie Optional, etc.)<br/>
-              <strong>Unplugged?</strong> Add preference<br/>
-              <strong>Kids?</strong> Add preference
+              <strong>Attire:</strong> Add dress code<br/>
+              <strong>Unplugged:</strong> Add preference<br/>
+              <strong>Kids:</strong> Add preference
             </p>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- STORY -->
     <section id="story" class="block">
       <div class="section-head">
         <div>
           <h2>Our Story</h2>
-          <p>It started with three words… and somehow turned into forever.</p>
+          <p>It started with three words, and it turned into forever.</p>
         </div>
       </div>
 
@@ -956,26 +952,26 @@
 
             <p class="story-p">
               It all started with <strong>three words</strong>: <strong>“hey, wassup, hello.”</strong>
-              Not a poem. Not a grand romantic speech. Just three little words that somehow hit like a movie trailer.
+              Not poetry. Not a grand romantic speech. Just three little words that somehow landed like a movie trailer.
             </p>
 
             <p class="story-p">
-              “Hey” was the warm-up. “Wassup” was the confidence. “Hello” was the smooth reset — because apparently we were both
-              committed to making sure the first impression happened <em>at least</em> three times.
+              “Hey” was the warm up. “Wassup” was the confidence. “Hello” was the smooth reset, because apparently we were both
+              committed to making sure the first impression happened at least three times.
             </p>
 
             <p class="story-p">
-              After that? A lot of laughing, a little flirting, and the kind of conversations that accidentally turn into
-              “Wait… what time is it?” (and then you check your phone like it personally betrayed you).
+              After that came a lot of laughing, a little flirting, and the kind of conversations that accidentally turn into
+              “Wait… what time is it?” and then you check your phone like it personally betrayed you.
             </p>
 
             <p class="story-p">
-              Somewhere between the jokes, the late-night talks, and the “I’m not hungry” that somehow became a full meal,
-              we realized this wasn’t just a vibe — it was <strong>home</strong>.
+              Somewhere between the jokes, the late night talks, and the “I’m not hungry” that somehow became a full meal,
+              we realized this wasn’t just a vibe. It was home.
             </p>
 
             <p class="story-p">
-              Now we’re here — grateful, excited, and ready to celebrate with the people we love most.
+              Now we’re here, grateful, excited, and ready to celebrate with the people we love most.
               We can’t wait to share this day with you.
             </p>
           </div>
@@ -993,19 +989,18 @@
 
           <div style="margin-top:.9rem;">
             <p style="margin:0; color:var(--muted); font-weight:700; line-height:1.6;">
-              Proof that romance doesn’t need a script… it just needs the right person (and a slightly chaotic opener).
+              Proof that romance doesn’t need a script. It just needs the right person, and a slightly chaotic opener.
             </p>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- SCHEDULE -->
     <section id="schedule" class="block">
       <div class="section-head">
         <div>
           <h2>Schedule</h2>
-          <p>A simple, elegant timeline (easy to update).</p>
+          <p>A simple, elegant timeline that is easy to update.</p>
         </div>
       </div>
 
@@ -1023,7 +1018,7 @@
               <div class="time">5:00 PM</div>
               <div class="meta">
                 <strong>Cocktail Hour</strong>
-                <span>Drinks + light bites</span>
+                <span>Drinks and light bites</span>
               </div>
             </li>
             <li class="event">
@@ -1036,8 +1031,8 @@
             <li class="event">
               <div class="time">10:30 PM</div>
               <div class="meta">
-                <strong>Send-off</strong>
-                <span>Final song + goodbye hugs</span>
+                <strong>Send off</strong>
+                <span>Final song and goodbye hugs</span>
               </div>
             </li>
           </ul>
@@ -1045,12 +1040,11 @@
       </article>
     </section>
 
-    <!-- PHOTOS (Luxury Masonry + Lightbox) -->
     <section id="photos" class="block">
       <div class="section-head">
         <div>
           <h2>Photos</h2>
-          <p>Moments from us — more coming soon.</p>
+          <p>Moments from us, more coming soon.</p>
         </div>
       </div>
 
@@ -1087,18 +1081,16 @@
       </div>
     </section>
 
-    <!-- WEDDING PARTY (featured only for now; lists blank) -->
     <section id="party" class="block">
       <div class="section-head">
         <div>
           <h2>Wedding Party</h2>
-          <p>With love — our honored people.</p>
+          <p>With love, our honored people.</p>
         </div>
       </div>
 
       <article class="card">
         <div class="card-pad">
-
           <div class="party-grid" aria-label="Featured wedding party roles">
             <div class="feature-card" aria-label="Maid of Honor">
               <div class="feature-inner">
@@ -1106,7 +1098,7 @@
                 <div>
                   <h3 class="feature-title">Maid of Honor</h3>
                   <p class="feature-name">Qunadra Foster</p>
-                  <p class="feature-sub">Grace, strength, and sparkle.</p>
+                  <p class="feature-sub">Gold standard energy.</p>
                 </div>
               </div>
             </div>
@@ -1117,7 +1109,7 @@
                 <div>
                   <h3 class="feature-title">Best Man</h3>
                   <p class="feature-name">Christopher Watts</p>
-                  <p class="feature-sub">Steady hand. Big heart.</p>
+                  <p class="feature-sub">Calm, clutch, and loyal.</p>
                 </div>
               </div>
             </div>
@@ -1136,15 +1128,13 @@
           </div>
 
           <div style="margin-top:1.1rem; display:flex; gap:.75rem; flex-wrap:wrap;">
-            <span class="chip">👰 Courtney — Bride</span>
-            <span class="chip">🤵 Berne — Groom</span>
+            <span class="chip">👰 Courtney, Bride</span>
+            <span class="chip">🤵 Berne, Groom</span>
           </div>
-
         </div>
       </article>
     </section>
 
-    <!-- FAQ (subtitle removed) -->
     <section id="faq" class="block">
       <div class="section-head">
         <div>
@@ -1156,10 +1146,10 @@
         <div class="col-6">
           <details>
             <summary>Where should I park?</summary>
-            <p>Add parking details (garage name, cost, and whether validation is available).</p>
+            <p>Add parking details, garage name, cost, and whether validation is available.</p>
           </details>
           <details>
-            <summary>Can I bring a plus-one?</summary>
+            <summary>Can I bring a plus one?</summary>
             <p>Add your policy here.</p>
           </details>
         </div>
@@ -1167,22 +1157,21 @@
         <div class="col-6">
           <details>
             <summary>Is there a hotel block?</summary>
-            <p>Add hotel name(s) + booking link + cutoff date.</p>
+            <p>Add hotel names, booking link, and cutoff date.</p>
           </details>
           <details>
             <summary>What time should I arrive?</summary>
-            <p>Recommended arrival time + note about ceremony start.</p>
+            <p>Recommended arrival time and note about ceremony start.</p>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- RSVP (Real: Google Sheets via Apps Script Web App) -->
     <section id="rsvp" class="block">
       <div class="section-head">
         <div>
           <h2>RSVP</h2>
-          <p>Please RSVP by (add date).</p>
+          <p>Please RSVP by, add date.</p>
         </div>
       </div>
 
@@ -1234,7 +1223,7 @@
 
             <div class="col-12">
               <small class="muted">
-                RSVP is connected via Google Sheets Web App. Make sure the endpoint is set in the script below.
+                RSVP is connected via Google Sheets Web App. Set the endpoint in the script below.
               </small>
             </div>
           </form>
@@ -1254,7 +1243,6 @@
     </div>
   </footer>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox__backdrop" data-close></div>
 
@@ -1276,20 +1264,20 @@
 
       <div class="lightbox__bottom">
         <span class="lightbox__pill" id="lightboxCount">1 / 1</span>
-        <span class="lightbox__pill">Swipe on mobile • Use ← → • Esc to close</span>
+        <span class="lightbox__pill">Swipe on mobile • Use left and right arrows • Esc closes</span>
       </div>
     </div>
   </div>
 
   <script>
     (function () {
-      // ===== Year =====
+      // Year
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      // ===== Scroll progress + active nav =====
+      // Scroll progress and active nav
       const progress = document.getElementById('progress');
       const links = Array.from(document.querySelectorAll('.nav-links a'))
-        .filter(a => a.getAttribute('href')?.startsWith('#'));
+        .filter(a => a.getAttribute('href') && a.getAttribute('href').startsWith('#'));
       const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
       function onScroll(){
@@ -1312,7 +1300,7 @@
       document.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // ===== Music toggle (restores state) =====
+      // Music toggle, restores state
       const audio = document.getElementById('bgMusic');
       const musicBtn = document.getElementById('musicBtn');
       const musicText = document.getElementById('musicText');
@@ -1345,8 +1333,7 @@
         }
       });
 
-      // ===== REAL RSVP: Google Sheets Web App =====
-      // Paste your deployed Apps Script Web App URL here:
+      // Real RSVP to Google Sheets Web App
       const RSVP_ENDPOINT = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL_HERE";
 
       const form = document.getElementById('rsvpForm');
@@ -1362,7 +1349,7 @@
         e.preventDefault();
 
         if (!RSVP_ENDPOINT || RSVP_ENDPOINT.includes("PASTE_YOUR")) {
-          setStatus("RSVP isn’t connected yet. Add your Google Sheets Web App URL in the code.", false);
+          setStatus("RSVP is not connected yet. Paste your Google Sheets Web App URL in the code.", false);
           return;
         }
 
@@ -1385,7 +1372,6 @@
         setStatus("", true);
 
         try {
-          // no-cors avoids CORS issues; Apps Script still receives the POST.
           await fetch(RSVP_ENDPOINT, {
             method: "POST",
             mode: "no-cors",
@@ -1403,7 +1389,7 @@
         }
       });
 
-      // ===== Lightbox: fullscreen + swipe =====
+      // Lightbox fullscreen with swipe
       const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
       if (!galleryImgs.length) return;
 
@@ -1443,9 +1429,8 @@
         lbImg.alt = alt;
 
         lbLabel.textContent = alt;
-        lbCount.textContent = `${current + 1} / ${n}`;
+        lbCount.textContent = (current + 1) + " / " + n;
 
-        // Preload neighbors
         const next = new Image();
         next.src = galleryImgs[(current + 1) % n].getAttribute('src');
         const prev = new Image();
@@ -1457,7 +1442,7 @@
         lb.setAttribute('aria-hidden', 'false');
         lockScroll(true);
         const closeBtn = lb.querySelector('[data-close]');
-        closeBtn && closeBtn.focus();
+        if (closeBtn) closeBtn.focus();
       }
 
       function close(){
@@ -1510,7 +1495,6 @@
         }
       }, { passive: true });
 
-      // Click image to advance (desktop feels slick)
       lbImg.addEventListener('click', next);
     })();
   </script>
