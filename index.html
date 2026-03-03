@@ -23,7 +23,7 @@
       --text:#111a1f;
       --muted:#667085;
 
-      --glass:rgba(255,255,255,.78);
+      --glass:rgba(255,255,255,.76);
       --border:rgba(0,0,0,.09);
 
       --shadow: 0 24px 80px rgba(0,0,0,.10);
@@ -49,7 +49,6 @@
         linear-gradient(180deg, #f4f8f6, #ffffff 58%);
     }
 
-    /* Subtle grain */
     body::after{
       content:"";
       position:fixed;
@@ -102,7 +101,7 @@
     /* Nav */
     .nav-wrap{
       position:sticky; top:0; z-index:50;
-      background: rgba(255,255,255,.80);
+      background: rgba(255,255,255,.78);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom:1px solid var(--border);
@@ -314,7 +313,6 @@
     }
     .btn-ghost:hover{ filter: brightness(.98); transform: translateY(-1px); }
 
-    /* Sections */
     section.block{ margin-top: 2.4rem; }
     .section-head{
       display:flex;
@@ -357,7 +355,6 @@
       .col-6{ grid-column: span 12; }
     }
 
-    /* Timeline */
     .timeline{
       display:flex;
       flex-direction:column;
@@ -460,7 +457,6 @@
       box-shadow: 0 8px 18px rgba(31,77,67,.20);
     }
 
-    /* FAQ */
     details{
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -597,7 +593,7 @@
       white-space:nowrap;
     }
 
-    /* Masonry */
+    /* Luxury Masonry */
     .masonry-wrap{ margin-top: 1rem; }
     .masonry{ column-count: 3; column-gap: 1rem; }
     @media (max-width: 980px){ .masonry{ column-count: 2; } }
@@ -665,7 +661,7 @@
       box-shadow: 0 8px 18px rgba(31,77,67,.20);
     }
 
-    /* Lightbox */
+    /* Fullscreen Lightbox */
     .lightbox{
       position: fixed;
       inset: 0;
@@ -780,25 +776,6 @@
       .lightbox__nav{ display:none; }
     }
 
-    /* RSVP form styling */
-    label{
-      display:block;
-      font-weight: 900;
-      color: var(--green);
-      margin-bottom: .35rem;
-    }
-    input[type="text"], input[type="email"], select{
-      width:100%;
-      padding:.95rem 1rem;
-      border-radius:16px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.86);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
-      font-weight: 700;
-    }
-    .status-ok{ color: #0f7a5c; font-weight: 850; }
-    .status-bad{ color: #b42318; font-weight: 850; }
-
     /* Music */
     audio{ display:none; }
     .music-btn{
@@ -846,13 +823,78 @@
       padding: 2.25rem 1.25rem 3.25rem;
       color: var(--muted);
       text-align:center;
-      position: relative;
-      z-index: 1;
     }
     footer a{ color: var(--green); text-decoration: none; font-weight: 900; }
     footer a:hover{ text-decoration: underline; }
 
     .muted{ color: var(--muted); }
+    .status-ok{ color: #0f7a5c; font-weight: 850; }
+    .status-bad{ color: #b42318; font-weight: 850; }
+
+    /* ======= VISUAL POLISH (no markup changes) ======= */
+    :root{
+      --shadow: 0 30px 110px rgba(0,0,0,.10);
+      --shadow2: 0 22px 74px rgba(31,77,67,.20);
+      --ring: 0 0 0 4px rgba(199,168,79,.18), 0 0 0 8px rgba(31,77,67,.12);
+    }
+    .nav-wrap{
+      box-shadow: 0 14px 50px rgba(0,0,0,.05);
+    }
+    .card, .hero-card, details{
+      box-shadow:
+        var(--shadow),
+        0 1px 0 rgba(255,255,255,.75) inset;
+    }
+    .hero-card{
+      position:relative;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius: calc(var(--radius) + 10px);
+      background: linear-gradient(135deg, rgba(199,168,79,.35), rgba(31,77,67,.20), rgba(47,107,92,.10));
+      opacity:.45;
+      filter: blur(14px);
+      z-index:-1;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--green), #163a32);
+    }
+    .btn-primary:hover{
+      filter: saturate(1.05) brightness(1.02);
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,.88);
+    }
+    .monogram{
+      position:relative;
+      overflow:hidden;
+    }
+    .monogram::after{
+      content:"";
+      position:absolute;
+      inset:-30%;
+      background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.38) 50%, transparent 65%);
+      transform: translateX(-60%) rotate(10deg);
+      animation: sheen 6.5s ease-in-out infinite;
+      opacity:.55;
+      pointer-events:none;
+    }
+    @keyframes sheen{
+      0%, 45% { transform: translateX(-70%) rotate(10deg); opacity:.0; }
+      55%     { opacity:.55; }
+      100%    { transform: translateX(70%) rotate(10deg); opacity:.0; }
+    }
+    .masonry .shot{
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .masonry .shot:hover{
+      transform: translateY(-2px);
+      box-shadow:
+        0 26px 90px rgba(0,0,0,.14),
+        0 1px 0 rgba(255,255,255,.55) inset;
+    }
   </style>
 </head>
 
@@ -1144,6 +1186,7 @@
           </div>
 
           <div class="party-columns" aria-label="Wedding party lists">
+            <!-- Bridesmaids: alphabetical, no blanks -->
             <div class="party-col">
               <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Bridesmaids</h3>
               <div class="list-card">
@@ -1161,6 +1204,7 @@
               </div>
             </div>
 
+            <!-- Groomsmen: alphabetical -->
             <div class="party-col">
               <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Groomsmen</h3>
               <div class="list-card">
@@ -1234,26 +1278,30 @@
         <div class="card-pad">
           <form class="grid" id="rsvpForm" autocomplete="on">
             <div class="col-6">
-              <label for="name">Full name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required />
+              <label for="name" style="font-weight:900; color:var(--green);">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
             </div>
 
             <div class="col-6">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              <label for="email" style="font-weight:900; color:var(--green);">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
             </div>
 
             <div class="col-6">
-              <label for="attending">Attendance</label>
-              <select id="attending" name="attending" required>
-                <option value="Yes">Happily accepting</option>
-                <option value="No">Regretfully decline</option>
+              <label for="attending" style="font-weight:900; color:var(--green);">Attendance</label>
+              <select id="attending" name="attending" required
+                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
+                <option value="yes">Happily accepting</option>
+                <option value="no">Regretfully decline</option>
               </select>
             </div>
 
             <div class="col-6">
-              <label for="guests">Number of guests</label>
-              <select id="guests" name="guests" required>
+              <label for="guests" style="font-weight:900; color:var(--green);">Number of guests</label>
+              <select id="guests" name="guests" required
+                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -1262,8 +1310,9 @@
             </div>
 
             <div class="col-12">
-              <label for="notes">Notes</label>
-              <input id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc." />
+              <label for="notes" style="font-weight:900; color:var(--green);">Notes</label>
+              <input id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc."
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
             </div>
 
             <div class="col-12" style="display:flex; gap:.65rem; flex-wrap:wrap; align-items:center; margin-top:.25rem;">
@@ -1272,7 +1321,7 @@
             </div>
 
             <div class="col-12">
-              <small class="muted">Your RSVP saves to a private Google Sheet.</small>
+              <small class="muted">RSVP connects via Google Sheets Web App. Paste your endpoint in the script.</small>
             </div>
           </form>
         </div>
@@ -1349,7 +1398,7 @@
       document.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // Music: start on first touch or click anywhere (iPhone friendly)
+      // Music: start on the first touch or click anywhere (iPhone friendly)
       const audio = document.getElementById("bgMusic");
       const musicBtn = document.getElementById("musicBtn");
       const musicText = document.getElementById("musicText");
@@ -1365,6 +1414,10 @@
         try {
           await audio.play();
           updateMusicUI(true);
+
+          window.removeEventListener("touchstart", startMusicFromFirstInteraction, true);
+          window.removeEventListener("click", startMusicFromFirstInteraction, true);
+          window.removeEventListener("keydown", startMusicFromFirstInteraction, true);
         } catch {
           updateMusicUI(false);
         }
@@ -1388,7 +1441,7 @@
         }
       });
 
-      // RSVP: Connected endpoint
+      // RSVP: Google Sheets Web App
       const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbz2UPBMQZni7BbnLPFgXacg79zEHcya5o3zcsErFhYxYYrahKZtPsgt4G1-CpA_o1tK/exec";
       const form = document.getElementById('rsvpForm');
       const msg = document.getElementById('rsvpMsg');
@@ -1399,35 +1452,13 @@
         msg.className = ok ? "status-ok" : "status-bad";
       }
 
-      async function postRsvp(payload){
-        // Try normal CORS first (best UX if your script sends CORS headers)
-        try {
-          const res = await fetch(RSVP_ENDPOINT, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          // If CORS is enabled, we might be able to read JSON
-          const data = await res.json().catch(() => null);
-          if (data && data.ok === true) return true;
-          // If response is not JSON but request succeeded, treat as ok
-          if (res.ok) return true;
-        } catch (e) {
-          // fall through to no-cors
-        }
-
-        // Fallback: no-cors (still writes to Sheets, but we cannot read response)
-        await fetch(RSVP_ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        return true;
-      }
-
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        if (!RSVP_ENDPOINT || RSVP_ENDPOINT.includes("PASTE_YOUR")) {
+          setStatus("RSVP is not connected yet. Paste your Google Sheets Web App URL in the code.", false);
+          return;
+        }
 
         const payload = {
           name: form.name.value.trim(),
@@ -1435,7 +1466,6 @@
           attending: form.attending.value,
           guests: form.guests.value,
           notes: form.notes.value.trim(),
-          userAgent: navigator.userAgent,
           timestamp: new Date().toISOString()
         };
 
@@ -1445,13 +1475,19 @@
         }
 
         btn.disabled = true;
-        btn.textContent = "Sending...";
+        btn.textContent = "Sending…";
         setStatus("", true);
 
         try {
-          await postRsvp(payload);
+          await fetch(RSVP_ENDPOINT, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
           form.reset();
-          setStatus("Thank you. Your RSVP has been received.", true);
+          setStatus("Thank you! Your RSVP has been received.", true);
         } catch (err) {
           setStatus("Something went wrong sending your RSVP. Please try again.", false);
         } finally {
@@ -1460,17 +1496,17 @@
         }
       });
 
-      // Lightbox: fullscreen + swipe
+      // Lightbox: fullscreen and swipe
       const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
-      if (galleryImgs.length) {
-        galleryImgs.forEach((img, idx) => {
-          img.addEventListener('click', () => openAt(idx));
-          img.setAttribute('tabindex', '0');
-          img.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(idx); }
-          });
+      if (!galleryImgs.length) return;
+
+      galleryImgs.forEach((img, idx) => {
+        img.addEventListener('click', () => openAt(idx));
+        img.setAttribute('tabindex', '0');
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(idx); }
         });
-      }
+      });
 
       const lb = document.getElementById('lightbox');
       const lbImg = document.getElementById('lightboxImg');
