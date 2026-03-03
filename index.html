@@ -7,8 +7,28 @@
   <meta name="theme-color" content="#1f4d43" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <title>Berne & Courtney • October 10, 2026</title>
-  <meta name="description" content="Join us to celebrate Berne & Courtney on October 10, 2026. Details, story, schedule, photos, wedding party, FAQ, and RSVP." />
+  <title>The Bully Wedding • Berne & Courtney • October 10, 2026</title>
+  <meta name="description" content="The Bully Wedding — Join us to celebrate Berne & Courtney on October 10, 2026. Details, story, schedule, photos, wedding party, FAQ, and RSVP." />
+
+  <!-- Open Graph / iMessage / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="The Bully Wedding • Berne & Courtney" />
+  <meta property="og:description" content="Join us to celebrate on October 10, 2026. Details, schedule, photos, and RSVP." />
+  <meta property="og:image" content="https://berneb1.github.io/Bully-wedding-website/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://berneb1.github.io/Bully-wedding-website/" />
+  <meta property="og:site_name" content="The Bully Wedding" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Bully Wedding • Berne & Courtney" />
+  <meta name="twitter:description" content="October 10, 2026 • Details, schedule, photos, and RSVP." />
+  <meta name="twitter:image" content="https://berneb1.github.io/Bully-wedding-website/og.png" />
+
+  <!-- Optional: add these files later if you upload them to your repo root -->
+  <!-- <link rel="icon" href="favicon.png" /> -->
+  <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png" /> -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -831,9 +851,9 @@
     .status-ok{ color: #0f7a5c; font-weight: 850; }
     .status-bad{ color: #b42318; font-weight: 850; }
 
-    /* ======= VISUAL POLISH (no markup changes) ======= */
+    /* ======= Luxury polish (no layout changes) ======= */
     :root{
-      --shadow: 0 30px 110px rgba(0,0,0,.10);
+      --shadow: 0 32px 120px rgba(0,0,0,.10);
       --shadow2: 0 22px 74px rgba(31,77,67,.20);
       --ring: 0 0 0 4px rgba(199,168,79,.18), 0 0 0 8px rgba(31,77,67,.12);
     }
@@ -895,6 +915,23 @@
         0 26px 90px rgba(0,0,0,.14),
         0 1px 0 rgba(255,255,255,.55) inset;
     }
+
+    /* Micro-entrance (subtle, premium) */
+    @media (prefers-reduced-motion: no-preference){
+      header.hero .names{
+        animation: rise .8s ease both;
+      }
+      header.hero .subline{
+        animation: rise .9s ease .05s both;
+      }
+      .hero-card{
+        animation: rise .95s ease .10s both;
+      }
+      @keyframes rise{
+        from{ opacity:0; transform: translateY(10px); }
+        to{ opacity:1; transform: translateY(0); }
+      }
+    }
   </style>
 </head>
 
@@ -917,8 +954,8 @@
       <a class="brand" href="#top" aria-label="Back to top">
         <div class="monogram" aria-hidden="true">B&C</div>
         <div class="brand-text">
-          <strong>Berne & Courtney</strong>
-          <span>October 10, 2026</span>
+          <strong>The Bully Wedding</strong>
+          <span>Berne & Courtney • October 10, 2026</span>
         </div>
       </a>
 
@@ -936,7 +973,7 @@
 
   <header id="top" class="hero">
     <h1 class="names">Berne & Courtney</h1>
-    <p class="subline">We’re getting married, and we’d love for you to celebrate with us on <strong>October 10, 2026</strong>.</p>
+    <p class="subline">The Bully Wedding • We’re getting married, and we’d love for you to celebrate with us on <strong>October 10, 2026</strong>.</p>
 
     <div class="hero-card" role="region" aria-label="Wedding overview">
       <div class="hero-media">
@@ -1210,6 +1247,7 @@
               <div class="list-card">
                 <ul class="names-list" aria-label="Groomsmen list">
                   <li><span>Andre Williams</span><span class="pill">Groomsman</span></li>
+                  <li><span>Deandre Bush</span><span class="pill">Groomsman</span></li>
                   <li><span>Hamid Dawson</span><span class="pill">Groomsman</span></li>
                   <li><span>Joseph Fogg</span><span class="pill">Groomsman</span></li>
                   <li><span>Kenneth Cousins</span><span class="pill">Groomsman</span></li>
@@ -1336,7 +1374,7 @@
       <a href="#rsvp">RSVP</a>
     </small>
     <div style="margin-top:.8rem;">
-      <small class="muted">© <span id="year"></span> Berne & Courtney</small>
+      <small class="muted">© <span id="year"></span> The Bully Wedding</small>
     </div>
   </footer>
 
@@ -1454,11 +1492,6 @@
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        if (!RSVP_ENDPOINT || RSVP_ENDPOINT.includes("PASTE_YOUR")) {
-          setStatus("RSVP is not connected yet. Paste your Google Sheets Web App URL in the code.", false);
-          return;
-        }
 
         const payload = {
           name: form.name.value.trim(),
