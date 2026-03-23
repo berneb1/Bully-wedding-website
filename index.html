@@ -1419,10 +1419,7 @@ Now we’re here, excited for the next chapter and grateful to celebrate it with
         const dtStart = toIcsUtc(WEDDING.startLocal);
         const dtEnd   = toIcsUtc(WEDDING.endLocal);
 
-        if (!WEDDING.location || WEDDING.location.toLowerCase().includes("add venue")) {
-          alert("Add your venue address in the WEDDING.location value in the script.");
-        }
-
+        if (!WEDDING.location || WEDDING.location.toLowerCase().
         const uid = `wedding-${Date.now()}@berne-courtney`;
         const now = toIcsUtc(new Date().toISOString());
 
