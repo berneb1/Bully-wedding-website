@@ -1505,20 +1505,24 @@ END:VCALENDAR`;
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const payload = {
-          name: form.name.value.trim(),
-          email: form.email.value.trim(),
-          attending: form.attending.value,
-          guests: form.guests.value,
-          streetAddress: form.streetAddress.value.trim(),
-          addressLine2: form.addressLine2.value.trim(),
-          city: form.city.value.trim(),
-          state: form.state.value.trim(),
-          zipCode: form.zipCode.value.trim(),
-          notes: form.notes.value.trim(),
-          userAgent: navigator.userAgent,
-          timestamp: new Date().toISOString()
-        };
+
+Berne Bully <berneb1@gmail.com>
+12:19 PM (2 minutes ago)
+to me
+
+const payload = {
+  name: form.name.value.trim(),
+  email: form.email.value.trim(),
+  attending: form.attending.value,
+  guests: form.guests.value,
+  notes: form.notes.value.trim(),
+  streetAddress: form.streetAddress ? form.streetAddress.value.trim() : "",
+  addressLine2: form.addressLine2 ? form.addressLine2.value.trim() : "",
+  city: form.city ? form.city.value.trim() : "",
+  state: form.state ? form.state.value.trim() : "",
+  zipCode: form.zipCode ? form.zipCode.value.trim() : "",
+  timestamp: new Date().toISOString()
+};
 
         if (
           !payload.name ||
