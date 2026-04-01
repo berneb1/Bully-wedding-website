@@ -1206,6 +1206,69 @@ Now we’re here, excited for the next chapter and grateful to celebrate it with
       </div>
     </section>
 
+    <!-- GUEST MAILING INFO -->
+    <section id="guest-info" class="block">
+      <div class="section-head">
+        <div>
+          <h2>Guest Mailing Information</h2>
+          <p>Please share your email and mailing address so we can send wedding updates and mailed details.</p>
+        </div>
+      </div>
+
+      <article class="card">
+        <div class="card-pad">
+          <form class="grid" id="guestInfoForm" autocomplete="on">
+            <div class="col-6">
+              <label for="guestFullName" style="font-weight:900; color:var(--green);">Full name</label>
+              <input id="guestFullName" name="guestFullName" type="text" placeholder="Your full name" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-6">
+              <label for="guestEmail" style="font-weight:900; color:var(--green);">Email</label>
+              <input id="guestEmail" name="guestEmail" type="email" placeholder="you@example.com" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-12">
+              <label for="streetAddress" style="font-weight:900; color:var(--green);">Street address</label>
+              <input id="streetAddress" name="streetAddress" type="text" placeholder="123 Main St" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-6">
+              <label for="addressLine2" style="font-weight:900; color:var(--green);">Apartment, suite, unit (optional)</label>
+              <input id="addressLine2" name="addressLine2" type="text" placeholder="Apt, suite, unit"
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-6">
+              <label for="city" style="font-weight:900; color:var(--green);">City</label>
+              <input id="city" name="city" type="text" placeholder="City" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-6">
+              <label for="state" style="font-weight:900; color:var(--green);">State</label>
+              <input id="state" name="state" type="text" placeholder="State" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-6">
+              <label for="zipCode" style="font-weight:900; color:var(--green);">ZIP code</label>
+              <input id="zipCode" name="zipCode" type="text" placeholder="ZIP code" required
+                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-12" style="display:flex; gap:.65rem; flex-wrap:wrap; align-items:center; margin-top:.25rem;">
+              <button class="btn btn-primary" type="submit" id="guestInfoBtn">Submit Information</button>
+              <span class="muted" id="guestInfoMsg" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+        </div>
+      </article>
+    </section>
+
     <!-- RSVP -->
     <section id="rsvp" class="block">
       <div class="section-head">
@@ -1419,7 +1482,8 @@ Now we’re here, excited for the next chapter and grateful to celebrate it with
         const dtStart = toIcsUtc(WEDDING.startLocal);
         const dtEnd   = toIcsUtc(WEDDING.endLocal);
 
-        if (!WEDDING.location || WEDDING.location.toLowerCase().
+        if (!WEDDING.location || !dtStart || !dtEnd) return;
+
         const uid = `wedding-${Date.now()}@berne-courtney`;
         const now = toIcsUtc(new Date().toISOString());
 
@@ -1505,6 +1569,61 @@ END:VCALENDAR`;
           btn.textContent = "Send RSVP";
         }
       });
+
+      // Guest mailing info form
+      const guestInfoForm = document.getElementById('guestInfoForm');
+      const guestInfoMsg = document.getElementById('guestInfoMsg');
+      const guestInfoBtn = document.getElementById('guestInfoBtn');
+
+      function setGuestInfoStatus(text, ok){
+        guestInfoMsg.textContent = text;
+        guestInfoMsg.className = ok ? "status-ok" : "status-bad";
+      }
+
+      if (guestInfoForm) {
+        guestInfoForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const payload = {
+            formType: "guestInfo",
+            fullName: guestInfoForm.guestFullName.value.trim(),
+            email: guestInfoForm.guestEmail.value.trim(),
+            streetAddress: guestInfoForm.streetAddress.value.trim(),
+            addressLine2: guestInfoForm.addressLine2.value.trim(),
+            city: guestInfoForm.city.value.trim(),
+            state: guestInfoForm.state.value.trim(),
+            zipCode: guestInfoForm.zipCode.value.trim(),
+            userAgent: navigator.userAgent,
+            timestamp: new Date().toISOString()
+          };
+
+          if (!payload.fullName || !payload.email || !payload.streetAddress || !payload.city || !payload.state || !payload.zipCode) {
+            setGuestInfoStatus("Please complete all required fields.", false);
+            return;
+          }
+
+          guestInfoBtn.disabled = true;
+          guestInfoBtn.textContent = "Submitting…";
+          setGuestInfoStatus("", true);
+
+          try {
+            await fetch(RSVP_ENDPOINT, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+
+            guestInfoForm.reset();
+            setGuestInfoStatus("Thank you! Your mailing information has been received.", true);
+          } catch (err) {
+            setGuestInfoStatus("Something went wrong. Please try again.", false);
+          } finally {
+            guestInfoBtn.disabled = false;
+            guestInfoBtn.textContent = "Submit Information";
+          }
+        });
+      }
 
       // Lightbox: fullscreen and swipe
       const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
