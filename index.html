@@ -978,7 +978,6 @@ we realized this wasn’t just a great conversation. It was the beginning of som
 <p class="story-p">
 Now we’re here, excited for the next chapter and grateful to celebrate it with the people who mean the most to us.
 </p>
-            </p>
           </div>
         </article>
 
@@ -1178,56 +1177,82 @@ Now we’re here, excited for the next chapter and grateful to celebrate it with
     </section>
 
     <!-- FAQ -->
-    <section id="faqs" class="block">
+    <section id="faq" class="block">
       <div class="section-head">
-    
+        <div>
           <h2>FAQ</h2>
         </div>
       </div>
 
       <div class="grid">
         <div class="col-6">
-         
+          <details>
+            <summary>What time should I arrive?</summary>
+            <p>Please arrive by 4:30 PM so everyone is seated before the ceremony begins at 5:00 PM.</p>
+          </details>
 
-
-          
+          <details>
+            <summary>What should I wear?</summary>
+            <p>Formal attire is requested.</p>
+          </details>
         </div>
 
         <div class="col-6">
           <details>
             <summary>Is there a hotel block?</summary>
             <p>
-              Yes. Rooms have been reserved under <strong>The Gardner/ Bully Wedding Block</strong> at <strong>Loews Atlanta Hotel</strong>,
+              Yes. Rooms have been reserved under <strong>The Gardner / Bully Wedding Block</strong> at <strong>Loews Atlanta Hotel</strong>,
               <a href="https://maps.google.com/?q=1065+Peachtree+St+NE+Atlanta+GA+30309" target="_blank" rel="noopener" style="color:var(--green); font-weight:900; text-decoration:none;">
                 1065 Peachtree St NE, Atlanta, GA 30309
               </a>.
             </p>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- GUEST MAILING INFO -->
-    <section id="guest-info" class="block">
+    <!-- RSVP -->
+    <section id="rsvp" class="block">
       <div class="section-head">
         <div>
-          <h2>Guest Mailing Information</h2>
-          <p>Please share your email and mailing address so we can send wedding updates and mailed details.</p>
+          <h2>RSVP &amp; Guest Information</h2>
+          <p>Please RSVP and share your mailing information so we can send wedding updates and mailed details.</p>
         </div>
       </div>
 
       <article class="card">
         <div class="card-pad">
-          <form class="grid" id="guestInfoForm" autocomplete="on">
+          <form class="grid" id="rsvpForm" autocomplete="on">
             <div class="col-6">
-              <label for="guestFullName" style="font-weight:900; color:var(--green);">Full name</label>
-              <input id="guestFullName" name="guestFullName" type="text" placeholder="Your full name" required
+              <label for="name" style="font-weight:900; color:var(--green);">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Your full name" required
                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
             </div>
 
             <div class="col-6">
-              <label for="guestEmail" style="font-weight:900; color:var(--green);">Email</label>
-              <input id="guestEmail" name="guestEmail" type="email" placeholder="you@example.com" required
+              <label for="email" style="font-weight:900; color:var(--green);">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required
                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+            </div>
+
+            <div class="col-6">
+              <label for="attending" style="font-weight:900; color:var(--green);">Attendance</label>
+              <select id="attending" name="attending" required
+                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
+                <option value="Yes">Happily accepting</option>
+                <option value="No">Regretfully decline</option>
+              </select>
+            </div>
+
+            <div class="col-6">
+              <label for="guests" style="font-weight:900; color:var(--green);">Number of guests</label>
+              <select id="guests" name="guests" required
+                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
             </div>
 
             <div class="col-12">
@@ -1258,59 +1283,6 @@ Now we’re here, excited for the next chapter and grateful to celebrate it with
               <label for="zipCode" style="font-weight:900; color:var(--green);">ZIP code</label>
               <input id="zipCode" name="zipCode" type="text" placeholder="ZIP code" required
                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
-            </div>
-
-            <div class="col-12" style="display:flex; gap:.65rem; flex-wrap:wrap; align-items:center; margin-top:.25rem;">
-              <button class="btn btn-primary" type="submit" id="guestInfoBtn">Submit Information</button>
-              <span class="muted" id="guestInfoMsg" role="status" aria-live="polite"></span>
-            </div>
-          </form>
-        </div>
-      </article>
-    </section>
-
-    <!-- RSVP -->
-    <section id="rsvp" class="block">
-      <div class="section-head">
-        <div>
-          <h2>RSVP</h2>
-          <p>Please RSVP by, add date.</p>
-        </div>
-      </div>
-
-      <article class="card">
-        <div class="card-pad">
-          <form class="grid" id="rsvpForm" autocomplete="on">
-            <div class="col-6">
-              <label for="name" style="font-weight:900; color:var(--green);">Full name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
-            </div>
-
-            <div class="col-6">
-              <label for="email" style="font-weight:900; color:var(--green);">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
-            </div>
-
-            <div class="col-6">
-              <label for="attending" style="font-weight:900; color:var(--green);">Attendance</label>
-              <select id="attending" name="attending" required
-                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
-                <option value="Yes">Happily accepting</option>
-                <option value="No">Regretfully decline</option>
-              </select>
-            </div>
-
-            <div class="col-6">
-              <label for="guests" style="font-weight:900; color:var(--green);">Number of guests</label>
-              <select id="guests" name="guests" required
-                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
             </div>
 
             <div class="col-12">
@@ -1519,7 +1491,7 @@ END:VCALENDAR`;
 
       calendarBtn.addEventListener("click", downloadIcs);
 
-      // RSVP: Google Sheets Web App
+      // RSVP + Guest Info: Google Sheets Web App
       const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbz2UPBMQZni7BbnLPFgXacg79zEHcya5o3zcsErFhYxYYrahKZtPsgt4G1-CpA_o1tK/exec";
       const form = document.getElementById('rsvpForm');
       const msg = document.getElementById('rsvpMsg');
@@ -1538,13 +1510,27 @@ END:VCALENDAR`;
           email: form.email.value.trim(),
           attending: form.attending.value,
           guests: form.guests.value,
+          streetAddress: form.streetAddress.value.trim(),
+          addressLine2: form.addressLine2.value.trim(),
+          city: form.city.value.trim(),
+          state: form.state.value.trim(),
+          zipCode: form.zipCode.value.trim(),
           notes: form.notes.value.trim(),
           userAgent: navigator.userAgent,
           timestamp: new Date().toISOString()
         };
 
-        if (!payload.name || !payload.email) {
-          setStatus("Please enter your name and email.", false);
+        if (
+          !payload.name ||
+          !payload.email ||
+          !payload.attending ||
+          !payload.guests ||
+          !payload.streetAddress ||
+          !payload.city ||
+          !payload.state ||
+          !payload.zipCode
+        ) {
+          setStatus("Please complete all required fields.", false);
           return;
         }
 
@@ -1561,69 +1547,14 @@ END:VCALENDAR`;
           });
 
           form.reset();
-          setStatus("Thank you! Your RSVP has been received.", true);
+          setStatus("Thank you! Your RSVP and mailing information have been received.", true);
         } catch (err) {
-          setStatus("Something went wrong sending your RSVP. Please try again.", false);
+          setStatus("Something went wrong sending your information. Please try again.", false);
         } finally {
           btn.disabled = false;
           btn.textContent = "Send RSVP";
         }
       });
-
-      // Guest mailing info form
-      const guestInfoForm = document.getElementById('guestInfoForm');
-      const guestInfoMsg = document.getElementById('guestInfoMsg');
-      const guestInfoBtn = document.getElementById('guestInfoBtn');
-
-      function setGuestInfoStatus(text, ok){
-        guestInfoMsg.textContent = text;
-        guestInfoMsg.className = ok ? "status-ok" : "status-bad";
-      }
-
-      if (guestInfoForm) {
-        guestInfoForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-
-          const payload = {
-            formType: "guestInfo",
-            fullName: guestInfoForm.guestFullName.value.trim(),
-            email: guestInfoForm.guestEmail.value.trim(),
-            streetAddress: guestInfoForm.streetAddress.value.trim(),
-            addressLine2: guestInfoForm.addressLine2.value.trim(),
-            city: guestInfoForm.city.value.trim(),
-            state: guestInfoForm.state.value.trim(),
-            zipCode: guestInfoForm.zipCode.value.trim(),
-            userAgent: navigator.userAgent,
-            timestamp: new Date().toISOString()
-          };
-
-          if (!payload.fullName || !payload.email || !payload.streetAddress || !payload.city || !payload.state || !payload.zipCode) {
-            setGuestInfoStatus("Please complete all required fields.", false);
-            return;
-          }
-
-          guestInfoBtn.disabled = true;
-          guestInfoBtn.textContent = "Submitting…";
-          setGuestInfoStatus("", true);
-
-          try {
-            await fetch(RSVP_ENDPOINT, {
-              method: "POST",
-              mode: "no-cors",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload)
-            });
-
-            guestInfoForm.reset();
-            setGuestInfoStatus("Thank you! Your mailing information has been received.", true);
-          } catch (err) {
-            setGuestInfoStatus("Something went wrong. Please try again.", false);
-          } finally {
-            guestInfoBtn.disabled = false;
-            guestInfoBtn.textContent = "Submit Information";
-          }
-        });
-      }
 
       // Lightbox: fullscreen and swipe
       const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
