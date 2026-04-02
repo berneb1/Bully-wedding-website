@@ -9,14 +9,14 @@
 
   <title>Berne & Courtney • October 10, 2026</title>
   <!-- Link preview for text messages -->
-<meta property="og:title" content="Berne & Courtney Wedding">
-<meta property="og:description" content="October 10, 2026 • Atlanta, GA">
-<meta property="og:image" content="https://berneb1.github.io/Bully-wedding-website/og2.jpg">
-<meta property="og:url" content="https://berneb1.github.io/Bully-wedding-website/">
-<meta property="og:type" content="website">
+  <meta property="og:title" content="Berne & Courtney Wedding">
+  <meta property="og:description" content="October 10, 2026 • Atlanta, GA">
+  <meta property="og:image" content="https://berneb1.github.io/Bully-wedding-website/og2.jpg">
+  <meta property="og:url" content="https://berneb1.github.io/Bully-wedding-website/">
+  <meta property="og:type" content="website">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://berneb1.github.io/Bully-wedding-website/og2.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://berneb1.github.io/Bully-wedding-website/og2.jpg">
 
   <style>
     :root{
@@ -1213,7 +1213,17 @@
         </div>
       </div>
 
-      <article class="card">
+      <div id="gate" class="card" style="max-width:500px;margin:2rem auto;text-align:center;">
+        <div class="card-pad">
+          <h3 style="color:var(--green);margin-bottom:1rem;">Enter Your Invite Code</h3>
+          <input id="passcodeInput" type="text" placeholder="Enter passcode"
+            style="width:100%;padding:.9rem;border-radius:14px;border:1px solid var(--border);" />
+          <button id="unlockBtn" class="btn btn-primary" style="margin-top:1rem;">Unlock RSVP</button>
+          <p id="gateMsg" class="muted" style="margin-top:.75rem;"></p>
+        </div>
+      </div>
+
+      <article class="card" id="rsvpCard" style="display:none;">
         <div class="card-pad">
           <form class="grid" id="rsvpForm" autocomplete="on">
             <div class="col-6">
@@ -1331,6 +1341,9 @@
       </div>
     </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1481,14 +1494,121 @@ END:VCALENDAR`;
 
       calendarBtn.addEventListener("click", downloadIcs);
 
-      const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbz2UPBMQZni7BbnLPFgXacg79zEHcya5o3zcsErFhYxYYrahKZtPsgt4G1-CpA_o1tK/exec";
+      // 🔥 SUPABASE + EMAIL CONFIG
+      const SUPABASE_URL = "YOUR_SUPABASE_URL";
+      const SUPABASE_KEY = "YOUR_SUPABASE_KEY";
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+      emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+
+      const MAX_CAPACITY = 150; // 🔥 CHANGE THIS
+
+      const gate = document.getElementById("gate");
+      const unlockBtn = document.getElementById("unlockBtn");
+      const passcodeInput = document.getElementById("passcodeInput");
+      const gateMsg = document.getElementById("gateMsg");
+      const rsvpCard = document.getElementById("rsvpCard");
+
       const form = document.getElementById('rsvpForm');
       const msg = document.getElementById('rsvpMsg');
       const btn = document.getElementById('rsvpBtn');
 
+      let CURRENT_GUEST = null;
+
       function setStatus(text, ok){
         msg.textContent = text;
         msg.className = ok ? "status-ok" : "status-bad";
+      }
+
+      async function getGuest(code) {
+        const { data, error } = await supabase
+          .from("guests")
+          .select("*")
+          .eq("passcode", code)
+          .single();
+
+        if (error) return null;
+        return data;
+      }
+
+      async function getTotalGuests() {
+        const { data } = await supabase
+          .from("guests")
+          .select("guest_count");
+
+        if (!data) return 0;
+        return data.reduce((sum, g) => sum + (parseInt(g.guest_count, 10) || 0), 0);
+      }
+
+      unlockBtn.addEventListener("click", async () => {
+        const code = passcodeInput.value.trim();
+        if (!code) return;
+
+        gateMsg.textContent = "";
+        gateMsg.className = "muted";
+
+        try {
+          const total = await getTotalGuests();
+          if (total >= MAX_CAPACITY) {
+            gateMsg.textContent = "RSVP is now closed. We’ve reached capacity.";
+            gateMsg.className = "status-bad";
+            return;
+          }
+
+          const guest = await getGuest(code);
+
+          if (!guest) {
+            gateMsg.textContent = "Invalid passcode";
+            gateMsg.className = "status-bad";
+            return;
+          }
+
+          CURRENT_GUEST = guest;
+          localStorage.setItem("wedding_passcode", code);
+
+          document.getElementById("name").value = guest.name || "";
+          document.getElementById("email").value = guest.email || "";
+
+          const guestSelect = document.getElementById("guests");
+          const maxGuests = guest.guest_count || 1;
+
+          guestSelect.value = String(maxGuests);
+
+          Array.from(guestSelect.options).forEach(opt => {
+            if (parseInt(opt.value, 10) > maxGuests) {
+              opt.disabled = true;
+            } else {
+              opt.disabled = false;
+            }
+          });
+
+          guestSelect.onchange = () => {
+            if (parseInt(guestSelect.value, 10) > maxGuests) {
+              guestSelect.value = String(maxGuests);
+            }
+          };
+
+          gate.style.display = "none";
+          rsvpCard.style.display = "block";
+
+          if (!document.getElementById("welcomeGuestMessage")) {
+            rsvpCard.insertAdjacentHTML(
+              "afterbegin",
+              `<p id="welcomeGuestMessage" style="text-align:center;font-weight:900;color:var(--green);margin:1rem 0 0;">
+                Welcome ${guest.name} 🎉
+              </p>`
+            );
+          }
+        } catch (err) {
+          gateMsg.textContent = "Something went wrong. Try again.";
+          gateMsg.className = "status-bad";
+        }
+      });
+
+      const savedCode = localStorage.getItem("wedding_passcode");
+      if (savedCode) {
+        passcodeInput.value = savedCode;
+        setTimeout(() => unlockBtn.click(), 300);
       }
 
       if (form && msg && btn) {
@@ -1496,17 +1616,16 @@ END:VCALENDAR`;
           e.preventDefault();
 
           const payload = {
-            name: form.name.value.trim(),
-            email: form.email.value.trim(),
-            attending: form.attending.value,
-            guests: form.guests.value,
-            streetAddress: form.streetAddress.value.trim(),
-            addressLine2: form.addressLine2.value.trim(),
-            city: form.city.value.trim(),
-            state: form.state.value.trim(),
-            zipCode: form.zipCode.value.trim(),
-            notes: form.notes.value.trim(),
-            timestamp: new Date().toISOString()
+            name: document.getElementById("name").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            attending: document.getElementById("attending").value,
+            guests: document.getElementById("guests").value,
+            streetAddress: document.getElementById("streetAddress").value.trim(),
+            addressLine2: document.getElementById("addressLine2").value.trim(),
+            city: document.getElementById("city").value.trim(),
+            state: document.getElementById("state").value.trim(),
+            zipCode: document.getElementById("zipCode").value.trim(),
+            notes: document.getElementById("notes").value.trim()
           };
 
           if (
@@ -1528,17 +1647,32 @@ END:VCALENDAR`;
           setStatus("", true);
 
           try {
-            await fetch(RSVP_ENDPOINT, {
-              method: "POST",
-              mode: "no-cors",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload)
+            if (CURRENT_GUEST) {
+              if (parseInt(payload.guests, 10) > CURRENT_GUEST.guest_count) {
+                setStatus("Guest limit exceeded.", false);
+                btn.disabled = false;
+                btn.textContent = "Send RSVP";
+                return;
+              }
+            }
+
+            await supabase.from("guests").update({
+              attending: payload.attending,
+              guest_count: payload.guests,
+              address: payload.streetAddress + ", " + payload.city + ", " + payload.state + " " + payload.zipCode,
+              notes: payload.notes
+            }).eq("email", payload.email);
+
+            await emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+              name: payload.name,
+              email: payload.email,
+              guests: payload.guests
             });
 
             form.reset();
-            setStatus("Thank you! Your RSVP and mailing information have been received.", true);
+            setStatus("RSVP confirmed! Check your email 🎉", true);
           } catch (err) {
-            setStatus("Something went wrong sending your information. Please try again.", false);
+            setStatus("Something went wrong. Try again.", false);
           } finally {
             btn.disabled = false;
             btn.textContent = "Send RSVP";
