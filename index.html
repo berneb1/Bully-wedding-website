@@ -1228,26 +1228,6 @@
                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
             </div>
 
-            <div class="col-6">
-              <label for="attending" style="font-weight:900; color:var(--green);">Attendance</label>
-              <select id="attending" name="attending" required
-                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
-                <option value="Yes">Happily accepting</option>
-                <option value="No">Regretfully decline</option>
-              </select>
-            </div>
-
-            <div class="col-6">
-              <label for="guests" style="font-weight:900; color:var(--green);">Number of guests</label>
-              <select id="guests" name="guests" required
-                      style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-
             <div class="col-12">
               <label for="streetAddress" style="font-weight:900; color:var(--green);">Street address</label>
               <input id="streetAddress" name="streetAddress" type="text" placeholder="123 Main St" required
@@ -1507,8 +1487,6 @@ END:VCALENDAR`;
           const payload = {
             name: document.getElementById("name").value.trim(),
             email: document.getElementById("email").value.trim().toLowerCase(),
-            attending: document.getElementById("attending").value,
-            guests: parseInt(document.getElementById("guests").value, 10),
             streetAddress: document.getElementById("streetAddress").value.trim(),
             addressLine2: document.getElementById("addressLine2").value.trim(),
             city: document.getElementById("city").value.trim(),
@@ -1520,8 +1498,6 @@ END:VCALENDAR`;
           if (
             !payload.name ||
             !payload.email ||
-            !payload.attending ||
-            !payload.guests ||
             !payload.streetAddress ||
             !payload.city ||
             !payload.state ||
@@ -1564,8 +1540,6 @@ END:VCALENDAR`;
               .insert({
                 name: payload.name,
                 email: payload.email,
-                attending: payload.attending,
-                guest_count: payload.guests,
                 address: fullAddress,
                 notes: payload.notes
               });
@@ -1583,8 +1557,6 @@ END:VCALENDAR`;
             await emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
               name: payload.name,
               email: payload.email,
-              attending: payload.attending,
-              guests: payload.guests,
               address: fullAddress,
               notes: payload.notes
             });
