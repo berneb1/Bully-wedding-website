@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#1f4d43" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <title>Berne & Courtney • October 10, 2026</title>
+  <title>Berne & Courtney Wedding • October 10, 2026</title>
 
   <meta property="og:title" content="Berne & Courtney Wedding">
   <meta property="og:description" content="October 10, 2026 • Atlanta, GA">
@@ -140,10 +140,10 @@
       background: linear-gradient(135deg, var(--green), var(--green2));
       color:#fff;
       text-align:center;
-      padding:.65rem .9rem;
+      padding:.58rem .8rem;
       font-weight:800;
-      font-size:.92rem;
-      line-height:1.3;
+      font-size:.88rem;
+      line-height:1.25;
       box-shadow: 0 14px 40px rgba(31,77,67,.20);
     }
     .info-banner a{
@@ -158,7 +158,7 @@
 
     /* Nav */
     .nav-wrap{
-      position:sticky; top:49px; z-index:50;
+      position:sticky; top:43px; z-index:50;
       background: rgba(255,255,255,.78);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -271,41 +271,55 @@
       transform: translateY(-1px);
     }
 
-/* unified font */
-html,
-body,
-button,
-input,
-select,
-textarea,
-label,
-summary,
-a,
-p,
-small,
-strong,
-span,
-li,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.names,
-.section-head h2,
-.story-title,
-.feature-title,
-[style*="Playfair Display"]{
-  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif !important;
-  letter-spacing:0 !important;
-}
+    /* unified font */
+    html,
+    body,
+    button,
+    input,
+    select,
+    textarea,
+    label,
+    summary,
+    a,
+    p,
+    small,
+    strong,
+    span,
+    li,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .names,
+    .section-head h2,
+    .story-title,
+    .feature-title,
+    [style*="Playfair Display"]{
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif !important;
+      letter-spacing:0 !important;
+    }
+
+    /* Heading hierarchy */
+    .section-head h2{
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      font-weight:900;
+    }
+    .story-title{
+      font-size: clamp(1.45rem, 2.8vw, 1.9rem);
+      font-weight:900;
+    }
+    .feature-title{
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      font-weight:900;
+    }
 
     /* Hero */
     header.hero{
       text-align:center;
-      padding: 5.75rem 1rem 2.25rem;
+      padding: 5.55rem 1rem 2.25rem;
       position:relative;
       z-index:1;
     }
@@ -322,10 +336,10 @@ h6,
 
     .names{
       margin:0;
-      font-size:clamp(2.2rem, 5.2vw, 3.35rem);
+      font-size:clamp(2.45rem, 5.6vw, 3.75rem);
       color:var(--green);
       text-shadow:0 24px 80px rgba(31,77,67,.18);
-      font-weight:800;
+      font-weight:900;
     }
     .subline{
       margin:.8rem auto 0;
@@ -461,8 +475,6 @@ h6,
     .section-head h2{
       margin:0;
       color: var(--green);
-      font-size: clamp(1.45rem, 2.8vw, 1.95rem);
-      font-weight:800;
     }
     .section-head p{
       margin:0;
@@ -537,8 +549,6 @@ h6,
     .story-title{
       margin:.1rem 0 .5rem;
       color:var(--green);
-      font-size: 1.55rem;
-      font-weight:800;
     }
     .story-p{
       margin:.65rem 0 0;
@@ -666,8 +676,6 @@ h6,
     .feature-title{
       margin:0;
       color: var(--green);
-      font-size: 1.28rem;
-      font-weight:800;
     }
     .feature-name{
       margin:.2rem 0 0;
@@ -721,6 +729,30 @@ h6,
       background: rgba(31,77,67,.06);
       color: var(--green);
       white-space:nowrap;
+    }
+
+    /* Form cleanup */
+    .form-label{
+      display:block;
+      font-weight:900;
+      color:var(--green);
+      margin-bottom:.45rem;
+    }
+    .form-input{
+      width:100%;
+      padding:.95rem 1rem;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text);
+      font:inherit;
+    }
+    .form-actions{
+      display:flex;
+      gap:.65rem;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:.25rem;
     }
 
     /* Luxury Masonry */
@@ -964,63 +996,66 @@ h6,
     @media (max-width: 860px){
       .info-banner{
         top:0;
-        padding:.55rem .8rem;
-        font-size:.82rem;
-        line-height:1.25;
+        padding:.42rem .65rem;
+        font-size:.76rem;
+        line-height:1.2;
       }
 
       .nav-wrap{
-        top:44px;
+        top:32px;
       }
 
       .nav{
-        padding:.72rem .9rem;
+        padding:.62rem .78rem;
       }
 
       .brand{
-        gap:.65rem;
+        gap:.6rem;
       }
 
       .monogram{
-        width:40px;
-        height:40px;
-        border-radius:14px;
-        font-size:.78rem;
+        width:38px;
+        height:38px;
+        border-radius:13px;
+        font-size:.74rem;
       }
 
       .brand-text{
         flex-direction:row;
-        gap:.4rem;
+        gap:.35rem;
         align-items:center;
       }
 
       .brand-text strong{
-        font-size:.95rem;
+        font-size:.92rem;
       }
 
       .brand-text span{
-        font-size:.78rem;
+        font-size:.75rem;
       }
 
       .menu-toggle{
         display:inline-flex;
+        width:44px;
+        height:44px;
+        border-radius:14px;
       }
 
       .nav-links{
         position:absolute;
-        top:calc(100% + 10px);
-        right:.9rem;
-        left:.9rem;
+        top:calc(100% + 8px);
+        right:.78rem;
+        left:.78rem;
         display:flex;
         flex-direction:column;
         align-items:stretch;
-        gap:.4rem;
-        padding:.75rem;
+        gap:.35rem;
+        padding:.65rem;
         background: rgba(255,255,255,.94);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border:1px solid rgba(0,0,0,.08);
-        border-radius:22px;
+        border-radius:20px;
         box-shadow: 0 24px 80px rgba(0,0,0,.14);
         opacity:0;
         visibility:hidden;
@@ -1038,8 +1073,8 @@ h6,
       .nav-links a{
         width:100%;
         text-align:left;
-        padding:.9rem 1rem;
-        border-radius:16px;
+        padding:.82rem .95rem;
+        border-radius:15px;
       }
 
       .nav-links .cta{
@@ -1047,11 +1082,11 @@ h6,
       }
 
       header.hero{
-        padding: 4.75rem 1rem 1.85rem;
+        padding: 4.15rem 1rem 1.7rem;
       }
 
       .hero-card{
-        margin-top:1.45rem;
+        margin-top:1.25rem;
       }
 
       .hero-details{
@@ -1066,6 +1101,56 @@ h6,
         font-size:.86rem;
         padding:.5rem .65rem;
       }
+
+      .section-head h2{
+        font-size:1.55rem;
+      }
+
+      .party-grid{
+        gap:.75rem;
+      }
+
+      .feature-inner{
+        padding: .95rem 1rem 1rem;
+        align-items:flex-start;
+        gap:.8rem;
+      }
+
+      .medal{
+        width:54px;
+        height:54px;
+        border-radius:18px;
+        font-size:1rem;
+      }
+
+      .feature-name{
+        font-size:1rem;
+      }
+
+      .party-columns{
+        gap:.85rem;
+        margin-top:.95rem;
+      }
+
+      .list-card{
+        padding:.8rem;
+      }
+
+      .names-list{
+        gap:.45rem;
+      }
+
+      .names-list li{
+        padding:.68rem .72rem;
+        border-radius:14px;
+        font-size:.95rem;
+        align-items:flex-start;
+      }
+
+      .names-list li .pill{
+        font-size:.77rem;
+        padding:.26rem .5rem;
+      }
     }
   </style>
 </head>
@@ -1075,7 +1160,7 @@ h6,
   <div class="progress" id="progress" aria-hidden="true"></div>
 
   <div class="info-banner">
-    Please submit your information to receive your official wedding invitation →
+    Submit your information for your official invitation.
     <a href="#rsvp">Start here</a>
   </div>
 
@@ -1117,7 +1202,7 @@ h6,
   </div>
 
   <header id="top" class="hero">
-    <h1 class="names">The Bully Wedding</h1>
+    <h1 class="names">Berne & Courtney Wedding</h1>
     <p class="subline">We’re getting married, and we’d love for you to celebrate with us on <strong>October 10, 2026</strong>.</p>
 
     <div class="hero-card" role="region" aria-label="Wedding overview">
@@ -1443,6 +1528,16 @@ h6,
             <summary>What should I wear?</summary>
             <p>Formal attire is requested.</p>
           </details>
+
+          <details>
+            <summary>Is parking available?</summary>
+            <p>Yes. Parking will be available at the hotel. We recommend arriving a little early to allow time for parking and getting settled before the ceremony.</p>
+          </details>
+
+          <details>
+            <summary>Are children invited?</summary>
+            <p>Please refer to your invitation for the guest count listed for your household. If you have questions, reach out to us directly.</p>
+          </details>
         </div>
 
         <div class="col-6">
@@ -1459,6 +1554,16 @@ h6,
                 Click here to book your hotel room in our wedding block →
               </a>
             </p>
+          </details>
+
+          <details>
+            <summary>Can I bring a plus-one?</summary>
+            <p>Please follow the guest count listed on your invitation. We’re keeping our celebration as intentional as possible and appreciate your understanding.</p>
+          </details>
+
+          <details>
+            <summary>When is the hotel room block deadline?</summary>
+            <p>We recommend booking as soon as possible so you can secure your room in the wedding block before availability runs out.</p>
           </details>
         </div>
       </div>
@@ -1477,54 +1582,46 @@ h6,
         <div class="card-pad">
           <form class="grid" id="rsvpForm" autocomplete="on">
             <div class="col-6">
-              <label for="name" style="font-weight:900; color:var(--green);">Full name</label>
-              <input id="name" name="name" type="text" placeholder="Your full name" required
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+              <label class="form-label" for="name">Full name</label>
+              <input class="form-input" id="name" name="name" type="text" placeholder="Your full name" required />
             </div>
 
             <div class="col-6">
-              <label for="email" style="font-weight:900; color:var(--green);">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" id="email" name="email" type="email" placeholder="you@example.com" required />
             </div>
 
             <div class="col-12">
-              <label for="streetAddress" style="font-weight:900; color:var(--green);">Street address</label>
-              <input id="streetAddress" name="streetAddress" type="text" placeholder="123 Main St" required
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+              <label class="form-label" for="streetAddress">Street address</label>
+              <input class="form-input" id="streetAddress" name="streetAddress" type="text" placeholder="123 Main St" required />
             </div>
 
             <div class="col-6">
-              <label for="addressLine2" style="font-weight:900; color:var(--green);">Apartment, suite, unit (optional)</label>
-              <input id="addressLine2" name="addressLine2" type="text" placeholder="Apt, suite, unit"
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+              <label class="form-label" for="addressLine2">Apartment, suite, unit (optional)</label>
+              <input class="form-input" id="addressLine2" name="addressLine2" type="text" placeholder="Apt, suite, unit" />
             </div>
 
             <div class="col-6">
-              <label for="city" style="font-weight:900; color:var(--green);">City</label>
-              <input id="city" name="city" type="text" placeholder="City" required
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+              <label class="form-label" for="city">City</label>
+              <input class="form-input" id="city" name="city" type="text" placeholder="City" required />
             </div>
 
             <div class="col-6">
-              <label for="state" style="font-weight:900; color:var(--green);">State</label>
-              <input id="state" name="state" type="text" placeholder="State" required
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+              <label class="form-label" for="state">State</label>
+              <input class="form-input" id="state" name="state" type="text" placeholder="State" required />
             </div>
 
             <div class="col-6">
-              <label for="zipCode" style="font-weight:900; color:var(--green);">ZIP code</label>
-              <input id="zipCode" name="zipCode" type="text" placeholder="ZIP code" required
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+              <label class="form-label" for="zipCode">ZIP code</label>
+              <input class="form-input" id="zipCode" name="zipCode" type="text" placeholder="ZIP code" required />
             </div>
 
             <div class="col-12">
-              <label for="notes" style="font-weight:900; color:var(--green);">Notes</label>
-              <input id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc."
-                     style="width:100%; padding:.95rem 1rem; border-radius:16px; border:1px solid var(--border);" />
+              <label class="form-label" for="notes">Notes</label>
+              <input class="form-input" id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc." />
             </div>
 
-            <div class="col-12" style="display:flex; gap:.65rem; flex-wrap:wrap; align-items:center; margin-top:.25rem;">
+            <div class="col-12 form-actions">
               <button class="btn btn-primary" type="submit" id="rsvpBtn">Submit Info</button>
               <span class="muted" id="rsvpMsg" role="status" aria-live="polite"></span>
             </div>
@@ -1578,7 +1675,7 @@ h6,
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const WEDDING = {
-        title: "Berne and Courtney Wedding",
+        title: "Berne & Courtney Wedding",
         location: "Loews Hotel Atlanta, 1065 Peachtree St NE, Atlanta, GA",
         startLocal: "2026-10-10T17:00:00",
         endLocal:   "2026-10-10T22:30:00",
