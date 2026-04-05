@@ -8,7 +8,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Berne & Courtney • October 10, 2026</title>
-  <!-- Link preview for text messages -->
+
   <meta property="og:title" content="Berne & Courtney Wedding">
   <meta property="og:description" content="October 10, 2026 • Atlanta, GA">
   <meta property="og:image" content="https://berneb1.github.io/Bully-wedding-website/og2.jpg">
@@ -39,7 +39,26 @@
       --container: 1120px;
     }
 
+    /* ✅ ADDED SMOOTHNESS (SAFE) */
+    html, body{
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body{
+      -webkit-overflow-scrolling: touch;
+    }
+    *{
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn,
+    .nav-links a,
+    .music-btn,
+    .masonry img{
+      transition: all .25s cubic-bezier(.4,0,.2,1);
+    }
+
     html { scroll-behavior: smooth; }
+
     body{
       margin:0;
       font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
@@ -53,6 +72,7 @@
         linear-gradient(180deg, #f4f8f6, #ffffff 58%);
     }
 
+    
     body::after{
       content:"";
       position:fixed;
