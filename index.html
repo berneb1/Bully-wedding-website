@@ -102,9 +102,29 @@
       border-radius: 12px;
     }
 
+    .info-banner{
+      position: sticky;
+      top: 3px;
+      z-index: 80;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      color:#fff;
+      text-align:center;
+      padding:.8rem 1rem;
+      font-weight:900;
+      box-shadow: 0 14px 40px rgba(31,77,67,.20);
+    }
+    .info-banner a{
+      color:#fff;
+      text-decoration:underline;
+      font-weight:900;
+    }
+    .info-banner a:hover{
+      opacity:.92;
+    }
+
     /* Nav */
     .nav-wrap{
-      position:sticky; top:0; z-index:50;
+      position:sticky; top:53px; z-index:50;
       background: rgba(255,255,255,.78);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -833,12 +853,13 @@
 </head>
 
 <body>
-  
-  
-  
-  
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <div class="info-banner">
+    Please submit your information to receive your official wedding invitation →
+    <a href="#rsvp">Start here</a>
+  </div>
 
   <audio id="bgMusic" preload="auto" loop playsinline>
     <source src="lets-get-married-instrumental.mp3" type="audio/mpeg" />
@@ -922,6 +943,7 @@
             <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem;">
               <a class="btn btn-ghost" id="mapsBtn" href="#" target="_blank" rel="noopener">📍 Maps</a>
               <button class="btn btn-ghost" id="calendarBtn" type="button">🗓️ Add to calendar</button>
+              <a class="btn btn-ghost" href="https://www.loewshotels.com/atlanta-hotel/gardner-bully-wedding-room-block" target="_blank" rel="noopener">🏨 Book hotel room</a>
             </div>
           </div>
         </article>
@@ -939,6 +961,11 @@
                 <strong>Loews Atlanta Hotel</strong><br/>
                 <a href="https://maps.google.com/?q=1065+Peachtree+St+NE+Atlanta+GA+30309" target="_blank" rel="noopener" style="color:var(--green); font-weight:900; text-decoration:none;">
                   1065 Peachtree St NE<br/>Atlanta GA 30309
+                </a>
+              </p>
+              <p style="margin:.85rem 0 0;">
+                <a href="https://www.loewshotels.com/atlanta-hotel/gardner-bully-wedding-room-block" target="_blank" rel="noopener" style="color:var(--green); font-weight:900; text-decoration:none;">
+                  Book your room in our wedding block →
                 </a>
               </p>
             </div>
@@ -1202,6 +1229,11 @@
               <a href="https://maps.google.com/?q=1065+Peachtree+St+NE+Atlanta+GA+30309" target="_blank" rel="noopener" style="color:var(--green); font-weight:900; text-decoration:none;">
                 1065 Peachtree St NE, Atlanta, GA 30309
               </a>.
+            </p>
+            <p style="margin-top:.75rem;">
+              <a href="https://www.loewshotels.com/atlanta-hotel/gardner-bully-wedding-room-block" target="_blank" rel="noopener" style="color:var(--green); font-weight:900; text-decoration:none;">
+                Click here to book your hotel room in our wedding block →
+              </a>
             </p>
           </details>
         </div>
