@@ -46,15 +46,27 @@
     }
     body{
       -webkit-overflow-scrolling: touch;
+      text-rendering: optimizeLegibility;
     }
     *{
       -webkit-tap-highlight-color: transparent;
+      box-sizing:border-box;
     }
     .btn,
     .nav-links a,
     .music-btn,
-    .masonry img{
-      transition: all .25s cubic-bezier(.4,0,.2,1);
+    .masonry img,
+    .card,
+    .hero-card,
+    .feature-card,
+    details{
+      transition:
+        transform .28s cubic-bezier(.22,1,.36,1),
+        background .28s cubic-bezier(.22,1,.36,1),
+        color .28s cubic-bezier(.22,1,.36,1),
+        border-color .28s cubic-bezier(.22,1,.36,1),
+        box-shadow .28s cubic-bezier(.22,1,.36,1),
+        opacity .28s cubic-bezier(.22,1,.36,1);
     }
 
     html { scroll-behavior: smooth; }
@@ -72,7 +84,6 @@
         linear-gradient(180deg, #f4f8f6, #ffffff 58%);
     }
 
-    
     body::after{
       content:"";
       position:fixed;
@@ -129,14 +140,17 @@
       background: linear-gradient(135deg, var(--green), var(--green2));
       color:#fff;
       text-align:center;
-      padding:.8rem 1rem;
-      font-weight:900;
+      padding:.65rem .9rem;
+      font-weight:800;
+      font-size:.92rem;
+      line-height:1.3;
       box-shadow: 0 14px 40px rgba(31,77,67,.20);
     }
     .info-banner a{
       color:#fff;
       text-decoration:underline;
       font-weight:900;
+      white-space:nowrap;
     }
     .info-banner a:hover{
       opacity:.92;
@@ -144,7 +158,7 @@
 
     /* Nav */
     .nav-wrap{
-      position:sticky; top:53px; z-index:50;
+      position:sticky; top:49px; z-index:50;
       background: rgba(255,255,255,.78);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -153,14 +167,16 @@
     .nav{
       max-width: var(--container);
       margin:0 auto;
-      padding:.85rem 1.25rem;
+      padding:.78rem 1.05rem;
       display:flex; align-items:center; justify-content:space-between;
-      gap:1rem;
+      gap:.9rem;
+      position:relative;
     }
     .brand{
-      display:flex; align-items:center; gap:.75rem;
+      display:flex; align-items:center; gap:.8rem;
       text-decoration:none; color:inherit;
-      min-width: 220px;
+      min-width:0;
+      flex:1;
     }
     .monogram{
       width:44px;height:44px;
@@ -170,16 +186,63 @@
       display:grid; place-items:center;
       color:#fff; font-weight:900; letter-spacing:.12em; font-size:.85rem;
       user-select:none;
+      flex:0 0 auto;
     }
-    .brand-text{ line-height:1.05; }
+    .brand-text{
+      line-height:1.05;
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+      flex-wrap:wrap;
+    }
     .brand-text strong{
       display:block;
-      font-family:"Playfair Display",serif;
       color:var(--green);
-      font-weight:600;
-      font-size:1.10rem;
+      font-weight:800;
+      font-size:1.02rem;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
     }
-    .brand-text span{ color:var(--muted); font-size:.86rem; }
+    .brand-text span{
+      color:var(--muted);
+      font-size:.84rem;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .menu-toggle{
+      display:none;
+      appearance:none;
+      border:1px solid rgba(31,77,67,.10);
+      background: rgba(255,255,255,.88);
+      width:50px;
+      height:50px;
+      border-radius:16px;
+      padding:0;
+      cursor:pointer;
+      box-shadow: 0 14px 40px rgba(0,0,0,.08);
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+      flex:0 0 auto;
+    }
+    .menu-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      border-radius:999px;
+      background:var(--green);
+      transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .2s ease;
+    }
+    .menu-toggle.is-open span:nth-child(1){
+      transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.is-open span:nth-child(2){
+      opacity:0;
+    }
+    .menu-toggle.is-open span:nth-child(3){
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
     .nav-links{
       display:flex; align-items:center; gap:.35rem;
@@ -208,6 +271,16 @@
       transform: translateY(-1px);
     }
 
+    /* unified font */
+    .names,
+    .section-head h2,
+    .story-title,
+    .feature-title,
+    [style*="Playfair Display"]{
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif !important;
+      letter-spacing:0 !important;
+    }
+
     /* Hero */
     header.hero{
       text-align:center;
@@ -228,11 +301,10 @@
 
     .names{
       margin:0;
-      font-family:"Playfair Display",serif;
       font-size:clamp(2.2rem, 5.2vw, 3.35rem);
       color:var(--green);
-      letter-spacing:.01em;
       text-shadow:0 24px 80px rgba(31,77,67,.18);
+      font-weight:800;
     }
     .subline{
       margin:.8rem auto 0;
@@ -367,10 +439,9 @@
     }
     .section-head h2{
       margin:0;
-      font-family:"Playfair Display",serif;
       color: var(--green);
       font-size: clamp(1.45rem, 2.8vw, 1.95rem);
-      letter-spacing:.01em;
+      font-weight:800;
     }
     .section-head p{
       margin:0;
@@ -445,8 +516,8 @@
     .story-title{
       margin:.1rem 0 .5rem;
       color:var(--green);
-      font-family:"Playfair Display",serif;
       font-size: 1.55rem;
+      font-weight:800;
     }
     .story-p{
       margin:.65rem 0 0;
@@ -573,10 +644,9 @@
     }
     .feature-title{
       margin:0;
-      font-family:"Playfair Display",serif;
       color: var(--green);
       font-size: 1.28rem;
-      letter-spacing:.01em;
+      font-weight:800;
     }
     .feature-name{
       margin:.2rem 0 0;
@@ -869,6 +939,113 @@
     .muted{ color: var(--muted); }
     .status-ok{ color: #0f7a5c; font-weight: 850; }
     .status-bad{ color: #b42318; font-weight: 850; }
+
+    @media (max-width: 860px){
+      .info-banner{
+        top:0;
+        padding:.55rem .8rem;
+        font-size:.82rem;
+        line-height:1.25;
+      }
+
+      .nav-wrap{
+        top:44px;
+      }
+
+      .nav{
+        padding:.72rem .9rem;
+      }
+
+      .brand{
+        gap:.65rem;
+      }
+
+      .monogram{
+        width:40px;
+        height:40px;
+        border-radius:14px;
+        font-size:.78rem;
+      }
+
+      .brand-text{
+        flex-direction:row;
+        gap:.4rem;
+        align-items:center;
+      }
+
+      .brand-text strong{
+        font-size:.95rem;
+      }
+
+      .brand-text span{
+        font-size:.78rem;
+      }
+
+      .menu-toggle{
+        display:inline-flex;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:calc(100% + 10px);
+        right:.9rem;
+        left:.9rem;
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        gap:.4rem;
+        padding:.75rem;
+        background: rgba(255,255,255,.94);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border:1px solid rgba(0,0,0,.08);
+        border-radius:22px;
+        box-shadow: 0 24px 80px rgba(0,0,0,.14);
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        transform: translateY(-8px) scale(.985);
+      }
+
+      .nav-links.open{
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+        transform: translateY(0) scale(1);
+      }
+
+      .nav-links a{
+        width:100%;
+        text-align:left;
+        padding:.9rem 1rem;
+        border-radius:16px;
+      }
+
+      .nav-links .cta{
+        text-align:center;
+      }
+
+      header.hero{
+        padding: 4.75rem 1rem 1.85rem;
+      }
+
+      .hero-card{
+        margin-top:1.45rem;
+      }
+
+      .hero-details{
+        padding: 1rem;
+      }
+
+      .chips{
+        gap:.4rem;
+      }
+
+      .chip{
+        font-size:.86rem;
+        padding:.5rem .65rem;
+      }
+    }
   </style>
 </head>
 
@@ -900,7 +1077,13 @@
         </div>
       </a>
 
-      <div class="nav-links" role="navigation" aria-label="Primary">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks" role="navigation" aria-label="Primary">
         <a href="#details">Details</a>
         <a href="#story">Story</a>
         <a href="#schedule">Schedule</a>
@@ -1407,6 +1590,53 @@
       }
       document.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinksEl = document.getElementById('navLinks');
+
+      function closeMenu() {
+        if (!menuToggle || !navLinksEl) return;
+        menuToggle.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        navLinksEl.classList.remove('open');
+      }
+
+      function openMenu() {
+        if (!menuToggle || !navLinksEl) return;
+        menuToggle.classList.add('is-open');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        navLinksEl.classList.add('open');
+      }
+
+      if (menuToggle && navLinksEl) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = navLinksEl.classList.contains('open');
+          if (isOpen) closeMenu();
+          else openMenu();
+        });
+
+        navLinksEl.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 860) closeMenu();
+          });
+        });
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 860) closeMenu();
+        });
+
+        document.addEventListener('click', (e) => {
+          if (window.innerWidth > 860) return;
+          if (!navLinksEl.classList.contains('open')) return;
+          if (!navLinksEl.contains(e.target) && !menuToggle.contains(e.target)) {
+            closeMenu();
+          }
+        });
+
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeMenu();
+        });
+      }
 
       const audio = document.getElementById("bgMusic");
       const musicBtn = document.getElementById("musicBtn");
