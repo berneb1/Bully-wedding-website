@@ -625,91 +625,6 @@
       line-height: 1.55;
     }
 
-    /* Added dress code + visual examples */
-    .dress-grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-    }
-    .dress-col{
-      grid-column: span 6;
-    }
-    .dress-note{
-      border-radius: 18px;
-      padding: 1rem;
-      background: rgba(31,77,67,.04);
-      border: 1px solid rgba(31,77,67,.10);
-    }
-    .dress-note h3{
-      margin:.1rem 0 .6rem;
-      color: var(--green);
-      font-weight: 900;
-    }
-    .dress-note p{
-      margin:.35rem 0 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-weight: 650;
-    }
-    .dress-note ul{
-      margin:.75rem 0 0;
-      padding-left: 1.1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 650;
-    }
-    .outfit-grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .outfit-card{
-      grid-column: span 4;
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: rgba(255,255,255,.86);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-    .outfit-card img{
-      width:100%;
-      height:320px;
-      object-fit:cover;
-      display:block;
-      background:#eef3f1;
-    }
-    .outfit-copy{
-      padding: .95rem 1rem 1rem;
-    }
-    .outfit-copy h3{
-      margin:0 0 .3rem;
-      color:var(--green);
-      font-weight:900;
-      font-size:1.05rem;
-    }
-    .outfit-copy p{
-      margin:0;
-      color:var(--muted);
-      font-weight:650;
-      line-height:1.6;
-    }
-    .outfit-helper{
-      margin-top:.9rem;
-      color:var(--muted);
-      font-weight:650;
-      line-height:1.7;
-    }
-    @media (max-width: 920px){
-      .dress-col,
-      .outfit-card{
-        grid-column: span 12;
-      }
-      .outfit-card img{
-        height:280px;
-      }
-    }
-
     /* Wedding Party */
     .party-grid{
       display:grid;
@@ -1369,75 +1284,6 @@
       </div>
     </section>
 
-    <!-- DRESS CODE -->
-    <section id="dress-code" class="block">
-      <div class="section-head">
-        <div>
-          <h2>Dress Code</h2>
-          <p>Formal and elegant. Here are a few quick style notes and visual examples for guests.</p>
-        </div>
-      </div>
-
-      <article class="card">
-        <div class="card-pad">
-          <div class="dress-grid">
-            <div class="dress-col">
-              <div class="dress-note">
-                <h3>What to Wear</h3>
-                <p>Formal attire: floor-length dresses or elegant cocktail dresses for women, and suits or tuxedos for men.</p>
-              </div>
-            </div>
-
-            <div class="dress-col">
-              <div class="dress-note">
-                <h3>What to Avoid</h3>
-                <ul>
-                  <li>Jeans or denim</li>
-                  <li>Sneakers or flip flops</li>
-                  <li>Casual sundresses</li>
-                  <li>T-shirts or polos</li>
-                  <li>Anything overly casual or beachwear</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="outfit-grid" aria-label="Visual outfit examples">
-            <article class="outfit-card">
-              <img src="attire-women-example.jpg" alt="Example formal look featuring an African American woman in an elegant dress" loading="lazy" />
-              <div class="outfit-copy">
-                <h3>Women’s Formal Example</h3>
-                <p>Elegant cocktail or floor-length dress, refined accessories, and dressy heels or formal flats.</p>
-              </div>
-            </article>
-
-            <article class="outfit-card">
-              <img src="attire-men-example.jpg" alt="Example formal look featuring an African American man in a suit or tuxedo" loading="lazy" />
-              <div class="outfit-copy">
-                <h3>Men’s Formal Example</h3>
-                <p>Suit or tuxedo, polished dress shoes, and classic formal details like a tie, bow tie, vest, or pocket square.</p>
-              </div>
-            </article>
-
-            <article class="outfit-card">
-              <img src="attire-couple-example.jpg" alt="Example formal look featuring an African American couple dressed for a formal wedding" loading="lazy" />
-              <div class="outfit-copy">
-                <h3>Couples Style Example</h3>
-                <p>Coordinated formal looks with rich colors, clean tailoring, and an elevated evening wedding feel.</p>
-              </div>
-            </article>
-          </div>
-
-          <p class="outfit-helper">
-            Replace the three image files above with your actual uploaded images in your repository:
-            <strong>attire-women-example.jpg</strong>,
-            <strong>attire-men-example.jpg</strong>, and
-            <strong>attire-couple-example.jpg</strong>.
-          </p>
-        </div>
-      </article>
-    </section>
-
     <!-- STORY -->
     <section id="story" class="block">
       <div class="section-head">
@@ -1494,7 +1340,7 @@
               </div>
             </li>
             <li class="event">
-              <div class="time">6:00 PM</div>
+              <div class="time">5:30 PM</div>
               <div class="meta">
                 <strong>Cocktail Hour</strong>
                 <span>Drinks and light bites</span>
