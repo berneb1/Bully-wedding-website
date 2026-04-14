@@ -1762,7 +1762,7 @@
     const musicBtn = document.getElementById("musicBtn");
     const musicText = document.getElementById("musicText");
 
-    audio.volume = 0.1;
+    audio.volume = 0.15;
 
     function updateMusicUI(isPlaying) {
       musicBtn.classList.toggle("is-playing", isPlaying);
@@ -1999,10 +1999,12 @@ END:VCALENDAR`;
           }
 
           await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-            name: payload.name,
-            email: payload.email,
-            address: fullAddress,
-            notes: payload.notes
+  guest_name: payload.name,
+  guest_email: payload.email,
+  guest_address: fullAddress,
+  message: payload.notes || "No additional notes."
+});
+
           });
 
           form.reset();
