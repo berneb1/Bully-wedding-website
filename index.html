@@ -1675,208 +1675,203 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const WEDDING = {
-        title: "Berne & Courtney Wedding",
-        location: "Loews Hotel Atlanta, 1065 Peachtree St NE, Atlanta, GA",
-        startLocal: "2026-10-10T17:00:00",
-        endLocal:   "2026-10-10T22:30:00",
-        description: "Ceremony and reception for Berne and Courtney. We cannot wait to celebrate with you."
-      };
+  document.addEventListener("DOMContentLoaded", function () {
+    const WEDDING = {
+      title: "Berne & Courtney Wedding",
+      location: "Loews Hotel Atlanta, 1065 Peachtree St NE, Atlanta, GA",
+      startLocal: "2026-10-10T17:00:00",
+      endLocal:   "2026-10-10T22:30:00",
+      description: "Ceremony and reception for Berne and Courtney. We cannot wait to celebrate with you."
+    };
 
-      document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-      const progress = document.getElementById('progress');
-      const links = Array.from(document.querySelectorAll('.nav-links a'))
-        .filter(a => a.getAttribute('href') && a.getAttribute('href').startsWith('#'));
-      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const progress = document.getElementById('progress');
+    const links = Array.from(document.querySelectorAll('.nav-links a'))
+      .filter(a => a.getAttribute('href') && a.getAttribute('href').startsWith('#'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
-      function onScroll(){
-        const doc = document.documentElement;
-        const scrollTop = doc.scrollTop || document.body.scrollTop;
-        const scrollHeight = doc.scrollHeight - doc.clientHeight;
-        const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-        progress.style.width = pct.toFixed(2) + '%';
+    function onScroll(){
+      const doc = document.documentElement;
+      const scrollTop = doc.scrollTop || document.body.scrollTop;
+      const scrollHeight = doc.scrollHeight - doc.clientHeight;
+      const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progress.style.width = pct.toFixed(2) + '%';
 
-        const y = window.scrollY + 120;
-        let active = null;
-        for (const s of sections) if (s.offsetTop <= y) active = s;
+      const y = window.scrollY + 120;
+      let active = null;
+      for (const s of sections) if (s.offsetTop <= y) active = s;
 
-        links.forEach(a => a.classList.remove('active'));
-        if (active) {
-          const a = links.find(l => l.getAttribute('href') === '#' + active.id);
-          if (a) a.classList.add('active');
-        }
+      links.forEach(a => a.classList.remove('active'));
+      if (active) {
+        const a = links.find(l => l.getAttribute('href') === '#' + active.id);
+        if (a) a.classList.add('active');
       }
-      document.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-
-      const menuToggle = document.getElementById('menuToggle');
-      const navLinksEl = document.getElementById('navLinks');
-
-      function closeMenu() {
-        if (!menuToggle || !navLinksEl) return;
-        menuToggle.classList.remove('is-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        navLinksEl.classList.remove('open');
-      }
-
-      function openMenu() {
-        if (!menuToggle || !navLinksEl) return;
-        menuToggle.classList.add('is-open');
-        menuToggle.setAttribute('aria-expanded', 'true');
-        navLinksEl.classList.add('open');
-      }
-
-      if (menuToggle && navLinksEl) {
-        menuToggle.addEventListener('click', () => {
-          const isOpen = navLinksEl.classList.contains('open');
-          if (isOpen) closeMenu();
-          else openMenu();
-        });
-
-        navLinksEl.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            if (window.innerWidth <= 860) closeMenu();
-          });
-        });
-
-        window.addEventListener('resize', () => {
-          if (window.innerWidth > 860) closeMenu();
-        });
-
-        document.addEventListener('click', (e) => {
-          if (window.innerWidth > 860) return;
-          if (!navLinksEl.classList.contains('open')) return;
-          if (!navLinksEl.contains(e.target) && !menuToggle.contains(e.target)) {
-            closeMenu();
-          }
-        });
-
-        window.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') closeMenu();
-        });
-      }
-
-      const audio = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-const musicText = document.getElementById("musicText");
-
-// 🎚️ Default volume cap (prevents loud start)
-audio.volume = 0.35;
-
-// 🎯 Update UI
-function updateMusicUI(isPlaying) {
-  musicBtn.classList.toggle("is-playing", isPlaying);
-  musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
-  musicText.textContent = isPlaying ? "Pause music" : "Play music";
-}
-
-// 🔥 Auto start with smooth fade-in
-async function startMusicFromFirstInteraction() {
-  if (!audio.paused) return;
-
-  try {
-    audio.volume = 0;
-    await audio.play();
-
-    let vol = 0;
-    const target = 0.25;
-
-    const fade = setInterval(() => {
-      if (vol < target) {
-        vol += 0.02;
-        audio.volume = vol;
-      } else {
-        audio.volume = target;
-        clearInterval(fade);
-      }
-    }, 100);
-
-    updateMusicUI(true);
-  } catch {
-    updateMusicUI(false);
-  }
-}
-
-// 👇 Required for mobile + browser autoplay rules
-window.addEventListener("touchstart", startMusicFromFirstInteraction, { capture: true, once: true, passive: true });
-window.addEventListener("click", startMusicFromFirstInteraction, { capture: true, once: true });
-window.addEventListener("keydown", startMusicFromFirstInteraction, { capture: true, once: true });
-
-// 🎵 Button toggle (with fade-in when playing)
-musicBtn.addEventListener("click", async () => {
-  try {
-    if (audio.paused) {
-      audio.volume = 0;
-      await audio.play();
-
-      let vol = 0;
-      const target = 0.25;
-
-      const fade = setInterval(() => {
-        if (vol < target) {
-          vol += 0.02;
-          audio.volume = vol;
-        } else {
-          audio.volume = target;
-          clearInterval(fade);
-        }
-      }, 100);
-
-      updateMusicUI(true);
-    } else {
-      audio.pause();
-      updateMusicUI(false);
     }
-  } catch {
-    updateMusicUI(false);
-  }
-});
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-      const mapsBtn = document.getElementById("mapsBtn");
-      function setMapsLink() {
-        const q = encodeURIComponent(WEDDING.location || "");
-        mapsBtn.href = q ? `https://www.google.com/maps/search/?api=1&query=${q}` : "#";
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinksEl = document.getElementById('navLinks');
+
+    function closeMenu() {
+      if (!menuToggle || !navLinksEl) return;
+      menuToggle.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      navLinksEl.classList.remove('open');
+    }
+
+    function openMenu() {
+      if (!menuToggle || !navLinksEl) return;
+      menuToggle.classList.add('is-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      navLinksEl.classList.add('open');
+    }
+
+    if (menuToggle && navLinksEl) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navLinksEl.classList.contains('open');
+        if (isOpen) closeMenu();
+        else openMenu();
+      });
+
+      navLinksEl.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 860) closeMenu();
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 860) closeMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth > 860) return;
+        if (!navLinksEl.classList.contains('open')) return;
+        if (!navLinksEl.contains(e.target) && !menuToggle.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+    }
+
+    const audio = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+    const musicText = document.getElementById("musicText");
+
+    audio.volume = 0.35;
+
+    function updateMusicUI(isPlaying) {
+      musicBtn.classList.toggle("is-playing", isPlaying);
+      musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+      musicText.textContent = isPlaying ? "Pause music" : "Play music";
+    }
+
+    async function startMusicFromFirstInteraction() {
+      if (!audio.paused) return;
+
+      try {
+        audio.volume = 0;
+        await audio.play();
+
+        let vol = 0;
+        const target = 0.25;
+
+        const fade = setInterval(() => {
+          if (vol < target) {
+            vol += 0.02;
+            audio.volume = vol;
+          } else {
+            audio.volume = target;
+            clearInterval(fade);
+          }
+        }, 100);
+
+        updateMusicUI(true);
+      } catch {
+        updateMusicUI(false);
       }
-      setMapsLink();
+    }
 
-      const calendarBtn = document.getElementById("calendarBtn");
+    window.addEventListener("touchstart", startMusicFromFirstInteraction, { capture: true, once: true, passive: true });
+    window.addEventListener("click", startMusicFromFirstInteraction, { capture: true, once: true });
+    window.addEventListener("keydown", startMusicFromFirstInteraction, { capture: true, once: true });
 
-      function pad2(n){ return String(n).padStart(2,'0'); }
-      function toIcsUtc(dtLocal){
-        const d = new Date(dtLocal);
-        if (isNaN(d.getTime())) return "";
-        return (
-          d.getUTCFullYear() +
-          pad2(d.getUTCMonth() + 1) +
-          pad2(d.getUTCDate()) +
-          "T" +
-          pad2(d.getUTCHours()) +
-          pad2(d.getUTCMinutes()) +
-          pad2(d.getUTCSeconds()) +
-          "Z"
-        );
+    musicBtn.addEventListener("click", async () => {
+      try {
+        if (audio.paused) {
+          audio.volume = 0;
+          await audio.play();
+
+          let vol = 0;
+          const target = 0.25;
+
+          const fade = setInterval(() => {
+            if (vol < target) {
+              vol += 0.02;
+              audio.volume = vol;
+            } else {
+              audio.volume = target;
+              clearInterval(fade);
+            }
+          }, 100);
+
+          updateMusicUI(true);
+        } else {
+          audio.pause();
+          updateMusicUI(false);
+        }
+      } catch {
+        updateMusicUI(false);
       }
+    });
 
-      function escapeIcs(text){
-        return String(text || "")
-          .replace(/\\/g, "\\\\")
-          .replace(/\n/g, "\\n")
-          .replace(/,/g, "\\,")
-          .replace(/;/g, "\\;");
-      }
+    const mapsBtn = document.getElementById("mapsBtn");
+    function setMapsLink() {
+      const q = encodeURIComponent(WEDDING.location || "");
+      mapsBtn.href = q ? `https://www.google.com/maps/search/?api=1&query=${q}` : "#";
+    }
+    setMapsLink();
 
-      function downloadIcs(){
-        const dtStart = toIcsUtc(WEDDING.startLocal);
-        const dtEnd   = toIcsUtc(WEDDING.endLocal);
+    const calendarBtn = document.getElementById("calendarBtn");
 
-        if (!WEDDING.location || !dtStart || !dtEnd) return;
+    function pad2(n){ return String(n).padStart(2,'0'); }
+    function toIcsUtc(dtLocal){
+      const d = new Date(dtLocal);
+      if (isNaN(d.getTime())) return "";
+      return (
+        d.getUTCFullYear() +
+        pad2(d.getUTCMonth() + 1) +
+        pad2(d.getUTCDate()) +
+        "T" +
+        pad2(d.getUTCHours()) +
+        pad2(d.getUTCMinutes()) +
+        pad2(d.getUTCSeconds()) +
+        "Z"
+      );
+    }
 
-        const uid = `wedding-${Date.now()}@berne-courtney`;
-        const now = toIcsUtc(new Date().toISOString());
+    function escapeIcs(text){
+      return String(text || "")
+        .replace(/\\/g, "\\\\")
+        .replace(/\n/g, "\\n")
+        .replace(/,/g, "\\,")
+        .replace(/;/g, "\\;");
+    }
 
-        const ics =
+    function downloadIcs(){
+      const dtStart = toIcsUtc(WEDDING.startLocal);
+      const dtEnd   = toIcsUtc(WEDDING.endLocal);
+
+      if (!WEDDING.location || !dtStart || !dtEnd) return;
+
+      const uid = `wedding-${Date.now()}@berne-courtney`;
+      const now = toIcsUtc(new Date().toISOString());
+
+      const ics =
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Berne & Courtney//Wedding//EN
@@ -1893,237 +1888,243 @@ DESCRIPTION:${escapeIcs(WEDDING.description)}
 END:VEVENT
 END:VCALENDAR`;
 
-        const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
+      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
 
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "berne-courtney-wedding.ics";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "berne-courtney-wedding.ics";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
 
-        setTimeout(() => URL.revokeObjectURL(url), 1500);
-      }
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+    }
 
-      calendarBtn.addEventListener("click", downloadIcs);
+    calendarBtn.addEventListener("click", downloadIcs);
 
-      // 🔥 SUPABASE + EMAIL CONFIG
-      const SUPABASE_URL = "https://ibzoqsepguyoelavoseb.supabase.co";
-      const SUPABASE_KEY = "sb_publishable_jg29YXi7IB9Y5m1q44p84g_PmtOjg2Y";
-      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const SUPABASE_URL = "https://ibzoqsepguyoelavoseb.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_jg29YXi7IB9Y5m1q44p84g_PmtOjg2Y";
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-      emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+    const EMAILJS_PUBLIC_KEY = "WZKyRfup6KgsXyFky";
+    const EMAILJS_SERVICE_ID = "service_ykxwkpg";
+    const EMAILJS_TEMPLATE_ID = "62gm50n";
 
-      const form = document.getElementById('rsvpForm');
-      const msg = document.getElementById('rsvpMsg');
-      const btn = document.getElementById('rsvpBtn');
+    emailjs.init({
+      publicKey: EMAILJS_PUBLIC_KEY
+    });
 
-      function setStatus(text, ok){
-        msg.textContent = text;
-        msg.className = ok ? "status-ok" : "status-bad";
-      }
+    const form = document.getElementById('rsvpForm');
+    const msg = document.getElementById('rsvpMsg');
+    const btn = document.getElementById('rsvpBtn');
 
-      if (form && msg && btn) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
+    function setStatus(text, ok){
+      msg.textContent = text;
+      msg.className = ok ? "status-ok" : "status-bad";
+    }
 
-          const payload = {
-            name: document.getElementById("name").value.trim(),
-            email: document.getElementById("email").value.trim().toLowerCase(),
-            streetAddress: document.getElementById("streetAddress").value.trim(),
-            addressLine2: document.getElementById("addressLine2").value.trim(),
-            city: document.getElementById("city").value.trim(),
-            state: document.getElementById("state").value.trim(),
-            zipCode: document.getElementById("zipCode").value.trim(),
-            notes: document.getElementById("notes").value.trim()
-          };
+    if (form && msg && btn) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-          if (
-            !payload.name ||
-            !payload.email ||
-            !payload.streetAddress ||
-            !payload.city ||
-            !payload.state ||
-            !payload.zipCode
-          ) {
-            setStatus("Please complete all required fields.", false);
+        const payload = {
+          name: document.getElementById("name").value.trim(),
+          email: document.getElementById("email").value.trim().toLowerCase(),
+          streetAddress: document.getElementById("streetAddress").value.trim(),
+          addressLine2: document.getElementById("addressLine2").value.trim(),
+          city: document.getElementById("city").value.trim(),
+          state: document.getElementById("state").value.trim(),
+          zipCode: document.getElementById("zipCode").value.trim(),
+          notes: document.getElementById("notes").value.trim()
+        };
+
+        if (
+          !payload.name ||
+          !payload.email ||
+          !payload.streetAddress ||
+          !payload.city ||
+          !payload.state ||
+          !payload.zipCode
+        ) {
+          setStatus("Please complete all required fields.", false);
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Submitting…";
+        setStatus("", true);
+
+        try {
+          const { data: existingGuest, error: lookupError } = await supabase
+            .from("guests")
+            .select("id, email")
+            .eq("email", payload.email)
+            .maybeSingle();
+
+          if (lookupError) throw lookupError;
+
+          if (existingGuest) {
+            setStatus("This email is already on file. Thank you!", false);
+            btn.disabled = false;
+            btn.textContent = "Submit Info";
             return;
           }
 
-          btn.disabled = true;
-          btn.textContent = "Submitting…";
-          setStatus("", true);
+          const fullAddress = [
+            payload.streetAddress,
+            payload.addressLine2,
+            payload.city,
+            payload.state,
+            payload.zipCode
+          ].filter(Boolean).join(", ");
 
-          try {
-            const { data: existingGuest, error: lookupError } = await supabase
-              .from("guests")
-              .select("id, email")
-              .eq("email", payload.email)
-              .maybeSingle();
-
-            if (lookupError) throw lookupError;
-
-            if (existingGuest) {
-              setStatus("This email is already on file. Thank you!", false);
-              btn.disabled = false;
-              btn.textContent = "Submit Info";
-              return;
-            }
-
-            const fullAddress = [
-              payload.streetAddress,
-              payload.addressLine2,
-              payload.city,
-              payload.state,
-              payload.zipCode
-            ].filter(Boolean).join(", ");
-
-            const { error: insertError } = await supabase
-              .from("guests")
-              .insert({
-                name: payload.name,
-                email: payload.email,
-                address: fullAddress,
-                notes: payload.notes
-              });
-
-            if (insertError) {
-              if (insertError.code === "23505") {
-                setStatus("This email is already on file. Thank you!", false);
-                btn.disabled = false;
-                btn.textContent = "Submit Info";
-                return;
-              }
-              throw insertError;
-            }
-
-            await emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+          const { error: insertError } = await supabase
+            .from("guests")
+            .insert({
               name: payload.name,
               email: payload.email,
               address: fullAddress,
               notes: payload.notes
             });
 
-            form.reset();
-            setStatus("Thank you! Your information has been received.", true);
-          } catch (err) {
-            console.error(err);
-            setStatus("Something went wrong. Try again.", false);
-          } finally {
-            btn.disabled = false;
-            btn.textContent = "Submit Info";
+          if (insertError) {
+            if (insertError.code === "23505") {
+              setStatus("This email is already on file. Thank you!", false);
+              btn.disabled = false;
+              btn.textContent = "Submit Info";
+              return;
+            }
+            throw insertError;
           }
-        });
-      }
 
-      const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
-      if (galleryImgs.length) {
-        const lb = document.getElementById('lightbox');
-        const lbImg = document.getElementById('lightboxImg');
-        const lbLabel = document.getElementById('lightboxLabel');
-        const lbCount = document.getElementById('lightboxCount');
-        const prevBtn = document.getElementById('lbPrev');
-        const nextBtn = document.getElementById('lbNext');
-        const stage = document.getElementById('lbStage');
-
-        let current = 0;
-        let startX = 0;
-        let startY = 0;
-        let isTouching = false;
-
-        function lockScroll(lock){
-          document.documentElement.style.overflow = lock ? 'hidden' : '';
-          document.body.style.overflow = lock ? 'hidden' : '';
-        }
-
-        function setSlide(i){
-          const n = galleryImgs.length;
-          current = (i + n) % n;
-
-          const src = galleryImgs[current].getAttribute('src');
-          const alt = galleryImgs[current].getAttribute('alt') || 'Photo';
-          lbImg.src = src;
-          lbImg.alt = alt;
-
-          lbLabel.textContent = alt;
-          lbCount.textContent = (current + 1) + " / " + n;
-
-          const next = new Image();
-          next.src = galleryImgs[(current + 1) % n].getAttribute('src');
-          const prev = new Image();
-          prev.src = galleryImgs[(current - 1 + n) % n].getAttribute('src');
-        }
-
-        function openAt(i){
-          setSlide(i);
-          lb.setAttribute('aria-hidden', 'false');
-          lockScroll(true);
-          const closeBtn = lb.querySelector('[data-close]');
-          if (closeBtn) closeBtn.focus();
-        }
-
-        function close(){
-          lb.setAttribute('aria-hidden', 'true');
-          lockScroll(false);
-          lbImg.src = '';
-        }
-
-        function next(){ setSlide(current + 1); }
-        function prev(){ setSlide(current - 1); }
-
-        galleryImgs.forEach((img, idx) => {
-          img.addEventListener('click', () => openAt(idx));
-          img.setAttribute('tabindex', '0');
-          img.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(idx); }
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            name: payload.name,
+            email: payload.email,
+            address: fullAddress,
+            notes: payload.notes
           });
-        });
 
-        lb.addEventListener('click', (e) => {
-          const target = e.target;
-          if (target && target.hasAttribute('data-close')) close();
-        });
-        prevBtn.addEventListener('click', prev);
-        nextBtn.addEventListener('click', next);
+          form.reset();
+          setStatus("Thank you! Your information has been received.", true);
+        } catch (err) {
+          console.error(err);
+          setStatus("Something went wrong. Try again.", false);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Submit Info";
+        }
+      });
+    }
 
-        window.addEventListener('keydown', (e) => {
-          if (lb.getAttribute('aria-hidden') !== 'false') return;
-          if (e.key === 'Escape') close();
-          if (e.key === 'ArrowRight') next();
-          if (e.key === 'ArrowLeft') prev();
-        });
+    const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
+    if (galleryImgs.length) {
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      const lbLabel = document.getElementById('lightboxLabel');
+      const lbCount = document.getElementById('lightboxCount');
+      const prevBtn = document.getElementById('lbPrev');
+      const nextBtn = document.getElementById('lbNext');
+      const stage = document.getElementById('lbStage');
 
-        stage.addEventListener('touchstart', (e) => {
-          if (!e.touches || e.touches.length !== 1) return;
-          isTouching = true;
-          startX = e.touches[0].clientX;
-          startY = e.touches[0].clientY;
-        }, { passive: true });
+      let current = 0;
+      let startX = 0;
+      let startY = 0;
+      let isTouching = false;
 
-        stage.addEventListener('touchmove', (e) => {
-          if (lb.getAttribute('aria-hidden') === 'false') e.preventDefault();
-        }, { passive: false });
-
-        stage.addEventListener('touchend', (e) => {
-          if (!isTouching) return;
-          isTouching = false;
-
-          const touch = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
-          if (!touch) return;
-
-          const dx = touch.clientX - startX;
-          const dy = touch.clientY - startY;
-
-          if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
-            if (dx < 0) next();
-            else prev();
-          }
-        }, { passive: true });
-
-        lbImg.addEventListener('click', next);
+      function lockScroll(lock){
+        document.documentElement.style.overflow = lock ? 'hidden' : '';
+        document.body.style.overflow = lock ? 'hidden' : '';
       }
-    });
-  </script>
+
+      function setSlide(i){
+        const n = galleryImgs.length;
+        current = (i + n) % n;
+
+        const src = galleryImgs[current].getAttribute('src');
+        const alt = galleryImgs[current].getAttribute('alt') || 'Photo';
+        lbImg.src = src;
+        lbImg.alt = alt;
+
+        lbLabel.textContent = alt;
+        lbCount.textContent = (current + 1) + " / " + n;
+
+        const next = new Image();
+        next.src = galleryImgs[(current + 1) % n].getAttribute('src');
+        const prev = new Image();
+        prev.src = galleryImgs[(current - 1 + n) % n].getAttribute('src');
+      }
+
+      function openAt(i){
+        setSlide(i);
+        lb.setAttribute('aria-hidden', 'false');
+        lockScroll(true);
+        const closeBtn = lb.querySelector('[data-close]');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function close(){
+        lb.setAttribute('aria-hidden', 'true');
+        lockScroll(false);
+        lbImg.src = '';
+      }
+
+      function next(){ setSlide(current + 1); }
+      function prev(){ setSlide(current - 1); }
+
+      galleryImgs.forEach((img, idx) => {
+        img.addEventListener('click', () => openAt(idx));
+        img.setAttribute('tabindex', '0');
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(idx); }
+        });
+      });
+
+      lb.addEventListener('click', (e) => {
+        const target = e.target;
+        if (target && target.hasAttribute('data-close')) close();
+      });
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      window.addEventListener('keydown', (e) => {
+        if (lb.getAttribute('aria-hidden') !== 'false') return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft') prev();
+      });
+
+      stage.addEventListener('touchstart', (e) => {
+        if (!e.touches || e.touches.length !== 1) return;
+        isTouching = true;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+
+      stage.addEventListener('touchmove', (e) => {
+        if (lb.getAttribute('aria-hidden') === 'false') e.preventDefault();
+      }, { passive: false });
+
+      stage.addEventListener('touchend', (e) => {
+        if (!isTouching) return;
+        isTouching = false;
+
+        const touch = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
+        if (!touch) return;
+
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          if (dx < 0) next();
+          else prev();
+        }
+      }, { passive: true });
+
+      lbImg.addEventListener('click', next);
+    }
+  });
+</script>
+
 </body>
 </html>
