@@ -1762,7 +1762,7 @@
     const musicBtn = document.getElementById("musicBtn");
     const musicText = document.getElementById("musicText");
 
-    audio.volume = 0.15;
+    audio.volume = 0.1;
 
     function updateMusicUI(isPlaying) {
       musicBtn.classList.toggle("is-playing", isPlaying);
@@ -1807,7 +1807,7 @@
           await audio.play();
 
           let vol = 0;
-          const target = 0.25;
+          const target = 0.12;
 
           const fade = setInterval(() => {
             if (vol < target) {
@@ -1964,13 +1964,6 @@ END:VCALENDAR`;
 
           if (lookupError) throw lookupError;
 
-          if (existingGuest) {
-            setStatus("This email is already on file. Thank you!", false);
-            btn.disabled = false;
-            btn.textContent = "Submit Info";
-            return;
-          }
-
           const fullAddress = [
             payload.streetAddress,
             payload.addressLine2,
@@ -1978,6 +1971,30 @@ END:VCALENDAR`;
             payload.state,
             payload.zipCode
           ].filter(Boolean).join(", ");
+
+          if (existingGuest) {
+            const { error: updateError } = await supabase
+              .from("guests")
+              .update({
+                name: payload.name,
+                address: fullAddress,
+                notes: payload.notes
+              })
+              .eq("email", payload.email);
+
+            if (updateError) throw updateError;
+
+            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+              name: payload.name,
+              email: payload.email,
+              address: fullAddress,
+              notes: payload.notes
+            });
+
+            form.reset();
+            setStatus("Thank you! Your information has been received.", true);
+            return;
+          }
 
           const { error: insertError } = await supabase
             .from("guests")
@@ -1990,21 +2007,36 @@ END:VCALENDAR`;
 
           if (insertError) {
             if (insertError.code === "23505") {
-              setStatus("This email is already on file. Thank you!", false);
-              btn.disabled = false;
-              btn.textContent = "Submit Info";
+              const { error: updateError } = await supabase
+                .from("guests")
+                .update({
+                  name: payload.name,
+                  address: fullAddress,
+                  notes: payload.notes
+                })
+                .eq("email", payload.email);
+
+              if (updateError) throw updateError;
+
+              await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                name: payload.name,
+                email: payload.email,
+                address: fullAddress,
+                notes: payload.notes
+              });
+
+              form.reset();
+              setStatus("Thank you! Your information has been received.", true);
               return;
             }
             throw insertError;
           }
 
           await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-  guest_name: payload.name,
-  guest_email: payload.email,
-  guest_address: fullAddress,
-  message: payload.notes || "No additional notes."
-});
-
+            name: payload.name,
+            email: payload.email,
+            address: fullAddress,
+            notes: payload.notes
           });
 
           form.reset();
@@ -2127,6 +2159,5 @@ END:VCALENDAR`;
     }
   });
 </script>
-
 </body>
 </html>
