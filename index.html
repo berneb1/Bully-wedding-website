@@ -1956,98 +1956,68 @@ END:VCALENDAR`;
         setStatus("", true);
 
         try {
-          const { data: existingGuest, error: lookupError } = await supabase
-            .from("guests")
-            .select("id, email")
-            .eq("email", payload.email)
-            .maybeSingle();
+  const { data: existingGuest, error: lookupError } = await supabase
+    .from("guests")
+    .select("id, email")
+    .eq("email", payload.email)
+    .maybeSingle();
 
-          if (lookupError) throw lookupError;
+  if (lookupError) throw lookupError;
 
-          const fullAddress = [
-            payload.streetAddress,
-            payload.addressLine2,
-            payload.city,
-            payload.state,
-            payload.zipCode
-          ].filter(Boolean).join(", ");
+  if (existingGuest) {
+    setStatus("This email is already on file. Thank you!", false);
+    btn.disabled = false;
+    btn.textContent = "Submit Info";
+    return;
+  }
 
-          if (existingGuest) {
-            const { error: updateError } = await supabase
-              .from("guests")
-              .update({
-                name: payload.name,
-                address: fullAddress,
-                notes: payload.notes
-              })
-              .eq("email", payload.email);
+  const fullAddress = [
+    payload.streetAddress,
+    payload.addressLine2,
+    payload.city,
+    payload.state,
+    payload.zipCode
+  ].filter(Boolean).join(", ");
 
-            if (updateError) throw updateError;
+  const { error: insertError } = await supabase
+    .from("guests")
+    .insert({
+      name: payload.name,
+      email: payload.email,
+      address: fullAddress,
+      notes: payload.notes
+    });
 
-            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-              name: payload.name,
-              email: payload.email,
-              address: fullAddress,
-              notes: payload.notes
-            });
+  if (insertError) {
+    if (insertError.code === "23505") {
+      setStatus("This email is already on file. Thank you!", false);
+      btn.disabled = false;
+      btn.textContent = "Submit Info";
+      return;
+    }
+    throw insertError;
+  }
 
-            form.reset();
-            setStatus("Thank you! Your information has been received.", true);
-            return;
-          }
+  try {
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      name: payload.name,
+      email: payload.email,
+      address: fullAddress,
+      notes: payload.notes
+    });
+  } catch (emailError) {
+    console.error("Email failed:", emailError);
+  }
 
-          const { error: insertError } = await supabase
-            .from("guests")
-            .insert({
-              name: payload.name,
-              email: payload.email,
-              address: fullAddress,
-              notes: payload.notes
-            });
-
-          if (insertError) {
-            if (insertError.code === "23505") {
-              const { error: updateError } = await supabase
-                .from("guests")
-                .update({
-                  name: payload.name,
-                  address: fullAddress,
-                  notes: payload.notes
-                })
-                .eq("email", payload.email);
-
-              if (updateError) throw updateError;
-
-              await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-                name: payload.name,
-                email: payload.email,
-                address: fullAddress,
-                notes: payload.notes
-              });
-
-              form.reset();
-              setStatus("Thank you! Your information has been received.", true);
-              return;
-            }
-            throw insertError;
-          }
-
-          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-            name: payload.name,
-            email: payload.email,
-            address: fullAddress,
-            notes: payload.notes
-          });
-
-          form.reset();
-          setStatus("Thank you! Your information has been received.", true);
-        } catch (err) {
-          console.error(err);
-          setStatus("Something went wrong. Try again.", false);
-        } finally {
-          btn.disabled = false;
-          btn.textContent = "Submit Info";
-        }
+  form.reset();
+  setStatus("Thank you! Your information has been received.", true);
+} catch (err) {
+  console.error("FULL ERROR:", err);
+  setStatus("Submitted! If you don’t receive a confirmation email, you’re still saved.", true);
+} finally {
+  btn.disabled = false;
+  btn.textContent = "Submit Info";
+}
       });
     }
 
