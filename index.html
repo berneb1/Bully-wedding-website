@@ -1759,42 +1759,80 @@
       }
 
       const audio = document.getElementById("bgMusic");
-      const musicBtn = document.getElementById("musicBtn");
-      const musicText = document.getElementById("musicText");
+const musicBtn = document.getElementById("musicBtn");
+const musicText = document.getElementById("musicText");
 
-      function updateMusicUI(isPlaying) {
-        musicBtn.classList.toggle("is-playing", isPlaying);
-        musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
-        musicText.textContent = isPlaying ? "Pause music" : "Play music";
+// 🎚️ Default volume cap (prevents loud start)
+audio.volume = 0.25;
+
+// 🎯 Update UI
+function updateMusicUI(isPlaying) {
+  musicBtn.classList.toggle("is-playing", isPlaying);
+  musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+  musicText.textContent = isPlaying ? "Pause music" : "Play music";
+}
+
+// 🔥 Auto start with smooth fade-in
+async function startMusicFromFirstInteraction() {
+  if (!audio.paused) return;
+
+  try {
+    audio.volume = 0;
+    await audio.play();
+
+    let vol = 0;
+    const target = 0.25;
+
+    const fade = setInterval(() => {
+      if (vol < target) {
+        vol += 0.02;
+        audio.volume = vol;
+      } else {
+        audio.volume = target;
+        clearInterval(fade);
       }
+    }, 100);
 
-      async function startMusicFromFirstInteraction() {
-        if (!audio.paused) return;
-        try {
-          await audio.play();
-          updateMusicUI(true);
-        } catch {
-          updateMusicUI(false);
+    updateMusicUI(true);
+  } catch {
+    updateMusicUI(false);
+  }
+}
+
+// 👇 Required for mobile + browser autoplay rules
+window.addEventListener("touchstart", startMusicFromFirstInteraction, { capture: true, once: true, passive: true });
+window.addEventListener("click", startMusicFromFirstInteraction, { capture: true, once: true });
+window.addEventListener("keydown", startMusicFromFirstInteraction, { capture: true, once: true });
+
+// 🎵 Button toggle (with fade-in when playing)
+musicBtn.addEventListener("click", async () => {
+  try {
+    if (audio.paused) {
+      audio.volume = 0;
+      await audio.play();
+
+      let vol = 0;
+      const target = 0.25;
+
+      const fade = setInterval(() => {
+        if (vol < target) {
+          vol += 0.02;
+          audio.volume = vol;
+        } else {
+          audio.volume = target;
+          clearInterval(fade);
         }
-      }
+      }, 100);
 
-      window.addEventListener("touchstart", startMusicFromFirstInteraction, { capture: true, once: true, passive: true });
-      window.addEventListener("click", startMusicFromFirstInteraction, { capture: true, once: true });
-      window.addEventListener("keydown", startMusicFromFirstInteraction, { capture: true, once: true });
-
-      musicBtn.addEventListener("click", async () => {
-        try{
-          if (audio.paused) {
-            await audio.play();
-            updateMusicUI(true);
-          } else {
-            audio.pause();
-            updateMusicUI(false);
-          }
-        } catch {
-          updateMusicUI(false);
-        }
-      });
+      updateMusicUI(true);
+    } else {
+      audio.pause();
+      updateMusicUI(false);
+    }
+  } catch {
+    updateMusicUI(false);
+  }
+});
 
       const mapsBtn = document.getElementById("mapsBtn");
       function setMapsLink() {
