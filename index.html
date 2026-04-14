@@ -1675,7 +1675,6 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
   const WEDDING = {
     title: "Berne & Courtney Wedding",
     location: "Loews Hotel Atlanta, 1065 Peachtree St NE, Atlanta, GA",
@@ -1684,148 +1683,139 @@ document.addEventListener("DOMContentLoaded", function () {
     description: "Ceremony and reception for Berne and Courtney. We cannot wait to celebrate with you."
   };
 
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const SUPABASE_URL = "https://ibzoqsepguyoelavoseb.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_jg29YXi7IB9Y5m1q44p84g_PmtOjg2Y";
+  function updateMusicUI(isPlaying) {
+    musicBtn.classList.toggle("is-playing", isPlaying);
+    musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+    musicText.textContent = isPlaying ? "Pause music" : "Play music";
+  }
 
-  const progress = document.getElementById('progress');
-  const links = Array.from(document.querySelectorAll('.nav-links a'))
-    .filter(a => a.getAttribute('href')?.startsWith('#'));
-  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  async function fadePlay(targetVolume) {
+    audio.volume = 0;
+    await audio.play();
 
-  function onScroll() {
-    const doc = document.documentElement;
-    const scrollTop = doc.scrollTop || document.body.scrollTop;
-    const scrollHeight = doc.scrollHeight - doc.clientHeight;
-    progress.style.width = (scrollTop / scrollHeight * 100) + '%';
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < targetVolume) {
+        vol = Math.min(vol + 0.02, targetVolume);
+        audio.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
+  }
 
-    const y = window.scrollY + 120;
-    let active = null;
-    sections.forEach(s => { if (s.offsetTop <= y) active = s; });
-
-    links.forEach(a => a.classList.remove('active'));
-    if (active) {
-      const a = links.find(l => l.getAttribute('href') === '#' + active.id);
-      if (a) a.classList.add('active');
+  async function startMusicFromFirstInteraction() {
+    if (!audio.paused) return;
+    try {
+      await fadePlay(0.12);
+      updateMusicUI(true);
+    } catch (err) {
+      updateMusicUI(false);
+      console.error("Music autoplay blocked:", err);
     }
   }
 
-  document.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // Music
-  const audio = document.getElementById("bgMusic");
-  const musicBtn = document.getElementById("musicBtn");
-  const musicText = document.getElementById("musicText");
-
-  audio.volume = 0.1;
-
-  function updateMusicUI(isPlaying) {
-    musicBtn.classList.toggle("is-playing", isPlaying);
-    musicText.textContent = isPlaying ? "Pause music" : "Play music";
-  }
+  window.addEventListener("touchstart", startMusicFromFirstInteraction, {
+    capture: true,
+    once: true,
+    passive: true
+  });
+  window.addEventListener("click", startMusicFromFirstInteraction, {
+    capture: true,
+    once: true
+  });
+  window.addEventListener("keydown", startMusicFromFirstInteraction, {
+    capture: true,
+    once: true
+  });
 
   musicBtn.addEventListener("click", async () => {
     try {
       if (audio.paused) {
-        await audio.play();
+        await fadePlay(0.12);
         updateMusicUI(true);
       } else {
         audio.pause();
         updateMusicUI(false);
       }
-    } catch {}
-  });
+    } catch (err) {
+      updateMusicUI(false);
+      console.error("Music button error:", err);
+  if (form && msg && btn) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  // Maps
-  const mapsBtn = document.getElementById("mapsBtn");
-  mapsBtn.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(WEDDING.location)}`;
+      const payload = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim().toLowerCase(),
+        streetAddress: document.getElementById("streetAddress").value.trim(),
+        addressLine2: document.getElementById("addressLine2").value.trim(),
+        city: document.getElementById("city").value.trim(),
+        state: document.getElementById("state").value.trim(),
+        zipCode: document.getElementById("zipCode").value.trim(),
+        notes: document.getElementById("notes").value.trim()
+      };
 
-  // Calendar
-  document.getElementById("calendarBtn").addEventListener("click", () => {
-    const blob = new Blob([`BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-SUMMARY:${WEDDING.title}
-LOCATION:${WEDDING.location}
-DESCRIPTION:${WEDDING.description}
-DTSTART:20261010T210000Z
-DTEND:20261011T023000Z
-END:VEVENT
-END:VCALENDAR`], { type: "text/calendar" });
-
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "wedding.ics";
-    a.click();
-  });
-
-  // Supabase
-  const supabase = window.supabase.createClient(
-    "https://ibzoqsepguyoelavoseb.supabase.co",
-    "sb_publishable_jg29YXi7IB9Y5m1q44p84g_PmtOjg2Y"
-  );
-
-  const form = document.getElementById('rsvpForm');
-  const msg = document.getElementById('rsvpMsg');
-  const btn = document.getElementById('rsvpBtn');
-
-  function setStatus(text, ok){
-    msg.textContent = text;
-    msg.className = ok ? "status-ok" : "status-bad";
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const payload = {
-      name: name.value.trim(),
-      email: email.value.trim().toLowerCase(),
-      address: [
-        streetAddress.value,
-        addressLine2.value,
-        city.value,
-        state.value,
-        zipCode.value
-      ].filter(Boolean).join(", "),
-      notes: notes.value
-    };
-
-    btn.disabled = true;
-    btn.textContent = "Submitting...";
-
-    try {
-      const { data } = await supabase
-        .from("guests")
-        .select("id")
-        .eq("email", payload.email)
-        .maybeSingle();
-
-      if (data) {
-        setStatus("This email is already on file.", false);
+      if (
+        !payload.name ||
+        !payload.email ||
+        !payload.streetAddress ||
+        !payload.city ||
+        !payload.state ||
+        !payload.zipCode
+      ) {
+        setStatus("Please complete all required fields.", false);
         return;
       }
 
-      await supabase.from("guests").insert(payload);
+      btn.disabled = true;
+      btn.textContent = "Submitting...";
+          const response = await fetch(
+            "https://ibzoqsepguyoelavoseb.supabase.co/functions/v1/send-confirmation",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                name: payload.name,
+                email: payload.email,
+                address: fullAddress,
+                notes: payload.notes
+              })
+            }
+          );
 
-      await fetch("https://ibzoqsepguyoelavoseb.supabase.co/functions/v1/send-confirmation", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(payload)
-      });
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Confirmation email failed:", errorText);
+          }
+        } catch (emailError) {
+          console.error("Confirmation email request failed:", emailError);
+        }
 
-      form.reset();
-      setStatus("You're all set! Confirmation sent.", true);
+        form.reset();
+        setStatus("You're all set! Confirmation sent.", true);
+      } catch (err) {
+        const touch = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0] : null;
+        if (!touch) return;
 
-    } catch (err) {
-      console.error(err);
-      setStatus("Something went wrong.", false);
-    }
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
 
-    btn.disabled = false;
-    btn.textContent = "Submit Info";
-  });
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          if (dx < 0) next();
+          else prev();
+        }
+      },
+      { passive: true }
+    );
 
+    lbImg.addEventListener("click", next);
+  }
 });
 </script>
-
 </body>
 </html>
