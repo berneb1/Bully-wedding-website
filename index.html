@@ -1742,7 +1742,7 @@
     const musicBtn = document.getElementById("musicBtn");
     const musicText = document.getElementById("musicText");
 
-    audio.volume = 0.25;
+    audio.volume = 0.2;
 
     function updateMusicUI(isPlaying) {
       musicBtn.classList.toggle("is-playing", isPlaying);
@@ -1758,7 +1758,7 @@
         await audio.play();
 
         let vol = 0;
-        const target = 0.25;
+        const target = 0.2;
 
         const fade = setInterval(() => {
           if (vol < target) {
@@ -1787,7 +1787,7 @@
           await audio.play();
 
           let vol = 0;
-          const target = 0.25;
+          const target = 0.2;
 
           const fade = setInterval(() => {
             if (vol < target) {
