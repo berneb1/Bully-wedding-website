@@ -8,7 +8,9 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Berne & Courtney • October 10, 2026</title>
-
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta property="og:title" content="The Bully Wedding">
   <meta property="og:description" content="October 10, 2026 • Atlanta, GA">
   <meta property="og:image" content="https://berneb1.github.io/Bully-wedding-website/og2.jpg">
@@ -328,7 +330,42 @@
         radial-gradient(circle at 45% 18%, rgba(31,77,67,.18), transparent 60%);
       z-index:-1;
     }
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:
+radial-gradient(circle at 30% 20%, rgba(212,175,55,.20), transparent 45%),
+radial-gradient(circle at 70% 30%, rgba(31,77,67,.18), transparent 55%);
+  z-index:0;
+}
 
+.hero > *{
+  position:relative;
+  z-index:1;
+}
+
+.overline{
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-size: .7rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.date{
+  margin-top: .8rem;
+  font-size: 1rem;
+  color: var(--text);
+  opacity:.85;
+  letter-spacing:.08em;
+}
+
+.hero-divider{
+  width:80px;
+  height:1px;
+  margin: 1.2rem auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
     .names{
       margin:0;
       font-size:clamp(2.45rem, 5.6vw, 3.75rem);
@@ -713,6 +750,16 @@
       box-shadow: 0 10px 34px rgba(0,0,0,.06);
       font-weight: 850;
     }
+.fade-in{
+  opacity:0;
+  transform: translateY(30px);
+  transition: all .8s ease;
+}
+.fade-in.visible{
+  opacity:1;
+  transform: translateY(0);
+}
+
     .names-list li .pill{
       font-size:.85rem;
       font-weight: 950;
@@ -1191,9 +1238,18 @@
   </div>
 
   <header id="top" class="hero">
-    <h1 class="names">The Bully Wedding</h1>
-    <p class="subline">We’re getting married, and we’d love for you to celebrate with us on <strong>October 10, 2026</strong>.</p>
 
+  <div class="hero-overlay"></div>
+
+ 
+    
+   <p class="overline">The Bully Wedding</p>
+
+<h1 class="names">Berne & Courtney</h1>
+
+<p class="date">October 10, 2026 • Atlanta, GA</p>
+
+<div class="hero-divider"></div>
     <div class="hero-card" role="region" aria-label="Wedding overview">
       <div class="hero-media">
         <div class="hero-photo" role="img" aria-label="Save the date photo">
@@ -2121,8 +2177,21 @@ END:VCALENDAR`;
       }, { passive: true });
 
       lbImg.addEventListener('click', next);
+   const fadeEls = document.querySelectorAll('.card, .feature-card, .section-head');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('fade-in','visible');
     }
   });
-  </script>
+},{ threshold: .15 });
+
+fadeEls.forEach(el=>{
+  observer.observe(el);
+});
+
+});  // 
+</script>
+  
 </body>
 </html>
