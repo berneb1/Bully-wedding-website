@@ -9,6 +9,7 @@
 
   <title>Berne & Courtney • October 10, 2026</title>
  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta property="og:title" content="The Bully Wedding">
@@ -1187,7 +1188,54 @@ radial-gradient(circle at 70% 30%, rgba(31,77,67,.18), transparent 55%);
         font-size:.77rem;
         padding:.26rem .5rem;
       }
-    }
+  }
+
+/* ===== LUXURY WEDDING STYLE ===== */
+
+body {
+  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.9)),
+              url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  text-align: center;
+}
+
+body, p {
+  font-family: 'Inter', sans-serif;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+section {
+  padding: 4rem 1.5rem;
+}
+
+.divider {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #c97b63;
+  margin: 2rem 0;
+}
+
+
   </style>
 </head>
 
@@ -1529,7 +1577,7 @@ radial-gradient(circle at 70% 30%, rgba(31,77,67,.18), transparent 55%);
                   <li><span>Kenneth Cousins</span><span class="pill">Groomsman</span></li>
                   <li><span>Louis Swanks</span><span class="pill">Groomsman</span></li>
                   <li><span>Michael Roberts</span><span class="pill">Groomsman</span></li>
-                  <li><span>Rashaad Cox</span><span class="pill">Groomsman</span></li>
+                  <li><span>Dykavius Colbert</span><span class="pill">Groomsman</span></li>
                   <li><span>Ronald Johnson</span><span class="pill">Groomsman</span></li>
                   <li><span>Ryan Gardner</span><span class="pill">Groomsman</span></li>
                   <li><span>Sidney Smith</span><span class="pill">Groomsman</span></li>
@@ -1620,54 +1668,29 @@ radial-gradient(circle at 70% 30%, rgba(31,77,67,.18), transparent 55%);
 
       <article class="card" id="rsvpCard">
         <div class="card-pad">
-          <form class="grid" id="rsvpForm" autocomplete="on">
+    <section class="fade-in" style="text-align:center; padding:3rem 1rem;">
+  <h2>RSVP & Registry</h2>
 
-  <!-- ATTENDING -->
-  <div class="col-12">
-    <label class="form-label">Will you be attending?</label>
-    <select class="form-input" name="attendance" required>
-      <option value="">Select one</option>
-      <option value="yes">Yes, I’ll be there! 🎉</option>
-      <option value="no">No, I can’t make it</option>
-    </select>
-  </div>
+  <p style="margin-bottom:1.5rem;">
+    Please confirm your attendance and explore our registry below.
+  </p>
 
-  <!-- NAME -->
-  <div class="col-6">
-    <label class="form-label" for="name">Full name</label>
-    <input class="form-input" id="name" name="name" type="text" placeholder="Your full name" required />
-  </div>
+  <p class="muted" style="margin-bottom:1rem;">
+    You’ll be redirected to our secure wedding portal.
+  </p>
 
-  <!-- EMAIL -->
-  <div class="col-6">
-    <label class="form-label" for="email">Email</label>
-    <input class="form-input" id="email" name="email" type="email" placeholder="you@example.com" required />
-  </div>
+  <!-- RSVP BUTTON -->
+  <button class="btn btn-primary" onclick="goToRSVP()">
+    RSVP on Our Wedding Portal →
+  </button>
 
-  
- 
+  <br><br>
 
-  <!-- NOTES -->
-  <div class="col-12">
-    <label class="form-label" for="notes">Notes</label>
-    <input class="form-input" id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc." />
-  </div>
-
-  <!-- INFO NOTE -->
-  <div class="col-12">
-    <p class="muted" style="font-size:.9rem;">
-      Plus ones are by invitation only and will be indicated on your formal invitation. Formal invitations will be sent out soon with additional details.
-    </p>
-  </div>
-
-  <!-- SUBMIT -->
-  <div class="col-12 form-actions">
-    <button class="btn btn-primary" type="submit" id="rsvpBtn">Submit RSVP</button>
-    <span class="muted" id="rsvpMsg" role="status" aria-live="polite"></span>
-  </div>
-
-
-          </form>
+  <!-- REGISTRY BUTTON -->
+  <button class="btn btn-secondary" onclick="goToRegistry()">
+    View Our Registry →
+  </button>
+</section>
         </div>
       </article>
     </section>
