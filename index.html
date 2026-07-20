@@ -80,10 +80,7 @@ body {
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   color: var(--text);
   overflow-x: hidden;
-h1, h2, h3, .story-title, .feature-title {
-  font-family: "Playfair Display", serif;
-  letter-spacing: 0.5px;
-}
+
   background:
     linear-gradient(rgba(235, 245, 238, 0.25), rgba(235, 245, 238, 0.35)),
     radial-gradient(circle at 20% 20%, rgba(120, 160, 120, 0.25), transparent 50%),
@@ -96,13 +93,8 @@ h1, h2, h3, .story-title, .feature-title {
   background-attachment: fixed;
 }
 
- background:
-  radial-gradient(circle at top left, rgba(90, 130, 90, 0.10), transparent 40%),
-  radial-gradient(circle at top right, rgba(170, 130, 80, 0.10), transparent 40%),
-  radial-gradient(circle at bottom right, rgba(90, 130, 90, 0.08), transparent 40%);
 
-  z-index: 0;
-}
+
       
 
     @media (prefers-reduced-motion: reduce){
@@ -208,7 +200,7 @@ h1, h2, h3, .story-title, .feature-title {
       color:var(--green);
       font-weight:800;
       font-size:1.02rem;
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      font-family: inherit;
     }
     .brand-text span{
       color:var(--muted);
@@ -278,36 +270,22 @@ h1, h2, h3, .story-title, .feature-title {
       color:#fff;
       transform: translateY(-1px);
     }
+body {
+  font-family: 'Inter', sans-serif;
+}
 
-    html,
-    body,
-    button,
-    input,
-    select,
-    textarea,
-    label,
-    summary,
-    a,
-    p,
-    small,
-    strong,
-    span,
-    li,
-    div,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .names,
-    .section-head h2,
-    .story-title,
-    .feature-title,
-    [style*="Playfair Display"]{
-      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif !important;
-      letter-spacing:0 !important;
-    }
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  text-align: center;
+}
+
+h2, h3, .story-title, .feature-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+ 
 
     .section-head h2{
       font-size: clamp(1.65rem, 3vw, 2.15rem);
@@ -326,12 +304,11 @@ h1, h2, h3, .story-title, .feature-title {
   background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
   background-size: cover;
   background-position: center;
+  text-align: center;
+  padding: 5.55rem 1rem 2.25rem;
+  position: relative;
+  z-index: 1;
 }
-      text-align:center;
-      padding: 5.55rem 1rem 2.25rem;
-      position:relative;
-      z-index:1;
-    }
     header.hero::before{
       content:"";
       position:absolute;
@@ -345,10 +322,9 @@ h1, h2, h3, .story-title, .feature-title {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.8));
+  background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.25));
   z-index: 0;
 }
-
 .hero > *{
   position:relative;
   z-index:1;
@@ -1212,13 +1188,13 @@ h1 {
   text-align: center;
 }
 
-h2 {
+h2, h3, .story-title, .feature-title {
   font-family: 'Playfair Display', serif;
   font-weight: 500;
-  text-align: center;
+  letter-spacing: 0.5px;
 }
 
-body, p {
+p, span, a, li, div {
   font-family: 'Inter', sans-serif;
 }
 
@@ -2252,7 +2228,42 @@ function goToRegistry() {
 }
 
 </script>
-    </script>
-  
+</script>
+
+<style>
+<style>
+/* ===== GLOBAL FONT FIX (OVERRIDES EVERYTHING) ===== */
+
+* {
+  font-family: inherit !important;
+}
+
+/* Base font */
+body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif !important;
+}
+
+/* Elegant names */
+.names {
+  font-family: "Great Vibes", cursive !important;
+  letter-spacing: 1px;
+}
+
+/* Section titles */
+h1, h2, h3,
+.story-title,
+.feature-title,
+.section-head h2 {
+  font-family: "Playfair Display", serif !important;
+  letter-spacing: 0.5px;
+}
+
+/* Everything else clean */
+p, span, a, li, div, button, input, label {
+  font-family: "Inter", sans-serif !important;
+}
+</style>
+</style>
+
 </body>
 </html>
