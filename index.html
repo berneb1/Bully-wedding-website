@@ -1228,9 +1228,9 @@ section {
 </div>
   
 
-  <audio id="bgMusic" preload="auto" loop playsinline>
-    <source src="lets-get-married-instrumental.mp3" type="audio/mpeg" />
-  </audio>
+<audio id="bgMusic" preload="auto" loop playsinline>
+  <source src="https://raw.githubusercontent.com/berneb1/Bully-wedding-website/main/lets-get-married-instrumental.mp3" type="audio/mpeg" />
+</audio>
 
   <button class="music-btn" id="musicBtn" type="button" aria-pressed="false" aria-label="Toggle music">
     <span class="music-ico" aria-hidden="true">♪</span>
@@ -2261,11 +2261,24 @@ const audio = document.getElementById("bgMusic");
 const btn = document.getElementById("musicBtn");
 const text = document.getElementById("musicText");
 
-// First click anywhere enables audio (browser rule fix)
+// First click anywhere enables audio
 document.addEventListener("click", () => {
   if (audio && audio.paused) {
-    audio.volume = 0.15;
+    audio.volume = 0;
     audio.play().catch(() => {});
+
+    // smooth fade in
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 0.15) {
+        vol += 0.01;
+        audio.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
+
+    text.textContent = "Pause music";
   }
 }, { once: true });
 
@@ -2281,5 +2294,37 @@ btn.addEventListener("click", () => {
   }
 });
 </script>
-</body>
+<script>
+const musicBtn = document.getElementById("musicBtn");
+const musicText = document.getElementById("musicText");
+const audio = document.getElementById("bgMusic");
+
+let isPlaying = false;
+
+musicBtn.addEventListener("click", () => {
+  if (!isPlaying) {
+    audio.volume = 0;
+    audio.play();
+
+    // smooth fade in
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 1) {
+        vol += 0.05;
+        audio.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
+
+    musicText.textContent = "Pause music";
+    isPlaying = true;
+  } else {
+    audio.pause();
+    musicText.textContent = "Play music";
+    isPlaying = false;
+  }
+});
+</script>
+document
 </html>
