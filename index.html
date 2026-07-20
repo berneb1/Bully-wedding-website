@@ -22,27 +22,26 @@
   <meta name="twitter:image" content="https://berneb1.github.io/Bully-wedding-website/og2.jpg">
 
   <style>
-    :root{
-    :root {
-  --green: #355f4c;   /* deeper forest green */
-  --green2: #6f8e72;  /* soft sage */
-  --gold: #d4a373;    /* warm gold */
+   
+   :root {
+  --green: #355f4c;
+  --green2: #6f8e72;
+  --gold: #d4a373;
 
   --text: #2f2f2f;
   --muted: #7a7a7a;
+
+  --glass: rgba(255,255,255,.76);
+  --border: rgba(0,0,0,.09);
+
+  --shadow: 0 24px 80px rgba(0,0,0,.10);
+  --shadow2: 0 18px 52px rgba(31,77,67,.18);
+
+  --radius: 24px;
+  --ring: 0 0 0 4px rgba(31,77,67,.18);
+
+  --container: 1120px;
 }
-
-      --glass:rgba(255,255,255,.76);
-      --border:rgba(0,0,0,.09);
-
-      --shadow: 0 24px 80px rgba(0,0,0,.10);
-      --shadow2: 0 18px 52px rgba(31,77,67,.18);
-
-      --radius: 24px;
-      --ring: 0 0 0 4px rgba(31,77,67,.18);
-
-      --container: 1120px;
-    }
 
     html, body{
       -webkit-font-smoothing: antialiased;
@@ -1311,7 +1310,7 @@ section {
 
 <h1 class="names">Berne & Courtney</h1>
 <div class="divider">❦</div>
-<p class="date">October 10, 2026 • Atlanta, GA</p>
+
 
 <p class="date">October 10, 2026 • Atlanta, GA</p>
 
@@ -1332,16 +1331,18 @@ section {
  <div class="hero-actions">
 
   <a class="btn btn-primary" 
-     href="https://withjoy.com/courtney-and-berne/rsvp" 
-     target="_blank">
-    RSVP Now →
-  </a>
+   href="https://withjoy.com/courtney-and-berne/rsvp" 
+   target="_blank">
+  RSVP on Our Wedding Portal →
+</a>
 
-  <a class="btn btn-ghost" 
-     href="https://www.myregistry.com/wedding-registry/courtney-gardner-and-berne-bully-kissimmee-fl/5529848" 
-     target="_blank">
-    View Registry →
-  </a>
+<br><br>
+
+<a class="btn btn-ghost" 
+   href="https://www.myregistry.com/wedding-registry/courtney-gardner-and-berne-bully-kissimmee-fl/5529848" 
+   target="_blank">
+  View Our Registry →
+</a>
 
   <a class="btn btn-ghost" href="#story">
     Our Story →
@@ -2244,7 +2245,18 @@ fadeEls.forEach(el=>{
 });
 
 });  // 
+});  // end of DOMContentLoaded
+
+function goToRSVP() {
+  window.open("https://withjoy.com/courtney-and-berne/rsvp", "_blank");
+}
+
+function goToRegistry() {
+  window.open("https://www.myregistry.com/wedding-registry/courtney-gardner-and-berne-bully-kissimmee-fl/5529848", "_blank");
+}
+
 </script>
+    </script>
   
 </body>
 </html>
