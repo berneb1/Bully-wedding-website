@@ -1621,50 +1621,52 @@ radial-gradient(circle at 70% 30%, rgba(31,77,67,.18), transparent 55%);
       <article class="card" id="rsvpCard">
         <div class="card-pad">
           <form class="grid" id="rsvpForm" autocomplete="on">
-            <div class="col-6">
-              <label class="form-label" for="name">Full name</label>
-              <input class="form-input" id="name" name="name" type="text" placeholder="Your full name" required />
-            </div>
 
-            <div class="col-6">
-              <label class="form-label" for="email">Email</label>
-              <input class="form-input" id="email" name="email" type="email" placeholder="you@example.com" required />
-            </div>
+  <!-- ATTENDING -->
+  <div class="col-12">
+    <label class="form-label">Will you be attending?</label>
+    <select class="form-input" name="attendance" required>
+      <option value="">Select one</option>
+      <option value="yes">Yes, I’ll be there! 🎉</option>
+      <option value="no">No, I can’t make it</option>
+    </select>
+  </div>
 
-            <div class="col-12">
-              <label class="form-label" for="streetAddress">Street address</label>
-              <input class="form-input" id="streetAddress" name="streetAddress" type="text" placeholder="123 Main St" required />
-            </div>
+  <!-- NAME -->
+  <div class="col-6">
+    <label class="form-label" for="name">Full name</label>
+    <input class="form-input" id="name" name="name" type="text" placeholder="Your full name" required />
+  </div>
 
-            <div class="col-6">
-              <label class="form-label" for="addressLine2">Apartment, suite, unit (optional)</label>
-              <input class="form-input" id="addressLine2" name="addressLine2" type="text" placeholder="Apt, suite, unit" />
-            </div>
+  <!-- EMAIL -->
+  <div class="col-6">
+    <label class="form-label" for="email">Email</label>
+    <input class="form-input" id="email" name="email" type="email" placeholder="you@example.com" required />
+  </div>
 
-            <div class="col-6">
-              <label class="form-label" for="city">City</label>
-              <input class="form-input" id="city" name="city" type="text" placeholder="City" required />
-            </div>
+  
+ 
 
-            <div class="col-6">
-              <label class="form-label" for="state">State</label>
-              <input class="form-input" id="state" name="state" type="text" placeholder="State" required />
-            </div>
+  <!-- NOTES -->
+  <div class="col-12">
+    <label class="form-label" for="notes">Notes</label>
+    <input class="form-input" id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc." />
+  </div>
 
-            <div class="col-6">
-              <label class="form-label" for="zipCode">ZIP code</label>
-              <input class="form-input" id="zipCode" name="zipCode" type="text" placeholder="ZIP code" required />
-            </div>
+  <!-- INFO NOTE -->
+  <div class="col-12">
+    <p class="muted" style="font-size:.9rem;">
+      Plus ones are by invitation only and will be indicated on your formal invitation. Formal invitations will be sent out soon with additional details.
+    </p>
+  </div>
 
-            <div class="col-12">
-              <label class="form-label" for="notes">Notes</label>
-              <input class="form-input" id="notes" name="notes" type="text" placeholder="Dietary restrictions, song request, etc." />
-            </div>
+  <!-- SUBMIT -->
+  <div class="col-12 form-actions">
+    <button class="btn btn-primary" type="submit" id="rsvpBtn">Submit RSVP</button>
+    <span class="muted" id="rsvpMsg" role="status" aria-live="polite"></span>
+  </div>
 
-            <div class="col-12 form-actions">
-              <button class="btn btn-primary" type="submit" id="rsvpBtn">Submit Info</button>
-              <span class="muted" id="rsvpMsg" role="status" aria-live="polite"></span>
-            </div>
+
           </form>
         </div>
       </article>
@@ -1956,29 +1958,25 @@ END:VCALENDAR`;
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const payload = {
-          name: document.getElementById("name").value.trim(),
-          email: document.getElementById("email").value.trim().toLowerCase(),
-          streetAddress: document.getElementById("streetAddress").value.trim(),
-          addressLine2: document.getElementById("addressLine2").value.trim(),
-          city: document.getElementById("city").value.trim(),
-          state: document.getElementById("state").value.trim(),
-          zipCode: document.getElementById("zipCode").value.trim(),
-          notes: document.getElementById("notes").value.trim()
-        };
+       const payload = {
+ attendance: document.querySelector('[name="attendance"]')?.value || "",
 
-        if (
-          !payload.name ||
-          !payload.email ||
-          !payload.streetAddress ||
-          !payload.city ||
-          !payload.state ||
-          !payload.zipCode
-        ) {
-          setStatus("Please complete all required fields.", false);
-          return;
-        }
+  name: document.getElementById("name").value.trim(),
+  email: document.getElementById("email").value.trim().toLowerCase(),
 
+ 
+  notes: document.getElementById("notes").value.trim()
+};
+
+    if (
+  !payload.name ||
+  !payload.email ||
+  !payload.attendance
+) {
+  setStatus("Please complete all required fields.", false);
+  return;
+}
+       
         btn.disabled = true;
         btn.textContent = "Submitting…";
         setStatus("", true);
@@ -1999,22 +1997,15 @@ END:VCALENDAR`;
             return;
           }
 
-          const fullAddress = [
-            payload.streetAddress,
-            payload.addressLine2,
-            payload.city,
-            payload.state,
-            payload.zipCode
-          ].filter(Boolean).join(", ");
-
+          
           const { error: insertError } = await supabase
             .from("guests")
             .insert({
-              name: payload.name,
-              email: payload.email,
-              address: fullAddress,
-              notes: payload.notes
-            });
+  name: payload.name,
+  email: payload.email,
+  attendance: payload.attendance,
+  notes: payload.notes
+})
 
           if (insertError) {
             if (insertError.code === "23505") {
@@ -2056,21 +2047,26 @@ END:VCALENDAR`;
           }
 
           form.reset();
-          setStatus(
-            emailSent
-              ? "Thank you! Your information has been received."
-              : "Thank you! Your information was saved.",
-            true
-          );
+
+setStatus(
+  emailSent
+    ? "Thank you! Your information has been received."
+    : "Thank you! Your information was saved.",
+  true
+);
+
+// 🔥 ADD THIS RIGHT HERE
+form.style.display = "none";
+document.getElementById("rsvpSuccess").style.display = "block";
         } catch (err) {
           console.error("FULL ERROR:", err);
           setStatus("Something went wrong. Try again.", false);
         } finally {
-          btn.disabled = false;
-          btn.textContent = "Submit Info";
-        }
-      });
-    }
+  if (form.style.display !== "none") {
+    btn.disabled = false;
+    btn.textContent = "Submit Info";
+  }
+}
 
     const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
     if (galleryImgs.length) {
