@@ -23,12 +23,14 @@
 
   <style>
     :root{
-    --green:#6b3e2e;   /* deep brown */
---green2:#a47148;  /* warm tan */
---gold:#d4a373;    /* soft gold */
+    :root {
+  --green: #355f4c;   /* deeper forest green */
+  --green2: #6f8e72;  /* soft sage */
+  --gold: #d4a373;    /* warm gold */
 
-      --text:#111a1f;
-      --muted:#667085;
+  --text: #2f2f2f;
+  --muted: #7a7a7a;
+}
 
       --glass:rgba(255,255,255,.76);
       --border:rgba(0,0,0,.09);
@@ -485,20 +487,22 @@ background-position: center;
       transition: transform .15s ease, filter .15s ease, background .15s ease;
       will-change: transform;
     }
-    .btn-primary{
-      background: var(--green);
-      color:#fff;
-      box-shadow: var(--shadow2);
-    }
-    .btn-primary:hover{ background:#163a32; transform: translateY(-1px); }
-    .btn-ghost{
-      background: rgba(255,255,255,.85);
-      border: 1px solid var(--border);
-      color: var(--green);
-      box-shadow: 0 14px 40px rgba(0,0,0,.10);
-    }
-    .btn-ghost:hover{ filter: brightness(.98); transform: translateY(-1px); }
-
+  .btn-primary{
+  background: linear-gradient(135deg, #355f4c, #6f8e72);
+  color:#fff;
+  border:none;
+  box-shadow: 0 8px 25px rgba(53,95,76,0.25);
+  transition: all .25s ease;
+}
+   .btn-primary:hover{
+  background: linear-gradient(135deg, #2f4f3e, #5f7f64);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(53,95,76,0.4);
+}
+  .btn-ghost:hover{
+  background: rgba(255,255,255,0.9);
+  transform: translateY(-2px);
+}
     section.block{ margin-top: 2.4rem; }
     .section-head{
       display:flex;
@@ -1195,11 +1199,16 @@ background-position: center;
 /* ===== LUXURY WEDDING STYLE ===== */
 
 body {
-background: linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.9)),
-            url('https://images.unsplash.com/photo-1505236731923-4b0f0c6e8c4f');
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
+  background:
+    linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.9)),
+    radial-gradient(circle at 20% 20%, rgba(166, 124, 82, 0.25), transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(111, 142, 114, 0.25), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(212, 163, 115, 0.25), transparent 60%),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 h1 {
