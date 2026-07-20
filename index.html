@@ -1679,16 +1679,20 @@ section {
   </p>
 
   <!-- RSVP BUTTON -->
-  <button class="btn btn-primary" onclick="goToRSVP()">
-    RSVP on Our Wedding Portal →
-  </button>
+ <a class="btn btn-primary" 
+   href="https://withjoy.com/courtney-and-berne/rsvp" 
+   target="_blank">
+  RSVP on Our Wedding Portal →
+</a>
 
   <br><br>
 
   <!-- REGISTRY BUTTON -->
-  <button class="btn btn-secondary" onclick="goToRegistry()">
-    View Our Registry →
-  </button>
+ <a class="btn btn-secondary" 
+   href="https://www.myregistry.com/wedding-registry/courtney-gardner-and-berne-bully-kissimmee-fl/5529848" 
+   target="_blank">
+  View Our Registry →
+</a>
 </section>
         </div>
       </article>
@@ -2252,6 +2256,30 @@ p, span, a, li, div, button, input, label {
   font-family: "Inter", sans-serif;
 }
 </style>
+<script>
+const audio = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+const text = document.getElementById("musicText");
 
+// First click anywhere enables audio (browser rule fix)
+document.addEventListener("click", () => {
+  if (audio && audio.paused) {
+    audio.volume = 0.15;
+    audio.play().catch(() => {});
+  }
+}, { once: true });
+
+// Button toggle
+btn.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.volume = 0.15;
+    audio.play();
+    text.textContent = "Pause music";
+  } else {
+    audio.pause();
+    text.textContent = "Play music";
+  }
+});
+</script>
 </body>
 </html>
