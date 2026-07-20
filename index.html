@@ -1182,14 +1182,7 @@ h2, h3, .story-title, .feature-title {
 
 
 
-h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3rem;
-  text-align: center;
-}
 
-h2, h3, .story-title, .feature-title {
-  font-family: 'Playfair Display', serif;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
@@ -2231,38 +2224,33 @@ function goToRegistry() {
 </script>
 
 <style>
-<style>
-/* ===== GLOBAL FONT FIX (OVERRIDES EVERYTHING) ===== */
-
-* {
-  font-family: inherit !important;
-}
+/* ===== FINAL FONT FIX (STABLE + CLEAN) ===== */
 
 /* Base font */
 body {
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif !important;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
-/* Elegant names */
-.names {
-  font-family: "Great Vibes", cursive !important;
+/* Names (script) */
+.names,
+h1 {
+  font-family: "Great Vibes", cursive;
   letter-spacing: 1px;
 }
 
-/* Section titles */
-h1, h2, h3,
+/* Headings */
+h2, h3, h4,
 .story-title,
 .feature-title,
 .section-head h2 {
-  font-family: "Playfair Display", serif !important;
+  font-family: "Playfair Display", serif;
   letter-spacing: 0.5px;
 }
 
-/* Everything else clean */
+/* Everything else */
 p, span, a, li, div, button, input, label {
-  font-family: "Inter", sans-serif !important;
+  font-family: "Inter", sans-serif;
 }
-</style>
 </style>
 
 </body>
