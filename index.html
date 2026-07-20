@@ -1871,8 +1871,7 @@ section {
           await audio.play();
 
           let vol = 0;
-          const target = 0.8;
-
+          const target = 0.06;
           const fade = setInterval(() => {
             if (vol < target) {
               vol += 0.02;
@@ -2261,9 +2260,13 @@ const audio = document.getElementById("bgMusic");
 const btn = document.getElementById("musicBtn");
 const text = document.getElementById("musicText");
 
+let started = false;
+
 // First click anywhere enables audio
 document.addEventListener("click", () => {
-  if (audio && audio.paused) {
+  if (!started && audio) {
+    started = true;
+
     audio.volume = 0;
     audio.play().catch(() => {});
 
@@ -2285,6 +2288,7 @@ document.addEventListener("click", () => {
 // Button toggle
 btn.addEventListener("click", () => {
   if (audio.paused) {
+    started = true; // prevents double trigger
     audio.volume = 0.15;
     audio.play();
     text.textContent = "Pause music";
