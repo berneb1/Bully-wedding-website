@@ -1943,7 +1943,8 @@ END:VCALENDAR`;
 
     const SUPABASE_URL = "https://ibzoqsepguyoelavoseb.supabase.co";
     const SUPABASE_KEY = "sb_publishable_jg29YXi7IB9Y5m1q44p84g_PmtOjg2Y";
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const { createClient } = supabase;
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
     const form = document.getElementById('rsvpForm');
     const msg = document.getElementById('rsvpMsg');
@@ -1998,7 +1999,7 @@ END:VCALENDAR`;
           }
 
           
-          const { error: insertError } = await supabase
+          const { error: insertError } = await supabaseClient
             .from("guests")
             .insert({
   name: payload.name,
