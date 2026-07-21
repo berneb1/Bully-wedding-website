@@ -2236,7 +2236,42 @@ p, span, a, li, div, button, input, label {
   font-family: "Inter", sans-serif;
 }
 </style>
-<script>
+/* ===== STORY SECTION BACKGROUND FIX ===== */
+
+.story-section {
+  position: relative;
+  padding: 6rem 1rem;
+
+  background: url("Photo2.JPG"); /* or Photo1.JPG */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.story-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 0;
+}
+
+.story-section * {
+  position: relative;
+  z-index: 1;
+}
+
+.story-section h2,
+.story-section p {
+  color: white;
+}
+
+.story-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  text-align: center;
+}
+  <script>
 const audio = document.getElementById("bgMusic");
 const btn = document.getElementById("musicBtn");
 const text = document.getElementById("musicText");
