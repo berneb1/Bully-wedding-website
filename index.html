@@ -164,14 +164,13 @@ body {
       -webkit-backdrop-filter: blur(14px);
       border-bottom:1px solid var(--border);
     }
-    .nav{
-      max-width: var(--container);
-      margin:0 auto;
-      padding:.78rem 1.05rem;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:.9rem;
-      position:relative;
-    }
+   .nav{
+  max-width: var(--container);
+  margin:0 auto;
+  padding:.78rem 1.05rem;
+}
+
+     
     .brand{
       display:flex; align-items:center; gap:.8rem;
       text-decoration:none; color:inherit;
@@ -291,10 +290,10 @@ h2, h3, .story-title, .feature-title {
       font-size: clamp(1.65rem, 3vw, 2.15rem);
       font-weight:900;
     }
-    .story-title{
-      font-size: clamp(1.45rem, 2.8vw, 1.9rem);
-      font-weight:900;
-    }
+   .story-title{
+  font-size: clamp(1.45rem, 2.8vw, 1.9rem);
+  font-weight:900;
+}
     .feature-title{
       font-size: clamp(1.1rem, 2.2vw, 1.4rem);
       font-weight:900;
@@ -332,33 +331,16 @@ h2, h3, .story-title, .feature-title {
 
 .overline{
   text-transform: uppercase;
-  letter-spacing: .25em;
-  font-size: .7rem;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.date{
-  margin-top: .8rem;
+  letter-spacing: .35em;
   font-size: 1rem;
-  color: var(--text);
-  opacity:.85;
-  letter-spacing:.08em;
-}
+  color: var(--green);
+  font-weight: 700;
 
-.hero-divider{
-  width:80px;
-  height:1px;
-  margin: 1.2rem auto;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  font-family: 'Playfair Display', serif;
+
+  text-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
-    .names{
-      margin:0;
-      font-size:clamp(2.45rem, 5.6vw, 3.75rem);
-      color:var(--green);
-      text-shadow:0 24px 80px rgba(31,77,67,.18);
-      font-weight:900;
-    }
+     
     .subline{
       margin:.8rem auto 0;
       color:var(--muted);
@@ -484,32 +466,7 @@ h2, h3, .story-title, .feature-title {
   background: rgba(255,255,255,0.9);
   transform: translateY(-2px);
 }
-    section.block{ margin-top: 2.4rem; }
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:1rem;
-      margin-bottom: 1.0rem;
-    }
-    .section-head h2{
-      margin:0;
-      color: var(--green);
-    }
-    .section-head p{
-      margin:0;
-      color: var(--muted);
-      font-weight: 650;
-      max-width: 60ch;
-    }
 
-    .card{
-      background: rgba(255,255,255,.78);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
     .card-pad{ padding: 1.1rem; }
 
     .grid{
@@ -726,18 +683,19 @@ h2, h3, .story-title, .feature-title {
       display:grid;
       gap: .55rem;
     }
-    .names-list li{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      padding: .75rem .85rem;
-      border-radius: 16px;
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 10px 34px rgba(0,0,0,.06);
-      font-weight: 850;
-    }
+  .names-list li{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: .75rem .85rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 10px 34px rgba(0,0,0,.06);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
 .fade-in{
   opacity:0;
   transform: translateY(30px);
@@ -748,16 +706,7 @@ h2, h3, .story-title, .feature-title {
   transform: translateY(0);
 }
 
-    .names-list li .pill{
-      font-size:.85rem;
-      font-weight: 950;
-      padding: .3rem .55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(31,77,67,.10);
-      background: rgba(31,77,67,.06);
-      color: var(--green);
-      white-space:nowrap;
-    }
+  
 
     .form-label{
       display:block;
@@ -873,7 +822,8 @@ h2, h3, .story-title, .feature-title {
     .lightbox__top{
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:center;
+text-align:center;
       gap: 12px;
       padding: 10px 10px;
     }
@@ -1165,27 +1115,23 @@ h2, h3, .story-title, .feature-title {
       }
 
       .names-list li{
-        padding:.68rem .72rem;
-        border-radius:14px;
-        font-size:.95rem;
-        align-items:flex-start;
-      }
+  padding:.68rem .72rem;
+  border-radius:14px;
+  font-size:.95rem;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
 
-      .names-list li .pill{
-        font-size:.77rem;
-        padding:.26rem .5rem;
-      }
+    
   }
-
 /* ===== LUXURY WEDDING STYLE ===== */
 
-
-
-
-
+h2, h3 {
   font-weight: 500;
   letter-spacing: 0.5px;
 }
+
 
 p, span, a, li, div {
   font-family: 'Inter', sans-serif;
@@ -1293,8 +1239,9 @@ section {
 
  
     
-   <p class="overline">The Bully Wedding</p>
-
+ <p class="overline" style="font-size:1rem; letter-spacing:.3em; font-weight:700;">
+  The Bully Wedding
+</p>
 <h1 class="names">Berne & Courtney</h1>
 <div class="divider">❦</div>
 
@@ -1329,13 +1276,13 @@ section {
   View Our Registry →
 </a>
 
-<a class="btn btn-ghost" href="#story">
+<a class="btn btn-primary" href="#story">
   Our Story →
 </a>
 
 </div>
 
-          <p class="muted" style="margin:0; text-align:center;">We need your information on our site so we can send updates, mailed details, and future RSVP access.</p>
+          
         </div>
       </div>
     </div>
@@ -1573,15 +1520,15 @@ section {
               <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Bridesmaids</h3>
               <div class="list-card">
                 <ul class="names-list" aria-label="Bridesmaids list">
-                  <li><span>Alina Futch</span><span class="pill">Bridesmaid</span></li>
-                  <li><span>Breanna Bolden</span><span class="pill">Bridesmaid</span></li>
-                  <li><span>Crisanta White</span><span class="pill">Bridesmaid</span></li>
-                  <li><span>Jenice Winter</span><span class="pill">Bridesmaid</span></li>
-                  <li><span>Mariah Mitchell</span><span class="pill">Bridesmaid</span></li>
-                  <li><span>Mia Marshall</span><span class="pill">Bridesmaid</span></li>
-                  <li><span>Shashanta Cox</span><span class="pill">Bridesmaid</span></li>
-                  <li><span>Tytiana Horton</span><span class="pill">Bridesmaid</span></li>
-                  <li><span>Victoria Fance</span><span class="pill">Bridesmaid</span></li>
+                  <li>Alina Futch</li>
+<li>Breanna Bolden</li>
+<li>Crisanta White</li>
+<li>Jenice Winter</li>
+<li>Mariah Mitchell</li>
+<li>Mia Marshall</li>
+<li>Shashanta Cox</li>
+<li>Tytiana Horton</li>
+<li>Victoria Fance</li>
                 </ul>
               </div>
             </div>
@@ -1589,20 +1536,21 @@ section {
             <div class="party-col">
               <h3 style="margin:1.25rem 0 .35rem; color:var(--green); font-family:'Playfair Display',serif;">Groomsmen</h3>
               <div class="list-card">
-                <ul class="names-list" aria-label="Groomsmen list">
-                  <li><span>Andre Williams</span><span class="pill">Groomsman</span></li>
-                  <li><span>Hamid Dawson</span><span class="pill">Groomsman</span></li>
-                  <li><span>Joseph Fogg</span><span class="pill">Groomsman</span></li>
-                  <li><span>Kenneth Cousins</span><span class="pill">Groomsman</span></li>
-                  <li><span>Louis Swanks</span><span class="pill">Groomsman</span></li>
-                  <li><span>Michael Roberts</span><span class="pill">Groomsman</span></li>
-                  <li><span>Dykavius Colbert</span><span class="pill">Groomsman</span></li>
-                  <li><span>Ronald Johnson</span><span class="pill">Groomsman</span></li>
-                  <li><span>Ryan Gardner</span><span class="pill">Groomsman</span></li>
-                  <li><span>Sidney Smith</span><span class="pill">Groomsman</span></li>
-                </ul>
-              </div>
-            </div>
+               
+               <ul class="names-list" aria-label="Groomsmen list">
+  <li>Andre Williams</li>
+  <li>Hamid Dawson</li>
+  <li>Joseph Fogg</li>
+  <li>Kenneth Cousins</li>
+  <li>Louis Swanks</li>
+  <li>Michael Roberts</li>
+  <li>Dykavius Colbert</li>
+  <li>Ronald Johnson</li>
+  <li>Ryan Gardner</li>
+  <li>Sidney Smith</li>
+</ul>
+</div>
+</div>
           </div>
         </div>
       </article>
