@@ -1949,13 +1949,10 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-       const payload = {
- attendance: document.querySelector('[name="attendance"]')?.value || "",
-
+      const payload = {
+  attendance: document.querySelector('[name="attendance"]')?.value || "",
   name: document.getElementById("name").value.trim(),
   email: document.getElementById("email").value.trim().toLowerCase(),
-
- 
   notes: document.getElementById("notes").value.trim()
 };
 
@@ -2171,7 +2168,7 @@ const observer = new IntersectionObserver((entries)=>{
       entry.target.classList.add('fade-in','visible');
     }
   });
-},{ threshold: .15 });
+}, { threshold: .15 });
 
 fadeEls.forEach(el=>{
   observer.observe(el);
