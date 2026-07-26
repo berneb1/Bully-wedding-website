@@ -2034,7 +2034,7 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
             console.error("Confirmation email request failed:", emailError);
           }
 
-          form.reset();
+form.reset();
 
 setStatus(
   emailSent
@@ -2043,17 +2043,24 @@ setStatus(
   true
 );
 
-// 🔥 ADD THIS RIGHT HERE
+// 🔥 FIXED
 form.style.display = "none";
 document.getElementById("rsvpSuccess").style.display = "block";
-        } catch (err) {
-          console.error("FULL ERROR:", err);
-          setStatus("Something went wrong. Try again.", false);
-        } finally {
+
+} catch (err) {
+  console.error("FULL ERROR:", err);
+  setStatus("Something went wrong. Try again.", false);
+} finally {
   if (form.style.display !== "none") {
     btn.disabled = false;
     btn.textContent = "Submit Info";
   }
+}
+           }); // closes form.addEventListener
+    }    // closes if (form && msg && btn)
+
+  });    // closes DOMContentLoaded
+</script>
 }
 
     const galleryImgs = Array.from(document.querySelectorAll('#photos .masonry img'));
@@ -2174,7 +2181,7 @@ fadeEls.forEach(el=>{
   observer.observe(el);
 });
 
-});  // end of DOMContentLoaded
+}); // end of DOMContentLoaded
 
 function goToRSVP() {
   window.open("https://withjoy.com/courtney-and-berne/rsvp", "_blank");
