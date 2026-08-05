@@ -2008,31 +2008,56 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
           let emailSent = false;
 
           try {
-            const response = await fetch(
-              "https://ibzoqsepguyoelavoseb.supabase.co/functions/v1/send-confirmation",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                  name: payload.name,
-                  email: payload.email,
-                 
-                  notes: payload.notes
-                })
-              }
-            );
+           const response = await fetch(
+  "https://ibzoqsepguyoelavoseb.supabase.co/functions/v1/send-confirmation",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: payload.name,
+      email: payload.email,
+      notes: payload.notes
+    })
+  }
+);
 
-            if (response.ok) {
-              emailSent = true;
-            } else {
-              const errorText = await response.text();
-              console.error("Confirmation email failed:", errorText);
-            }
+if (response.ok) {
+  emailSent = true;
+} else {
+  const errorText = await response.text();
+  console.error("Confirmation email failed:", errorText);
+}
           } catch (emailError) {
             console.error("Confirmation email request failed:", emailError);
           }
+          
+form.reset();
+
+setStatus(
+  emailSent
+    ? "Thank you! Your information has been received."
+    : "Thank you! Your information was saved.",
+  true
+);
+
+form.style.display = "none";
+const successEl = document.getElementById("rsvpSuccess");
+if (successEl) successEl.style.display = "block";
+
+} catch (err) {
+  console.error("FULL ERROR:", err);
+  setStatus("Something went wrong. Try again.", false);
+} finally {
+  if (form.style.display !== "none") {
+    btn.disabled = false;
+    btn.textContent = "Submit Info";
+  }
+}
+
+});
+}
 
 form.reset();
 
@@ -2065,10 +2090,6 @@ document.getElementById("rsvpSuccess").style.display = "block";
 
    
 
-
-function goToRegistry() {
-  window.open("https://www.myregistry.com/wedding-registry/courtney-gardner-and-berne-bully-kissimmee-fl/5529848", "_blank");
-}
 
 
 </script>
