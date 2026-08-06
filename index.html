@@ -1829,33 +1829,45 @@ section {
     window.addEventListener("click", startMusicFromFirstInteraction, { capture: true, once: true });
     window.addEventListener("keydown", startMusicFromFirstInteraction, { capture: true, once: true });
 
-    musicBtn.addEventListener("click", async () => {
-      try {
-        if (audio.paused) {
-          audio.volume = 0;
-          await audio.play();
+   musicBtn.addEventListener("click", async () => {
+  try {
+    if (audio.paused) {
+      audio.volume = 0;
 
-          let vol = 0;
-          const target = 0.06;
-          const fade = setInterval(() => {
-            if (vol < target) {
-              vol += 0.02;
-              audio.volume = vol;
-            } else {
-              audio.volume = target;
-              clearInterval(fade);
-            }
-          }, 100);
+      await audio.play();
 
-          updateMusicUI(true);
+      let vol = 0;
+      const target = 0.06;
+
+      const fade = setInterval(() => {
+        if (vol < target) {
+          vol += 0.02;
+          audio.volume = vol;
         } else {
-          audio.pause();
-          updateMusicUI(false);
+          audio.volume = target;
+          clearInterval(fade);
         }
-      } catch {
-        updateMusicUI(false);
-      }
-    });
+      }, 100);
+
+      updateMusicUI(true);
+
+    } else {
+      audio.pause();
+      updateMusicUI(false);
+    }
+
+  } catch (err) {
+    console.log("Playback failed:", err);
+
+    // 🔥 FORCE retry on user gesture
+    try {
+      await audio.play();
+      updateMusicUI(true);
+    } catch {
+      updateMusicUI(false);
+    }
+  }
+});
 
     const mapsBtn = document.getElementById("mapsBtn");
     function setMapsLink() {
