@@ -1800,34 +1800,37 @@ section {
     }
 
     async function startMusicFromFirstInteraction() {
-      if (!audio.paused) return;
+  if (!audio.paused) return;
 
-      try {
-        audio.volume = 0;
-        await audio.play();
+  try {
+    audio.volume = 0;
+    await audio.play();
 
-        let vol = 0;
-        const target = 0.08;
+    let vol = 0;
+    const target = 0.08;
 
-        const fade = setInterval(() => {
-          if (vol < target) {
-            vol += 0.02;
-            audio.volume = vol;
-          } else {
-            audio.volume = target;
-            clearInterval(fade);
-          }
-        }, 100);
+    const fade = setInterval(() => {
+      vol += 0.01;
 
-        updateMusicUI(true);
-      } catch {
-        updateMusicUI(false);
+      if (vol >= target) {
+        audio.volume = target;
+        clearInterval(fade);
+      } else {
+        audio.volume = vol;
       }
-    }
+    }, 100);
 
-    window.addEventListener("touchstart", startMusicFromFirstInteraction, { capture: true, once: true, passive: true });
-    window.addEventListener("click", startMusicFromFirstInteraction, { capture: true, once: true });
-    window.addEventListener("keydown", startMusicFromFirstInteraction, { capture: true, once: true });
+    updateMusicUI(true);
+  } catch (err) {
+    console.log("Autoplay blocked — waiting for first interaction.");
+    updateMusicUI(false);
+  }
+}
+startMusicFromFirstInteraction();
+
+window.addEventListener("touchstart", startMusicFromFirstInteraction, { capture: true, once: true, passive: true });
+window.addEventListener("click", startMusicFromFirstInteraction, { capture: true, once: true });
+window.addEventListener("keydown", startMusicFromFirstInteraction, { capture: true, once: true });
 
    musicBtn.addEventListener("click", async () => {
   try {
