@@ -1982,7 +1982,7 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
         setStatus("", true);
 
         try {
-          const { data: existingGuest, error: lookupError } = await supabase
+          const { data: existingGuest, error: lookupError } = await supabaseClient
             .from("guests")
             .select("id, email")
             .eq("email", payload.email)
@@ -2021,10 +2021,7 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
           try {
            const response = await fetch(
- let emailSent = false;
 
-try {
-  const response = await fetch(
     "https://ibzoqsepguyoelavoseb.supabase.co/functions/v1/send-confirmation",
     {
       method: "POST",
@@ -2047,15 +2044,7 @@ try {
   console.warn("Email failed, continuing site...");
 }
 
-if (response.ok) {
-  emailSent = true;
-} else {
-  const errorText = await response.text();
-  console.error("Confirmation email failed:", errorText);
-}
-          } catch (emailError) {
-            console.error("Confirmation email request failed:", emailError);
-          }
+
           
 form.reset();
 
@@ -2083,40 +2072,17 @@ if (successEl) successEl.style.display = "block";
 });
 }
 
-form.reset();
 
-setStatus(
-  emailSent
-    ? "Thank you! Your information has been received."
-    : "Thank you! Your information was saved.",
-  true
-);
-
-// 🔥 FIXED
-form.style.display = "none";
-document.getElementById("rsvpSuccess").style.display = "block";
-
-} catch (err) {
-  console.error("FULL ERROR:", err);
-  setStatus("Something went wrong. Try again.", false);
-} finally {
-  if (form.style.display !== "none") {
-    btn.disabled = false;
-    btn.textContent = "Submit Info";
-  }
-}
-           }); // closes form.addEventListener
-    }    // closes if (form && msg && btn)
 
   });    // closes DOMContentLoaded
 </script>
-}
+
 
    
 
 
 
-</script>
+
 
 <style>
 /* ===== FINAL FONT FIX (STABLE + CLEAN) ===== */
